@@ -1,0 +1,12 @@
+{
+  "name": "ScanDiet",
+  "displayName": "ScanDiet",
+  "expo": {
+    "name": "ScanDiet",
+    "slug": "ScanDiet",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
