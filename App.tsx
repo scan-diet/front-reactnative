@@ -1,19 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Settings from "./components/Settings";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Project start !</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <Settings/>
+  )
+};
