@@ -1,8 +1,8 @@
 import React from 'react';
-import Settings from "./components/Settings";
+import Login from "./components/Login";
 
 export default function App() {
   return (
-    <Settings/>
+    <Login/>
   )
 };
