@@ -9,19 +9,19 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "5.11.9",
+    "@react-navigation/native": "^5.9.4",
     "expo": "~41.0.1",
     "expo-splash-screen": "~0.10.2",
     "expo-updates": "~0.5.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "^0.64.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-reanimated": "~2.1.0",
     "react-native-screens": "~3.0.0",
     "react-native-unimodules": "~0.13.3",
-    "react-native-web": "^0.16.2",
-    "@react-navigation/native": "^5.9.4",
-    "@react-navigation/bottom-tabs": "5.11.9"
+    "react-native-web": "^0.16.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
