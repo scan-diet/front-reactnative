@@ -9,11 +9,11 @@ export default class Login extends React.Component {
                     style={styles.logo}
                     source={require('../images/scan_diet_logo.png')}
                 />
-                <View style={{flex:1, backgroundColor: "green", justifyContent: "center"}}>
+                <View style={{flex:1, justifyContent: "center"}}>
                     <Text style={styles.welcomeTitle}>Bienvenue sur ScanDiet</Text>
                 </View>
 
-                <View style={{flex:4, backgroundColor: "yellow"}}>
+                <View style={{flex:4}}>
                     <TextInput style={styles.textinput} placeholder="Identifiant"/>
                     <TextInput style={styles.textinput} placeholder="Mot de passe"/>
 
@@ -21,7 +21,9 @@ export default class Login extends React.Component {
                         <Text style={styles.infos}>Mot de passe oublié?</Text>
                     </Pressable>
 
-                    <Button title="Se connecter" onPress={()=>{}}/>
+                    <Button
+                        color="#1A1D53"
+                        title="Se connecter" onPress={()=>{}}/>
                     <Pressable onPress={()=>Alert.alert('Bouton inactif')}>
                         <Text style={styles.infos}>Pas de compte? S'inscrire</Text>
                     </Pressable>
@@ -34,7 +36,7 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "red",
+        //backgroundColor: "red",
     },
     logo: {
         width: 100,
