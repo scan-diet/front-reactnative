@@ -7,19 +7,19 @@ export default class Settings extends React.Component {
             <View style={style.view}>
                 <Text style={style.title}>Reglages</Text>
                 <View style={style.bouton}>
-                    <Button title='Modifier mon profil' onPress={() => Alert.alert('Cannot press this one')} />
+                    <Button title='Modifier mon profil' onPress={() => Alert.alert('Bouton inactif')} />
                 </View>
                 <View style={style.bouton}>
-                    <Button title='Modifier mon adresse e-mail' onPress={() => Alert.alert('Cannot press this one')} />
+                    <Button title='Modifier mon adresse e-mail' onPress={() => Alert.alert('Bouton inactif')} />
                 </View>
                 <View style={style.bouton}>
-                    <Button title='C.G.U' onPress={() => Alert.alert('Cannot press this one')} />
+                    <Button title='C.G.U' onPress={() => Alert.alert('Bouton inactif')} />
                 </View>
                 <View style={style.bouton}>
-                    <Button title='F.A.Q' onPress={() => Alert.alert('Cannot press this one')} />
+                    <Button title='F.A.Q' onPress={() => Alert.alert('Bouton inactif')} />
                 </View>
                 <View style={style.bouton}>
-                    <Button title='Nous contacter' onPress={() => Alert.alert('Cannot press this one')} />
+                    <Button title='Nous contacter' onPress={() => Alert.alert('Bouton inactif')} />
                 </View>
             </View>
         )
