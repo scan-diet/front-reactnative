@@ -1,12 +1,20 @@
 import React from "react";
-import { Text,View } from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 
 export default class Home extends React.Component {
     render() {
         return (
-            <View>
+            <View style={styles.main_container}>
                 <Text>Vue Home</Text>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    main_container: {
+        margin: 40,
+        //backgroundColor: "red"
+    }
+})
+

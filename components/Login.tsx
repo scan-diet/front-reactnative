@@ -1,32 +1,22 @@
 import React from "react";
-import {Button, Image, Text, TextInput, View, StyleSheet, Pressable, Alert} from "react-native";
+import {Button, Image, Text, TextInput, View, StyleSheet} from "react-native";
 
-export default class Login extends React.Component {
+export default class LoginV2 extends React.Component {
     render() {
+        let logo = '../images/scan_diet_logo.png';
         return (
-            <View style={styles.container}>
-                <Image
-                    style={styles.logo}
-                    source={require('../images/scan_diet_logo.png')}
-                />
-                <View style={{flex:1, justifyContent: "center"}}>
-                    <Text style={styles.welcomeTitle}>Bienvenue sur ScanDiet</Text>
-                </View>
+            <View style={styles.main_container}>
+                <View style={styles.main_view}>
+                    <Image style={styles.logo} source={require(logo)}/>
+                    <Text style={styles.home_title}>Bievenue sur ScanDiet</Text>
+                    <TextInput style={styles.text_input} placeholder='Adresse e-mail'/>
+                    <TextInput style={styles.text_input} secureTextEntry placeholder='Mot de passe'/>
+                    <Text style={styles.other_info}>Mot de passe oublié?</Text>
+                    <View style={{marginBottom:'15%'}}>
+                        <Button title='Se connecter' onPress={()=>{}} />
+                    </View>
 
-                <View style={{flex:4}}>
-                    <TextInput style={styles.textinput} placeholder="Identifiant"/>
-                    <TextInput style={styles.textinput} placeholder="Mot de passe"/>
-
-                    <Pressable onPress={()=>Alert.alert('Bouton inactif')}>
-                        <Text style={styles.infos}>Mot de passe oublié?</Text>
-                    </Pressable>
-
-                    <Button
-                        color="#1A1D53"
-                        title="Se connecter" onPress={()=>{}}/>
-                    <Pressable onPress={()=>Alert.alert('Bouton inactif')}>
-                        <Text style={styles.infos}>Pas de compte? S'inscrire</Text>
-                    </Pressable>
+                    <Text style={styles.other_info}>Pas de compte? S'inscrire</Text>
                 </View>
             </View>
         )
@@ -34,32 +24,39 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        //backgroundColor: "red",
+    main_container: {
+        flex:1,
+        padding:50,
+        backgroundColor:"#F4F5FA"
+    },
+    main_view: {
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center"
     },
     logo: {
-        width: 100,
-        height: 100,
-        alignSelf: "center",
+        width:100,
+        height:100,
+        marginBottom:'15%'
     },
-    welcomeTitle: {
-        color: '#1A1D53',
-        fontWeight: 'bold',
-        fontSize: 40,
-        textAlign: "center",
-        justifyContent: "center"
+    home_title: {
+        marginBottom:'10%',
+        fontSize:45,
+        color:'#1A1D53',
+        fontWeight:'bold',
+        textAlign:"center"
     },
-    textinput: {
-        margin: 10,
-        height: 50,
-        borderColor: '#000000',
-        borderWidth: 1,
-        paddingLeft: 5,
-        borderRadius: 50,
+    text_input: {
+        marginBottom:'5%',
+        padding: 7,
+        backgroundColor:"#FFFFFF",
+        width:'80%',
+        borderRadius:20,
+        paddingLeft:15,
+        paddingRight:15
     },
-    infos: {
-        textAlign: "center",
-        margin: 10,
+    other_info: {
+        marginBottom:'8%',
+        color:'#8D8D8D'
     }
-});
+})
