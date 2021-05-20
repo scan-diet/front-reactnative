@@ -1,9 +1,8 @@
 {
-  "name": "ScanDiet",
-  "displayName": "ScanDiet",
   "expo": {
     "name": "ScanDiet",
     "slug": "ScanDiet",
+    "description": "This app helps you eat healthy according to your diet.",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
