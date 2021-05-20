@@ -23,11 +23,11 @@ const Navigation = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#000000' : '#748c94'
+                                tintColor: focused ? '#1A1D53' : '#748c94'
                             }}
                         />
                         <Text
-                            style={{color: focused ? '#000000' : '#748c94',fontSize: 12}}>
+                            style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
                             Home
                         </Text>
                     </View>
@@ -42,11 +42,11 @@ const Navigation = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#000000' : '#748c94'
+                                tintColor: focused ? '#1A1D53' : '#748c94'
                             }}
                         />
                         <Text
-                            style={{color: focused ? '#000000' : '#748c94',fontSize: 12}}>
+                            style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
                             Compte
                         </Text>
                     </View>
@@ -61,11 +61,11 @@ const Navigation = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#000000' : '#748c94'
+                                tintColor: focused ? '#1A1D53' : '#748c94'
                             }}
                         />
                         <Text
-                            style={{color: focused ? '#000000' : '#748c94',fontSize: 12}}>
+                            style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
                             Courses
                         </Text>
                     </View>
@@ -80,11 +80,11 @@ const Navigation = () =>{
                             style={{
                                 width: 25,
                                 height: 25,
-                                tintColor: focused ? '#000000' : '#748c94'
+                                tintColor: focused ? '#1A1D53' : '#748c94'
                             }}
                         />
                         <Text
-                            style={{color: focused ? '#000000' : '#748c94',fontSize: 12}}>
+                            style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
                             Réglages
                         </Text>
                     </View>
