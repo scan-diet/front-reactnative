@@ -1,11 +1,11 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 
-export default class Home extends React.Component {
+export default class Accueil extends React.Component {
     render() {
         return (
             <View style={styles.main_container}>
-                <Text>Vue Home</Text>
+                <Text>Vue Accueil</Text>
             </View>
         )
     }
@@ -13,8 +13,7 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
-        margin: 40,
-        //backgroundColor: "red"
+        padding: 50
     }
 })
 
