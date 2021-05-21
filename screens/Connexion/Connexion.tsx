@@ -14,7 +14,7 @@ export default class Connexion extends React.Component {
                     <TextInput style={styles.text_input} secureTextEntry placeholder='Mot de passe'/>
                     <Text style={styles.other_info}>Mot de passe oublié?</Text>
                     <View style={{marginBottom:'15%'}}>
-                        <Button title='Se connecter' onPress={()=>{}} />
+                        <Button title='Se connecter' color="#1A1D53" onPress={()=>{}} />
                     </View>
 
                     <Text style={styles.other_info}>Pas de compte? S'inscrire</Text>
