@@ -17,7 +17,7 @@ export default class Connexion extends React.Component {
                         <Button title='Se connecter' color="#1A1D53" onPress={()=>{}} />
                     </View>
 
-                    <Text style={styles.other_info}>Pas de compte? S'inscrire</Text>
+                    <Text style={styles.other_info}>Pas de compte? <Text style={{fontWeight:"bold"}}>S'inscrire</Text></Text>
                 </View>
             </View>
         )

@@ -11,23 +11,23 @@ export default class Reglages extends React.Component {
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button title='Modifier mon profil' onPress={()=>{}} />
+                    <Button color={'#1A1D53'} title='Modifier mon profil' onPress={()=>{}} />
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button title='Modifier mon adresse e-mail' onPress={()=>{}} />
+                    <Button color={'#1A1D53'} title='Modifier mon adresse e-mail' onPress={()=>{}} />
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button title='C.G.U' onPress={()=>{}} />
+                    <Button color={'#1A1D53'} title='C.G.U' onPress={()=>{}} />
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button title='F.A.Q' onPress={()=>{}} />
+                    <Button color={'#1A1D53'} title='F.A.Q' onPress={()=>{}} />
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button title='Nous contacter' onPress={()=>{}} />
+                    <Button color={'#1A1D53'} title='Nous contacter' onPress={()=>{}} />
                 </View>
             </View>
         )
