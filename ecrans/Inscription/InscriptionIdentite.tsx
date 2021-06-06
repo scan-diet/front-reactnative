@@ -2,8 +2,10 @@ import React from "react";
 import {Button, Image, Text, TextInput, View} from "react-native";
 import styles from './styles';
 import { LinearProgress } from 'react-native-elements';
+import ChampSaisie from "../../composants/ChampSaisie";
+import Bouton from "../../composants/Bouton";
 
-export default class InscriptionRegime extends React.Component {
+export default class InscriptionIdentite extends React.Component {
     render() {
         let logo = '../../assets/images/scan_diet_logo.png';
         return (
@@ -14,19 +16,20 @@ export default class InscriptionRegime extends React.Component {
                 </View>
 
                 <View style={{alignItems:'center'}}>
-                    <Text style={{fontWeight:"bold", fontSize:23, marginBottom:'15%', color:'#1A1D53'}}>Un <Text style={{color:'#6CC57C'}}>régime</Text> en particulier?</Text>
+                    <Text style={{fontWeight:"bold", fontSize:25, marginBottom:'15%'}}>C'est parti !</Text>
                 </View>
 
                 <View style={{alignItems:'center'}}>
-
+                    <ChampSaisie placeholder='Nom' />
+                    <ChampSaisie placeholder='Prénom' />
                 </View>
 
                 <View style={{alignSelf:"center", flexDirection:'row', marginBottom:'15%'}}>
-                    <Button color="#1A1D53" title={'Suivant'} onPress={()=>{}}/>
+                    <Bouton title='Suivant'/>
                 </View>
 
                 <View>
-                    <LinearProgress style={{height:10, borderRadius:20}} color="#6CC57C" value={.8} variant={"determinate"} />
+                    <LinearProgress style={{height:10, borderRadius:20}} color="#6CC57C" value={.2} variant={"determinate"} />
                 </View>
             </View>
         )
