@@ -1,8 +1,7 @@
-import React, {FC} from "react";
-import {Button, Image, Text, TextInput, TouchableOpacity, View} from "react-native";
+import React from "react";
+import {Image, Text, View} from "react-native";
 import styles from './styles';
 import { LinearProgress } from 'react-native-elements';
-import Carte from "../../composants/Carte";
 import CustomButton from '../../composants/CustomButton';
 
 
@@ -34,22 +33,39 @@ export default class InscriptionRegime extends React.Component {
                         alignItems: 'center',
                     }}>
                     <CustomButton
-                        title={'Sans lactose'}
-                        onPress={() => console.log('Sans lactose')}
-                        buttonWidth={'40%'}
-                        buttonHeight={40}
+                        titre={'Sans Lactose'}
+                        onPress={() => console.log('Sans Lactose')}
+                        largeurBouton={'40%'}
+                        hauteurBouton={40}
                     />
+
                     <CustomButton
-                        title={'Vegan'}
+                        titre={'Vegan'}
                         onPress={() => console.log('Vegan')}
-                        buttonWidth={'30%'}
-                        buttonHeight={40}
+                        largeurBouton={'30%'}
+                        hauteurBouton={40}
                     />
+                </View>
+
+                <View
+                    style={{
+                        flexDirection:'row',
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
                     <CustomButton
-                        title={'Végétarien'}
+                        titre={'Végétarien'}
                         onPress={() => console.log('végétarien')}
-                        buttonWidth={'40%'}
-                        buttonHeight={40}
+                        largeurBouton={'40%'}
+                        hauteurBouton={40}
+                    />
+
+                    <CustomButton
+                        titre={'Sans Gluten'}
+                        onPress={() => console.log('végétarien')}
+                        largeurBouton={'40%'}
+                        hauteurBouton={40}
                     />
                 </View>
 
