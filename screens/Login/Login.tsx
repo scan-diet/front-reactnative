@@ -2,9 +2,9 @@ import React from "react";
 import {Button, Image, Text, TextInput, View} from "react-native";
 import styles from './styles';
 
-export default class Connexion extends React.Component {
+export default class Login extends React.Component {
     render() {
-        let logo = '../../assets/images/scan_diet_logo.png';
+        let logo = '../../assets/images/logo_scan_diet.png';
         return (
             <View style={styles.main_container}>
                 <View style={styles.main_view}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
-import Navigation from './composants/Navigation';
+import Navigation from './components/Navigation';
 
 export default class App extends React.Component {
   render() {

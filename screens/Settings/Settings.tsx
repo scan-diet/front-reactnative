@@ -2,7 +2,7 @@ import React from 'react'
 import {View, Text, Button} from 'react-native'
 import styles from "./styles";
 
-export default class Reglages extends React.Component {
+export default class Settings extends React.Component {
     render() {
         return (
             <View style={styles.main_view}>

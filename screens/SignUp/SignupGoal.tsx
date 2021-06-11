@@ -3,14 +3,14 @@ import {Button, Image, Text, TextInput, View} from "react-native";
 import styles from './styles';
 import { LinearProgress } from 'react-native-elements';
 
-export default class InscriptionObjectif extends React.Component {
+export default class SignupGoal extends React.Component {
     render() {
-        let logo = '../../assets/images/scan_diet_logo.png';
+        let logo = '../../assets/images/logo_scan_diet.png';
         return (
             <View style={{padding:50, flex:1, justifyContent:'center'}}>
 
                 <View style={{alignSelf:"center", marginBottom:'15%'}}>
-                    <Image source={require("../../assets/images/image_inscription.png")}/>
+                    <Image source={require("../../assets/images/image_register.png")}/>
                 </View>
 
                 <View style={{alignItems:'center'}}>

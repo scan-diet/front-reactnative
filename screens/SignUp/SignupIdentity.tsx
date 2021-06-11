@@ -2,17 +2,13 @@ import React from "react";
 import {Button, Image, Text, TextInput, View} from "react-native";
 import styles from './styles';
 import { LinearProgress } from 'react-native-elements';
-import ChampSaisie from "../../composants/ChampSaisie";
-import Bouton from "../../composants/Bouton";
 
-export default class InscriptionIdentite extends React.Component {
+export default class SignupIdentity extends React.Component {
     render() {
-        let logo = '../../assets/images/scan_diet_logo.png';
         return (
             <View style={{padding:50, flex:1, justifyContent:'center'}}>
-
                 <View style={{alignSelf:"center", marginBottom:'15%'}}>
-                    <Image source={require("../../assets/images/image_inscription.png")}/>
+                    <Image source={require("../../assets/images/image_register.png")}/>
                 </View>
 
                 <View style={{alignItems:'center'}}>
@@ -20,12 +16,12 @@ export default class InscriptionIdentite extends React.Component {
                 </View>
 
                 <View style={{alignItems:'center'}}>
-                    <ChampSaisie placeholder='Nom' />
-                    <ChampSaisie placeholder='Prénom' />
+                    <TextInput style={styles.saisie} placeholder='Nom'/>
+                    <TextInput style={styles.saisie} placeholder='Prénom'/>
                 </View>
 
                 <View style={{alignSelf:"center", flexDirection:'row', marginBottom:'15%'}}>
-                    <Bouton title='Suivant'/>
+                    <Button title={'Suivant'} color="#1A1D53" onPress={()=>{}} />
                 </View>
 
                 <View>

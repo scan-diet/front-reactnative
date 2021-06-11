@@ -1,14 +1,14 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from "react";
-import Reglages from "../ecrans/Reglages/Reglages";
+import Settings from "../screens/Settings/Settings";
 import {View, Image, Text} from "react-native";
-import Connexion from "../ecrans/Connexion/Connexion";
-import ModeCourse from "../ecrans/ModeCourse/ModeCourse";
-import Accueil from "../ecrans/Accueil/Accueil";
-import InscriptionCorpulence from "../ecrans/Inscription/InscriptionCorpulence";
-import InscriptionIdentite from "../ecrans/Inscription/InscriptionIdentite";
-import InscriptionObjectif from "../ecrans/Inscription/InscriptionObjectif";
-import InscriptionRegime from "../ecrans/Inscription/InscriptionRegime";
+import Login from "../screens/Login/Login";
+import Shopping from "../screens/Shopping/Shopping";
+import Home from "../screens/Home/Home";
+import SignupBodyShape from "../screens/SignUp/SignupBodyShape";
+import SignupIdentity from "../screens/SignUp/SignupIdentity";
+import SignupGoal from "../screens/SignUp/SignupGoal";
+import SignupDiet from "../screens/SignUp/SignupDiet";
 const Tab = createBottomTabNavigator();
 
 const Navigation = () =>{
@@ -20,11 +20,11 @@ const Navigation = () =>{
         >{/* REMETTRE QUAND J'AI FINI DE FAIRE LES ECRANS D'INSCRIPTION*/ }
             { /*
 
-            <Tab.Screen name="Accueil" component={Accueil} options={{
+            <Tab.Screen name="Home" component={Home} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/accueil.png')}
+                            source={require('../assets/images/image_home.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -34,18 +34,18 @@ const Navigation = () =>{
                         />
                         <Text
                             style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
-                            Accueil
+                            Home
                         </Text>
                     </View>
                 )
             }}/>
 
 
-            <Tab.Screen name="profil" component={Connexion} options={{
+            <Tab.Screen name="profil" component={Login} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/profil.png')}
+                            source={require('../assets/images/image_profil.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -60,11 +60,11 @@ const Navigation = () =>{
                     </View>
                 )
             }}  />
-            <Tab.Screen name="ModeCourse" component={ModeCourse} options={{
+            <Tab.Screen name="Shopping" component={Shopping} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/chariot.png')}
+                            source={require('../assets/images/image_shopping_cart.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -82,11 +82,11 @@ const Navigation = () =>{
 
 
 
-                <Tab.Screen name="Reglages" component={Reglages} options={{
+                <Tab.Screen name="Settings" component={Settings} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/reglages.png')}
+                            source={require('../assets/images/image_settings.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -104,11 +104,11 @@ const Navigation = () =>{
                  */
             }
 
-            <Tab.Screen name="InscriptionIdentite" component={InscriptionIdentite} options={{
+            <Tab.Screen name="SignupIdentity" component={SignupIdentity} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/reglages.png')}
+                            source={require('../assets/images/image_settings.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -124,11 +124,11 @@ const Navigation = () =>{
                 )
             }}  />
 
-            <Tab.Screen name="InscriptionCorpulence" component={InscriptionCorpulence} options={{
+            <Tab.Screen name="SignupBodyShape" component={SignupBodyShape} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/chariot.png')}
+                            source={require('../assets/images/image_shopping_cart.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -144,11 +144,11 @@ const Navigation = () =>{
                 )
             }}  />
 
-            <Tab.Screen name="InscriptionObjectif" component={InscriptionObjectif} options={{
+            <Tab.Screen name="SignupGoal" component={SignupGoal} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/chariot.png')}
+                            source={require('../assets/images/image_shopping_cart.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -164,11 +164,11 @@ const Navigation = () =>{
                 )
             }}  />
 
-            <Tab.Screen name="InscriptionRegime" component={InscriptionRegime} options={{
+            <Tab.Screen name="SignupDiet" component={SignupDiet} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/chariot.png')}
+                            source={require('../assets/images/image_shopping_cart.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
