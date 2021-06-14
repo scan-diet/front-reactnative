@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, Image} from 'react-native';
 
 interface CustomButtonProps {
     titre: string;
@@ -17,6 +17,7 @@ const CustomButton: FC<CustomButtonProps> = ({titre, onPress, hauteurBouton, lar
                 return onPress();
             }}
             style={{
+                flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: pressed ? '#6CC57C' : '#707070',
@@ -25,8 +26,10 @@ const CustomButton: FC<CustomButtonProps> = ({titre, onPress, hauteurBouton, lar
                 borderRadius: 50,
                 width: largeurBouton,
                 height: hauteurBouton,
-                margin: 10,
+                margin: 5,
+
             }}>
+            <Image style={{marginRight:20}} source={require('../assets/images/image_addition_symbol.png')}/>
             <Text style={{color:'#FFFFFF'}}>
                 {titre}
             </Text>

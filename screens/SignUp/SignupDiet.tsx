@@ -6,8 +6,6 @@ import CustomButton from '../../components/CustomButton';
 
 export default class SignupDiet extends React.Component {
     render() {
-        let logo = '../../assets/images/logo_scan_diet.png';
-
         return (
             <View style={{padding:50, flex:1, justifyContent:'center'}}>
                 <View style={{alignSelf:"center", marginBottom:'15%'}}>
@@ -28,7 +26,7 @@ export default class SignupDiet extends React.Component {
                     <CustomButton
                         titre={'Sans Lactose'}
                         onPress={() => console.log('Sans Lactose')}
-                        largeurBouton={'40%'}
+                        largeurBouton={"auto"}
                         hauteurBouton={40}
                     />
 

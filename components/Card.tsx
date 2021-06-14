@@ -1,13 +1,15 @@
-import React, {FC} from "react";
-import {StyleSheet, View} from 'react-native';
+import React, {FC} from 'react';
+import {View, StyleSheet} from "react-native";
 
-interface IProps {
+interface CardProps {
     children: any;
+    carte: string;
+    style: string | any;
 }
 
-const Card: FC<IProps> = ({children}) => {
+const Card: FC<Partial<CardProps>> = ({children, carte, style}) => {
     return (
-        <View>
+        <View style={[carte, style ]}>
             {children}
         </View>
     )
@@ -27,6 +29,7 @@ const styles = StyleSheet.create({
          * APPLIQUE LES PROPRIETÉS DE STYLE iOS PRÉCÉDENTES DANS ANDROID
           */
         elevation:8,
+
         backgroundColor:'#6CC57C',
         padding:20,
         borderRadius:10
