@@ -1,8 +1,8 @@
 import React from "react";
-import {OpaqueColorValue, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 // @ts-ignore
-const CarteActivity = props => {
+const CardActivity = props => {
     return (
         <View style={{...styles.container, ...props.style}}>
             {props.children}
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CarteActivity;
+export default CardActivity;

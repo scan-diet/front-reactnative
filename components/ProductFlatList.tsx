@@ -2,17 +2,17 @@ import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, FlatList, Animated, useWindowDimensions} from "react-native";
 
 import Navigation from "./Navigation";
-import ProduitFlatListItem from "./ProduitFlatListItem";
+import ProductFlatListItem from "./ProductFlatListItem";
 import Produit from "./Produit";
 
-const ProduitFlatList = () => {
+const ProductFlatList = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const scrollx = useRef(new Animated.Value(0)).current;
     const {width} = useWindowDimensions();
     return(
         <View style={[styles.container, {width}]}>
             <FlatList data={Produit}
-                      renderItem={({item}) => <ProduitFlatListItem item={{item}}/>}
+                      renderItem={({item}) => <ProductFlatListItem item={{item}}/>}
                       horizontal
                       showsHorizontalScrollIndicator
                       pagingEnabled
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
         textAlign: ' center',
     },
 });
-export default ProduitFlatList;
+export default ProductFlatList;

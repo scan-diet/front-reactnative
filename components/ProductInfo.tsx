@@ -2,9 +2,9 @@ import React from "react";
 import {Image, OpaqueColorValue, ProgressBarAndroid, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import {ProgressBar, Colors} from 'react-native-paper'
 import {Cercle} from './Cercle'
-import ProduitFlatList from "./ProduitFlatList";
+import ProductFlatList from "./ProductFlatList";
 // @ts-ignore
-const FicheProduit = () => {
+const ProductInfo = () => {
     const {width} = useWindowDimensions();
     return(
         <View style={[styles.container, {width}]}>
@@ -36,7 +36,7 @@ const FicheProduit = () => {
             </View>
             <View style={styles.recommandation}>
                 <Text style={styles.subTitle}>Recommandations</Text>
-                <ProduitFlatList/>
+                <ProductFlatList/>
             </View>
         </View>
     );
@@ -110,4 +110,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default FicheProduit;
+export default ProductInfo;

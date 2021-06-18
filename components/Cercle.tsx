@@ -1,6 +1,5 @@
 import React from "react";
 import {StyleSheet, View} from 'react-native';
-import Carte from "./Carte";
 
 // @ts-ignore
 export const Cercle = props => {

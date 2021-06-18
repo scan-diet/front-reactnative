@@ -1,15 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, useWindowDimensions} from "react-native";
-import Navigation from "./Navigation";
-import Produit from "./Produit";
-import CarteActivity from "./CarteActivity";
+import CardActivity from "./CardActivity";
 
 // @ts-ignore
 const ActivityFlatListItem = ({item}) => {
     const {width} = useWindowDimensions();
     return(
         <View style={[styles.container, {width}]}>
-            <CarteActivity/>
+            <CardActivity/>
         </View>
     );
 }

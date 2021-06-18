@@ -1,10 +1,8 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 import styles from './styles';
-import AccueilNav from "../../composants/AcceuilNav";
-import Carte from "../../composants/Carte";
-import CarteActivity from "../../composants/CarteActivity";
-import ActivityFlatList from "../../composants/ActivityFlatList";
+import HomeNav from "../../components/HomeNav";
+import ActivityFlatList from "../../components/ActivityFlatList";
 
 var date = new Date().getDate()
 var month = new Date().getMonth()+1
@@ -22,7 +20,7 @@ export default class Home extends React.Component {
                     <ActivityFlatList/>
                 </View>
                 <View style={styles.activity_container}>
-                    <AccueilNav/>
+                    <HomeNav/>
                 </View>
             </View>
         )

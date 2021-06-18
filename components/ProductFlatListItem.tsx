@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 import Produit from "./Produit";
 
 // @ts-ignore
-const ProduitFlatListItem = ({item}) => {
+const ProductFlatListItem = ({item}) => {
     const {width} = useWindowDimensions();
     return(
         <View style={[styles.container, {width}]}>
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     },*/
 });
 
-export default ProduitFlatListItem;
+export default ProductFlatListItem;

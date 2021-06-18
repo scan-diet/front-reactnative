@@ -1,11 +1,10 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from "react";
-import Settings from "../screens/Settings/Settings";
 import {View, Image, Text} from "react-native";
-import Connexion from "../ecrans/Connexion/Connexion";
-import ModeCourse from "../ecrans/ModeCourse/ModeCourse";
-import Accueil from "../ecrans/Accueil/Accueil";
-import DetailProduct from "../ecrans/DetailProduct/DetailProduct";
+import Home from "../screens/Home/Home";
+import DetailProduct from "../screens/DetailProduct/DetailProduct";
+import Login from "../screens/Login/Login";
+import Settings from "../screens/Settings/Settings";
 const Tab = createBottomTabNavigator();
 
 const Navigation = () =>{
@@ -15,7 +14,7 @@ const Navigation = () =>{
                 showLabel: false
             }}
         >
-            <Tab.Screen name="Accueil" component={Accueil} options={{
+            <Tab.Screen name="Accueil" component={Home} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
@@ -34,7 +33,7 @@ const Navigation = () =>{
                     </View>
                 )
             }}/>
-            <Tab.Screen name="profil" component={Connexion} options={{
+            <Tab.Screen name="profil" component={Login} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
@@ -72,7 +71,7 @@ const Navigation = () =>{
                     </View>
                 )
             }}  />
-            <Tab.Screen name="Reglages" component={Reglages} options={{
+            <Tab.Screen name="Reglages" component={Settings} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image

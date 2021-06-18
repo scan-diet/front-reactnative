@@ -1,7 +1,5 @@
 import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, FlatList, Animated, useWindowDimensions} from "react-native";
-
-import Navigation from "./Navigation";
 import Produit from "./Produit";
 import ActivityFlatListItem from "./ActivityFlatListItem";
 
