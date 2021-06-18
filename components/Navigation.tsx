@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from "react";
-import Reglages from "../ecrans/Reglages/Reglages";
+import Settings from "../screens/Settings/Settings";
 import {View, Image, Text} from "react-native";
 import Connexion from "../ecrans/Connexion/Connexion";
 import ModeCourse from "../ecrans/ModeCourse/ModeCourse";
@@ -19,7 +19,7 @@ const Navigation = () =>{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/accueil.png')}
+                            source={require('../assets/images/image_home.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -29,7 +29,7 @@ const Navigation = () =>{
                         />
                         <Text
                             style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
-                            Accueil
+                            Home
                         </Text>
                     </View>
                 )
@@ -38,7 +38,7 @@ const Navigation = () =>{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/profil.png')}
+                            source={require('../assets/images/image_profil.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -57,7 +57,7 @@ const Navigation = () =>{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/chariot.png')}
+                            source={require('../assets/images/image_shopping_cart.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,
@@ -76,7 +76,7 @@ const Navigation = () =>{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
-                            source={require('../assets/images/reglages.png')}
+                            source={require('../assets/images/image_settings.png')}
                             resizeMode= 'contain'
                             style={{
                                 width: 25,

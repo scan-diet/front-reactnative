@@ -10,7 +10,7 @@ var date = new Date().getDate()
 var month = new Date().getMonth()+1
 var year = new Date().getFullYear()
 
-export default class Accueil extends React.Component {
+export default class Home extends React.Component {
     render() {
         return (
             <View style={styles.main}>
