@@ -8,8 +8,6 @@ const styles = StyleSheet.create({
     },
     main_view: {
         flex:1,
-        alignItems:"center",
-        justifyContent:"center"
     },
     logo: {
         width:100,
@@ -21,7 +19,7 @@ const styles = StyleSheet.create({
         fontSize:45,
         color:'#1A1D53',
         fontWeight:'bold',
-        textAlign:"center"
+
     },
     text_input: {
         marginBottom:'5%',

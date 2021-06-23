@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
     main_container: {
         flex:1,
         padding:20,
-        alignItems:'center',
         backgroundColor:"#F4F5FA"
     },
     activity_container:{
@@ -19,7 +18,7 @@ const styles = StyleSheet.create({
     main_view: {
         flex:1,
         marginTop: '15%',
-        justifyContent:"left"
+
     },
     title: {
         fontSize:35,
@@ -34,7 +33,6 @@ const styles = StyleSheet.create({
     date: {
         fontSize:20,
         color:'#1A1D53',
-        fontWeight:'italic',
         borderStyle: 'solid',
         textAlign: 'right',
         paddingRight: '5%',
@@ -56,7 +54,6 @@ const styles = StyleSheet.create({
         fontSize:45,
         color:'#1A1D53',
         fontWeight:'bold',
-        textAlign:"center"
     },
     text_input: {
         marginBottom:'5%',

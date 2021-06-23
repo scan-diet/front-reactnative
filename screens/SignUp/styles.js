@@ -6,8 +6,7 @@ const styles = StyleSheet.create({
     },
     main_view: {
         flex:1,
-        alignItems:"center",
-        justifyContent:"center"
+        alignItems:'center',
     },
     saisie: {
         marginBottom:'5%',
