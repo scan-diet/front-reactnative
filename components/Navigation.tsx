@@ -28,7 +28,7 @@ const Navigation = () =>{
                         />
                         <Text
                             style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
-                            Home
+                            Accueil
                         </Text>
                     </View>
                 )

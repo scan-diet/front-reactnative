@@ -1,11 +1,31 @@
 {
   "expo": {
-    "name": "ScanDiet",
-    "slug": "ScanDiet",
+    "name": "scandiet",
+    "slug": "scan-diet",
     "description": "This app helps you eat healthy according to your diet.",
+    "privacy": "public",
     "version": "1.0.0",
+    "sdkVersion": "38.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "platforms": [
+      "android"
+    ],
+    "orientation": "portrait",
+    "updates": {
+      "fallbackToCacheTimeout": 10000
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#171717",
+        "backgroundImage": "./assets/images/square_logo_scan_diet.png",
+        "foregroundImage": "./assets/images/square_logo_scan_diet.png"
+      },
+      "permissions": [
+        "CAMERA",
+        "WRITE_EXTERNAL_IMAGE"
+      ]
+    }
   }
 }

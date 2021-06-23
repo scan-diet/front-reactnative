@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     main_view: {
         flex:1,
         marginTop: '15%',
-        justifyContent:"left"
+        //justifyContent:"left"
     },
     title: {
         fontSize:35,
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     date: {
         fontSize:20,
         color:'#1A1D53',
-        fontWeight:'italic',
         borderStyle: 'solid',
         textAlign: 'right',
         paddingRight: '5%',

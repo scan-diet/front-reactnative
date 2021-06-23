@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         fontWeight: "800",
         fontSize: 28,
         marginBottom: 10,
-        textAlign: ' center',
+        textAlign:'center',
     },
 });
 export default ActivityFlatList;

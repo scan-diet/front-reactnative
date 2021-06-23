@@ -17,8 +17,12 @@ const Card: FC<Partial<CardProps>> = ({children, carte, style}) => {
 
 const styles = StyleSheet.create({
     card: {
+        backgroundColor:'#6CC57C',
+        padding:20,
+        borderRadius:10,
+
         /**
-         * PROPRIETÉS DE STYLE VALABLE UNIQUEMENT SUR iOS
+         * PROPERTIES ONLY AVAILABLE ON iOS
           */
         shadowColor:'black',
         shadowOffset:{width:0, height:2},
@@ -26,13 +30,9 @@ const styles = StyleSheet.create({
         shadowOpacity:0.26,
 
         /**
-         * APPLIQUE LES PROPRIETÉS DE STYLE iOS PRÉCÉDENTES DANS ANDROID
+         * WITH ELEVATION WE CAN APPLY iOS PROPERTIES INTO ANDROID
           */
-        elevation:8,
-
-        backgroundColor:'#6CC57C',
-        padding:20,
-        borderRadius:10
+        elevation:8
     }
 })
 
