@@ -10,13 +10,20 @@
       "**/*"
     ],
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ],
     "orientation": "portrait",
     "updates": {
       "fallbackToCacheTimeout": 10000
     },
+    "ios": {
+      "bundleIdentifier": "com.esgi.groupe7",
+      "supportsTablet": false,
+      "buildNumber": "1.0.0"
+    },
     "android": {
+      "package": "com.esgi.groupe7",
       "adaptiveIcon": {
         "backgroundColor": "#171717",
         "backgroundImage": "./assets/images/square_logo_scan_diet.png",
