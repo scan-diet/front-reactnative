@@ -2,39 +2,39 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     main_container: {
-        padding: 50
+        flex:1,
+        padding:50,
+        backgroundColor:"#F4F5FA"
     },
     main_view: {
         flex:1,
         alignItems:"center",
         justifyContent:"center"
     },
-    saisie: {
+    logo: {
+        width:100,
+        height:100,
+        marginBottom:'15%'
+    },
+    home_title: {
+        marginBottom:'10%',
+        fontSize:45,
+        color:'#1A1D53',
+        fontWeight:'bold',
+        textAlign:"center"
+    },
+    text_input: {
         marginBottom:'5%',
         padding: 7,
         backgroundColor:"#FFFFFF",
-        width:'50%',
+        width:'80%',
         borderRadius:5,
         paddingLeft:15,
         paddingRight:15
     },
-    card: {
-        /**
-         * PROPRIETÉS DE STYLE VALABLE UNIQUEMENT SUR iOS
-         */
-        shadowColor:'black',
-        shadowOffset:{width:0, height:2},
-        shadowRadius:6,
-        shadowOpacity:0.26,
-
-        /**
-         * APPLIQUE LES PROPRIETÉS DE STYLE iOS PRÉCÉDENTES DANS ANDROID
-         */
-        elevation:8,
-
-        backgroundColor:'#6CC57C',
-        padding:20,
-        borderRadius:10
+    other_info: {
+        marginBottom:'8%',
+        color:'#8D8D8D'
     }
 })
 

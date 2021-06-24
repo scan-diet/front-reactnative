@@ -10,7 +10,7 @@ interface IRecipeProps {
     SetToken: typeof SetToken
 }
 
-class Login extends React.Component<IRecipeProps> {
+class SignUp extends React.Component<IRecipeProps> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -60,13 +60,42 @@ class Login extends React.Component<IRecipeProps> {
                             "email":email,
                             "password":pwd
                         }
-            )});
+                    )});
 
             let json = await response.json();
             let status = response.status;
             if (status === 200){
                 this.props.SetToken(json.token)
                 await this.getUser(json.token)
+            }
+            console.log(email);
+            console.log(json);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    async register() {
+        try {
+            const{email, pwd}= this.state;
+
+            let response = await fetch(
+                'http://192.168.1.40:3200/users/create', {
+                    method: "post",
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(
+                        {
+                            "email":email,
+                            "password":pwd
+                        }
+            )});
+
+            let json = await response.json();
+            let status = response.status;
+            if (status === 201){
+                await this.login()
             }
             console.log(email);
             console.log(json);
@@ -84,12 +113,11 @@ class Login extends React.Component<IRecipeProps> {
                     <Text style={styles.home_title}>Bienvenue sur ScanDiet</Text>
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({email: text})}} placeholder='Adresse e-mail'/>
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Mot de passe'/>
-                    <Text style={styles.other_info}>Mot de passe oublié?</Text>
                     <View style={{marginBottom:'15%'}}>
-                        <Button title='Se connecter' color="#1A1D53" onPress={this.login.bind(this)} />
+                        <Button title='Sinscrire' color="#1A1D53" onPress={this.register.bind(this)} />
                     </View>
 
-                    <Text style={styles.other_info}>Pas de compte? <Text style={{fontWeight:"bold"}}>S'inscrire</Text></Text>
+                    <Text style={styles.other_info}>Deja un compte ? <Text style={{fontWeight:"bold"}}>Se conneter</Text></Text>
                 </View>
             </View>
         )
@@ -99,4 +127,4 @@ class Login extends React.Component<IRecipeProps> {
 export default connect(null, {
     SetToken,
     SetUserDetail
-})(Login);
+})(SignUp);
