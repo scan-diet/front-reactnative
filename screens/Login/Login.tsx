@@ -1,8 +1,16 @@
 import React from "react";
 import {Button, Image, Text, TextInput, View} from "react-native";
 import styles from './styles';
+import {SetUserDetail} from "../../Actions";
+import {SetToken} from "../../Actions";
+import {connect} from 'react-redux';
 
-export default class Login extends React.Component {
+interface IRecipeProps {
+    SetUserDetail: typeof SetUserDetail,
+    SetToken: typeof SetToken
+}
+
+class Login extends React.Component<IRecipeProps> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -16,7 +24,26 @@ export default class Login extends React.Component {
         pwd: string,
         error: string,
     }
+    async getUser(token: any){
+        try{
+            let response = await fetch(
+                'http://192.168.1.40:3200/users/current-user', {
+                    method: "get",
+                    headers:{
+                        "jwt-token":token
+                    }
+                }
+            );
+            let json = await response.json();
+            let status = response.status;
+            if (status === 200){
+                this.props.SetUserDetail(json)
+            }
 
+        } catch (error) {
+            console.error(error);
+        }
+    }
     async login() {
         try {
             const{email, pwd}= this.state;
@@ -36,6 +63,11 @@ export default class Login extends React.Component {
             )});
 
             let json = await response.json();
+            let status = response.status;
+            if (status === 200){
+                this.props.SetToken(json.token)
+                await this.getUser(json.token)
+            }
             console.log(email);
             console.log(json);
         } catch (error) {
@@ -63,3 +95,8 @@ export default class Login extends React.Component {
         )
     }
 }
+
+export default connect(null, {
+    SetToken,
+    SetUserDetail
+})(Login);
