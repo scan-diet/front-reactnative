@@ -20,8 +20,8 @@ const CustomButton: FC<CustomButtonProps> = ({titre, onPress, hauteurBouton, lar
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: pressed ? '#6CC57C' : '#707070',
-                borderColor: pressed ? '#6CC57C' : '#707070',
+                backgroundColor: pressed ? '#6CC57C' : 'gray',
+                borderColor: pressed ? '#6CC57C' : 'gray',
                 borderWidth: 1,
                 borderRadius: 50,
                 width: largeurBouton,
@@ -29,8 +29,8 @@ const CustomButton: FC<CustomButtonProps> = ({titre, onPress, hauteurBouton, lar
                 margin: 5,
 
             }}>
-            <Image style={{marginRight:20}} source={require('../assets/images/image_addition_symbol.png')}/>
-            <Text style={{color:'#FFFFFF'}}>
+            <Image style={{marginHorizontal:15}} source={require('../assets/images/image_addition_symbol.png')} />
+            <Text style={{color:'#FFFFFF', marginRight:20}}>
                 {titre}
             </Text>
         </TouchableOpacity>

@@ -1,12 +1,131 @@
 import React from "react";
 import {Button, View} from "react-native";
-//import styles from './styles';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MaterielCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+//import styles from './styles';
 import CustomButton from "../../components/CustomButton";
+import {SetUserDetail} from "../../Actions";
+import {SetToken} from "../../Actions";
+import {connect} from 'react-redux';
 
-export default class Signup extends React.Component {
+interface IRecipeProps {
+    SetUserDetail: typeof SetUserDetail,
+    SetToken: typeof SetToken
+}
+
+const personWeight = <FontAwesome5 name={'weight'}  />;
+const personHeight = <MaterielCommunityIcons name={'human-male-height'} />;
+
+export default class Signup extends React.Component<IRecipeProps> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            email: "",
+            pwd:"",
+            error:'',
+        }
+    }
+    state: {
+        email: string,
+        pwd: string,
+        error: string,
+    }
+
+    /**
+     * GETUSER FUNCTION
+     * @param token
+     */
+    async getUser(token: any){
+        try{
+            let response = await fetch(
+                'https://192.168.1.40:3200/users/current-user', {
+                    method: "get",
+                    headers:{
+                        "jwt-token":token
+                    }
+                }
+            );
+            let json = await response.json();
+            let status = response.status;
+            if (status === 200){
+                this.props.SetUserDetail(json)
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    /**
+     * LOGIN FUNCTION
+     */
+    async login() {
+        try {
+            const{email, pwd}= this.state;
+
+            let response = await fetch(
+                'https://192.168.1.40:3200/users/authenticate', {
+                    method: "post",
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(
+                        {
+                            "email":email,
+                            "password":pwd
+                        }
+                    )});
+
+            let json = await response.json();
+            let status = response.status;
+            if (status === 200){
+                this.props.SetToken(json.token)
+                await this.getUser(json.token)
+            }
+            console.log(email);
+            console.log(json);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    /**
+     * REGISTER FUNCTION
+     */
+    async register() {
+        try {
+            const{email, pwd}= this.state;
+
+            let response = await fetch(
+                'https://192.168.1.40:3200/users/create', {
+                    method: "post",
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(
+                        {
+                            "email":email,
+                            "password":pwd
+                        }
+                    )});
+
+            let json = await response.json();
+            let status = response.status;
+            if (status === 201){
+                await this.login()
+            }
+            console.log(email);
+            console.log(json);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
     render() {
         return (
             <View style={{padding:50, flex:1}}>
@@ -48,6 +167,7 @@ export default class Signup extends React.Component {
                         <View style={{width:250}}>
                             <Input
                                 placeholder='Password'
+                                errorStyle={{ color: 'red' }}
                                 passwordRules={"required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8;"}
                                 secureTextEntry={true}
                                 leftIcon={
@@ -71,13 +191,13 @@ export default class Signup extends React.Component {
                             <Input
                                 placeholder='Height'
                                 keyboardType={'number-pad'}
-                                leftIcon={{ type: 'font-awesome', name: 'balance-scale' }}
+                                leftIcon={personHeight}
                             />
 
                             <Input
                                 placeholder='Weight'
                                 keyboardType={"decimal-pad"}
-                                leftIcon={{ type: 'font-awesome', name: "balance-scale" }}
+                                leftIcon={personWeight}
                             />
                         </View>
                     </View>
@@ -92,13 +212,7 @@ export default class Signup extends React.Component {
                             <Input
                                 keyboardType={"decimal-pad"}
                                 placeholder='Weight goal'
-                                leftIcon={
-                                    <Icon
-                                        name='balance-scale'
-                                        size={24}
-                                        color='black'
-                                    />
-                                }
+                                leftIcon={personWeight}
                             />
                         </View>
                     </View>
@@ -151,3 +265,8 @@ export default class Signup extends React.Component {
         )
     }
 }
+
+connect(null, {
+    SetToken,
+    SetUserDetail
+})(Signup);
