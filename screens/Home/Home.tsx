@@ -1,12 +1,12 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import { Text, View } from "react-native";
 import styles from './styles';
 import HomeNav from "../../components/HomeNav";
 import ActivityFlatList from "../../components/ActivityFlatList";
 
-var date = new Date().getDate()
-var month = new Date().getMonth()+1
-var year = new Date().getFullYear()
+let date = new Date().getDate()
+let month = new Date().getMonth()+1
+let year = new Date().getFullYear()
 
 export default class Home extends React.Component {
     render() {
@@ -26,5 +26,3 @@ export default class Home extends React.Component {
         )
     }
 }
-
-

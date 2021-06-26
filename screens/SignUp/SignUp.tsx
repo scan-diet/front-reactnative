@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, View} from "react-native";
+import {Button, SafeAreaView, ScrollView, View} from "react-native";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -40,7 +40,7 @@ export default class Signup extends React.Component<IRecipeProps> {
     async getUser(token: any){
         try{
             let response = await fetch(
-                'https://192.168.1.40:3200/users/current-user', {
+                'http://192.168.1.40:3200/users/current-user', {
                     method: "get",
                     headers:{
                         "jwt-token":token
@@ -66,8 +66,8 @@ export default class Signup extends React.Component<IRecipeProps> {
             const{email, pwd}= this.state;
 
             let response = await fetch(
-                'https://192.168.1.40:3200/users/authenticate', {
-                    method: "post",
+                'http://192.168.1.40:3200/users/authenticate', {
+                    method: "POST",
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ export default class Signup extends React.Component<IRecipeProps> {
             const{email, pwd}= this.state;
 
             let response = await fetch(
-                'https://192.168.1.40:3200/users/create', {
+                'http://192.168.1.40:3200/users/create', {
                     method: "post",
                     headers: {
                         Accept: 'application/json',
@@ -128,27 +128,22 @@ export default class Signup extends React.Component<IRecipeProps> {
 
     render() {
         return (
-            <View style={{padding:50, flex:1}}>
-                <View style={{}}>
-                    <View>
-                        {/* INFORMATION GENERALE */}
-                        <View>
-                            <Text h4>General information</Text>
-                        </View>
+            <SafeAreaView style={{padding:50, flex:1}}>
+                <ScrollView>
+                    <View style={{}}>
+                        <Text h4>General information</Text>
 
-                        <View style={{width:130}}>
-                            <Input
-                                placeholder='Firstname'
-                                keyboardType={"default"}
-                                leftIcon={
-                                    <Icon
-                                        name='user'
-                                        size={24}
-                                        color='black'
-                                    />
-                                }
-                            />
-                        </View>
+                        <Input
+                            placeholder='Firstname'
+                            keyboardType={"default"}
+                            leftIcon={
+                                <Icon
+                                    name='user'
+                                    size={24}
+                                    color='black'
+                                />
+                            }
+                        />
 
                         <View style={{width:250}}>
                             <Input
@@ -181,87 +176,53 @@ export default class Signup extends React.Component<IRecipeProps> {
                         </View>
                     </View>
 
-                    {/* INFORMATION BODY SHAPE */}
-                    <View>
-                        <View>
-                            <Text h4>Body Shape</Text>
-                        </View>
+                    <View style={{}}>
+                        <Text h4>Body Shape</Text>
 
-                        <View style={{flexDirection:"row", width:130}}>
-                            <Input
-                                placeholder='Height'
-                                keyboardType={'number-pad'}
-                                leftIcon={personHeight}
-                            />
+                        <Input
+                            placeholder='Height in cm'
+                            keyboardType={'number-pad'}
+                            leftIcon={personHeight}
+                        />
 
-                            <Input
-                                placeholder='Weight'
-                                keyboardType={"decimal-pad"}
-                                leftIcon={personWeight}
-                            />
-                        </View>
+                        <Input
+                            placeholder='Weight in kg'
+                            keyboardType={"decimal-pad"}
+                            leftIcon={personWeight}
+                        />
+
+                        <Text h4>Goal</Text>
+                        <Input
+                            keyboardType={"decimal-pad"}
+                            placeholder='Weight goal in kg'
+                            leftIcon={personWeight}
+                        />
                     </View>
 
-                    {/* INFORMATION OBJECTIF */}
-                    <View>
-                        <View>
-                            <Text h4>Goal</Text>
-                        </View>
+                    <View style={{}}>
+                        <Text h4>What's your diet</Text>
 
-                        <View style={{width:150}}>
-                            <Input
-                                keyboardType={"decimal-pad"}
-                                placeholder='Weight goal'
-                                leftIcon={personWeight}
-                            />
-                        </View>
-                    </View>
-
-                    {/* CHOOSING DIET */}
-                    <View>
-                        <View>
-                            <Text h4>What's your diet</Text>
-                        </View>
-
-                        <View
-                            style={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                flexDirection:'row'
-                            }}
-                        >
+                        <View style={{flexDirection:'row'}}>
                             <CustomButton titre={'Vegan'} onPress={()=>{}} largeurBouton={"auto"} hauteurBouton={40}/>
                             <CustomButton titre={'Vegetarian'} onPress={()=>{}} largeurBouton={"auto"} hauteurBouton={40}/>
                         </View>
 
-                        <View
-                            style={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                flexDirection:'row'
-                            }}
-                        >
+                        <View style={{flexDirection:'row'}}>
                             <CustomButton titre={'Lactose-Free'} onPress={()=>{}} largeurBouton={"auto"} hauteurBouton={40}/>
                             <CustomButton titre={'Gluten-Free'} onPress={()=>{}} largeurBouton={"auto"} hauteurBouton={40}/>
                         </View>
 
-                        <View
-                            style={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                flexDirection:'row'
-                            }}
-                        >
+                        <View style={{flexDirection:'row'}}>
                             <CustomButton titre={'Halal'} onPress={()=>{}} largeurBouton={"auto"} hauteurBouton={40}/>
                             <CustomButton titre={'Kosher'} onPress={()=>{}} largeurBouton={"auto"} hauteurBouton={40}/>
                         </View>
                     </View>
-                </View>
 
-                <View style={{alignSelf:"center", flexDirection:'row'}}>
-                    <Button title={'Submit'} color="#1A1D53" onPress={()=>{alert("clicked")}} />
-                </View>
-            </View>
+                    <View style={{alignSelf:"center", flexDirection:'row'}}>
+                        <Button title={'Submit'} color="#1A1D53" onPress={()=>{alert("clicked")}} />
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
         )
     }
 }

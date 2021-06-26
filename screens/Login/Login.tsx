@@ -10,7 +10,7 @@ interface IRecipeProps {
     SetToken: typeof SetToken
 }
 
-class Login extends React.Component<IRecipeProps> {
+export default class Login extends React.Component<IRecipeProps> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -65,6 +65,7 @@ class Login extends React.Component<IRecipeProps> {
             let json = await response.json();
             let status = response.status;
             if (status === 200){
+                console.log("ok")
                 this.props.SetToken(json.token)
                 await this.getUser(json.token)
             }
@@ -82,7 +83,7 @@ class Login extends React.Component<IRecipeProps> {
                 <View style={styles.main_view}>
                     <Image style={styles.logo} source={require(logo)}/>
                     <Text style={styles.home_title}>Bienvenue sur ScanDiet</Text>
-                    <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({email: text})}} placeholder='Adresse e-mail'/>
+                    <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({email: text})}} placeholder='adresse e-mail'/>
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Mot de passe'/>
                     <Text style={styles.other_info}>Mot de passe oublié?</Text>
                     <View style={{marginBottom:'15%'}}>
@@ -96,7 +97,9 @@ class Login extends React.Component<IRecipeProps> {
     }
 }
 
-export default connect(null, {
+/*
+connect(null, {
     SetToken,
     SetUserDetail
 })(Login);
+ */

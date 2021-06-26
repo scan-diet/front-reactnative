@@ -5,6 +5,8 @@ import Home from "../screens/Home/Home";
 import DetailProduct from "../screens/DetailProduct/DetailProduct";
 import Login from "../screens/Login/Login";
 import Settings from "../screens/Settings/Settings";
+import Signup from "../screens/SignUp/SignUp";
+import Scan from "../screens/Scan/Scan";
 const Tab = createBottomTabNavigator();
 
 const Navigation = () =>{
@@ -52,7 +54,7 @@ const Navigation = () =>{
                     </View>
                 )
             }}  />
-            <Tab.Screen name="ModeCourse" component={DetailProduct} options={{
+            <Tab.Screen name="Scan" component={Scan} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
@@ -66,12 +68,12 @@ const Navigation = () =>{
                         />
                         <Text
                             style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
-                            Course
+                            Scan
                         </Text>
                     </View>
                 )
             }}  />
-            <Tab.Screen name="Reglages" component={Settings} options={{
+            <Tab.Screen name="Signup" component={Signup} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
@@ -85,7 +87,7 @@ const Navigation = () =>{
                         />
                         <Text
                             style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
-                            Réglages
+                            Signup
                         </Text>
                     </View>
                 )
