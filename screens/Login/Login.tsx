@@ -1,17 +1,18 @@
 import React from "react";
-import {Button, Image, Text, TextInput, View} from "react-native";
+import { Image, Text, TextInput, View} from "react-native";
 import styles from './styles';
 import {SetUserDetail} from "../../Actions";
 import {SetToken} from "../../Actions";
 import {connect} from 'react-redux';
+import {BasicButton} from "../../components/Buttons/BasicButton";
 
 interface IRecipeProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken
 }
 
-export default class Login extends React.Component<IRecipeProps> {
-    constructor(props: any) {
+class Login extends React.Component<IRecipeProps> {
+    constructor(props: IRecipeProps) {
         super(props);
         this.state = {
             email: "",
@@ -65,11 +66,12 @@ export default class Login extends React.Component<IRecipeProps> {
             let json = await response.json();
             let status = response.status;
             if (status === 200){
-                console.log("ok")
+                console.log("ok");
                 this.props.SetToken(json.token)
-                await this.getUser(json.token)
+                //await this.getUser(json.token)
             }
             console.log(email);
+            console.log(json.token);
             console.log(json);
         } catch (error) {
             console.error(error);
@@ -87,7 +89,7 @@ export default class Login extends React.Component<IRecipeProps> {
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Mot de passe'/>
                     <Text style={styles.other_info}>Mot de passe oublié?</Text>
                     <View style={{marginBottom:'15%'}}>
-                        <Button title='Se connecter' color="#1A1D53" onPress={this.login.bind(this)} />
+                        <BasicButton title={"Se connecter "} onPress={this.login.bind(this)} />
                     </View>
 
                     <Text style={styles.other_info}>Pas de compte? <Text style={{fontWeight:"bold"}}>S'inscrire</Text></Text>
@@ -97,9 +99,7 @@ export default class Login extends React.Component<IRecipeProps> {
     }
 }
 
-/*
-connect(null, {
+export default connect(null, {
     SetToken,
     SetUserDetail
 })(Login);
- */

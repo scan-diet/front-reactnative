@@ -7,6 +7,16 @@ export const SetToken = (token: string) => {
     });
 };
 
+/*
+export async function SetToken(token:string) {
+    return ({
+        token,
+        type: ACTIONS.SET_TOKEN
+    });
+}
+
+ */
+
 export const SetUserDetail = (userDetail: any) => {
     return ({
         email: userDetail.email,

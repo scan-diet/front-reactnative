@@ -10,7 +10,6 @@ import type {authReducerType} from "./authReducer";
 
 export default combineReducers({
     auth: authReducer,
-
 });
 
 export type RootState = {

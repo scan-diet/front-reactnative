@@ -4,7 +4,7 @@
 // ---------------
 // In charge the profile management
 
-import * as ACTIONS from '../actions/actionTypes';
+import * as ACTIONS from '../Actions/actionTypes';
 
 //TYPE
 export type authReducerType = {

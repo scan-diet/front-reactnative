@@ -4,21 +4,19 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterielCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-//import styles from './styles';
-import CustomButton from "../../components/CustomButton";
-import {SetUserDetail} from "../../Actions";
-import {SetToken} from "../../Actions";
+import CustomButton from "../../components/Buttons/CustomButton";
+import {SetUserDetail, SetToken} from "../../Actions";
 import {connect} from 'react-redux';
 
-interface IRecipeProps {
+interface IReceipteProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken
 }
 
-const personWeight = <FontAwesome5 name={'weight'}  />;
+const personWeight = <FontAwesome5 name={'weight'} />;
 const personHeight = <MaterielCommunityIcons name={'human-male-height'} />;
 
-export default class Signup extends React.Component<IRecipeProps> {
+export default class Signup extends React.Component<IReceipteProps> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -32,65 +30,6 @@ export default class Signup extends React.Component<IRecipeProps> {
         pwd: string,
         error: string,
     }
-
-    /**
-     * GETUSER FUNCTION
-     * @param token
-     */
-    async getUser(token: any){
-        try{
-            let response = await fetch(
-                'http://192.168.1.40:3200/users/current-user', {
-                    method: "get",
-                    headers:{
-                        "jwt-token":token
-                    }
-                }
-            );
-            let json = await response.json();
-            let status = response.status;
-            if (status === 200){
-                this.props.SetUserDetail(json)
-            }
-
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    /**
-     * LOGIN FUNCTION
-     */
-    async login() {
-        try {
-            const{email, pwd}= this.state;
-
-            let response = await fetch(
-                'http://192.168.1.40:3200/users/authenticate', {
-                    method: "POST",
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(
-                        {
-                            "email":email,
-                            "password":pwd
-                        }
-                    )});
-
-            let json = await response.json();
-            let status = response.status;
-            if (status === 200){
-                this.props.SetToken(json.token)
-                await this.getUser(json.token)
-            }
-            console.log(email);
-            console.log(json);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     /**
      * REGISTER FUNCTION
@@ -113,13 +52,12 @@ export default class Signup extends React.Component<IRecipeProps> {
                         }
                     )});
 
-            let json = await response.json();
             let status = response.status;
+
             if (status === 201){
-                await this.login()
+                console.log("registred")
             }
             console.log(email);
-            console.log(json);
         } catch (error) {
             console.error(error);
         }
@@ -158,6 +96,7 @@ export default class Signup extends React.Component<IRecipeProps> {
                                     />
                                 }
                             />
+
                         </View>
 
                         <View style={{width:250}}>
