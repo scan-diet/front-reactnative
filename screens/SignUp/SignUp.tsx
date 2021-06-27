@@ -8,7 +8,7 @@ import CustomButton from "../../components/Buttons/CustomButton";
 import {SetUserDetail, SetToken} from "../../Actions";
 import {connect} from 'react-redux';
 
-interface IReceipteProps {
+interface ISignupProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken
 }
@@ -16,7 +16,7 @@ interface IReceipteProps {
 const personWeight = <FontAwesome5 name={'weight'} />;
 const personHeight = <MaterielCommunityIcons name={'human-male-height'} />;
 
-export default class Signup extends React.Component<IReceipteProps> {
+export default class Signup extends React.Component<ISignupProps> {
     constructor(props: any) {
         super(props);
         this.state = {
