@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, TouchableOpacity} from "react-native";
-import {useBlueColor, useWhiteColor} from "../hooks/colorVariables"
+import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables"
 
 interface BasicButtonProps {
     onPress: any;
