@@ -149,6 +149,7 @@ export default class Signup extends React.Component<IRecipeProps> {
                             <Input
                                 placeholder='E-mail'
                                 keyboardType={"email-address"}
+                                onChangeText={(text )=> {this.setState({email: text})}}
                                 leftIcon={
                                     <Icon
                                         name='envelope'
@@ -162,6 +163,7 @@ export default class Signup extends React.Component<IRecipeProps> {
                         <View style={{width:250}}>
                             <Input
                                 placeholder='Password'
+                                onChangeText={(text )=> {this.setState({pwd: text})}}
                                 errorStyle={{ color: 'red' }}
                                 passwordRules={"required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8;"}
                                 secureTextEntry={true}
@@ -219,7 +221,7 @@ export default class Signup extends React.Component<IRecipeProps> {
                     </View>
 
                     <View style={{alignSelf:"center", flexDirection:'row'}}>
-                        <Button title={'Submit'} color="#1A1D53" onPress={()=>{alert("clicked")}} />
+                        <Button title={'Submit'} color="#1A1D53" onPress={this.register.bind(this)} />
                     </View>
                 </ScrollView>
             </SafeAreaView>

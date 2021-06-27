@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Button, Text, TouchableOpacity} from "react-native";
+import {Button} from "react-native";
 
 interface BoutonProps {
     onPress: () => void;
