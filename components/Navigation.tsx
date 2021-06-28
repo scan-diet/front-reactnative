@@ -3,7 +3,7 @@ import React from "react";
 import {View, Image, Text} from "react-native";
 import Home from "../screens/Home/Home";
 import DetailProduct from "../screens/DetailProduct/DetailProduct";
-import Login from "../screens/Login/Login";
+import Login from "../screens/User/Login";
 import Settings from "../screens/Settings/Settings";
 import Signup from "../screens/SignUp/SignUp";
 import Scan from "../screens/Scan/Scan";

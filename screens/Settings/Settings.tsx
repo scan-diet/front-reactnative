@@ -1,6 +1,5 @@
 import React from 'react'
-import {View, Text, Button} from 'react-native'
-import styles from "./styles";
+import {View, Text, Button, StyleSheet} from 'react-native'
 
 export default class Settings extends React.Component {
     render() {
@@ -33,3 +32,25 @@ export default class Settings extends React.Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    main_view: {
+        flex:1,
+        padding:50,
+        justifyContent:"flex-start",
+        backgroundColor:"#F4F5FA"
+    },
+    title_view: {
+        marginBottom:'5%'
+    },
+    text: {
+        fontWeight: 'bold',
+        fontSize: 25,
+        textAlign: "left"
+    },
+    button_view: {
+        marginBottom: '5%',
+        width: "90%",
+        alignSelf: 'center'
+    }
+})

@@ -1,6 +1,5 @@
 import React from "react";
-import { Text,View } from "react-native";
-import styles from './styles'
+import {StyleSheet, Text, View} from "react-native";
 
 export default class Shopping extends React.Component {
     render() {
@@ -11,3 +10,9 @@ export default class Shopping extends React.Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    main_container: {
+        padding: 50
+    }
+})

@@ -1,18 +1,18 @@
 import React from "react";
-import { Image, Text, TextInput, View} from "react-native";
-import styles from './styles';
+import {Image, StyleSheet, Text, TextInput, View} from "react-native";
 import {SetUserDetail} from "../../Actions";
 import {SetToken} from "../../Actions";
 import {connect} from 'react-redux';
 import {BasicButton} from "../../components/Buttons/BasicButton";
+import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";
 
-interface IRecipeProps {
+interface ILoginProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken
 }
 
-class Login extends React.Component<IRecipeProps> {
-    constructor(props: IRecipeProps) {
+class Login extends React.Component<ILoginProps> {
+    constructor(props: ILoginProps) {
         super(props);
         this.state = {
             email: "",
@@ -79,7 +79,7 @@ class Login extends React.Component<IRecipeProps> {
     };
 
     render() {
-        let logo = '../../assets/images/logo_scan_diet.png';
+        let logo = '../../../../assets/images/logo_scan_diet.png';
         return (
             <View style={styles.main_container}>
                 <View style={styles.main_view}>
@@ -103,3 +103,41 @@ export default connect(null, {
     SetToken,
     SetUserDetail
 })(Login);
+
+const styles = StyleSheet.create({
+    main_container: {
+        flex:1,
+        padding:50,
+        backgroundColor:"#F4F5FA"
+    },
+    main_view: {
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    logo: {
+        width:100,
+        height:100,
+        marginBottom:'15%'
+    },
+    home_title: {
+        marginBottom:'10%',
+        fontSize:45,
+        color:useBlueColor,
+        fontWeight:'bold',
+        textAlign:"center"
+    },
+    text_input: {
+        marginBottom:'5%',
+        padding: 7,
+        backgroundColor:useWhiteColor,
+        width:'80%',
+        borderRadius:5,
+        paddingLeft:15,
+        paddingRight:15
+    },
+    other_info: {
+        marginBottom:'8%',
+        color:'#8D8D8D'
+    }
+})
