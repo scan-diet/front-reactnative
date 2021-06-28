@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, useWindowDimensions} from "react-native";
+import {View, StyleSheet, useWindowDimensions} from "react-native";
 import CardActivity from "./CardActivity";
 
 // @ts-ignore
