@@ -79,7 +79,7 @@ class Login extends React.Component<ILoginProps> {
     };
 
     render() {
-        let logo = '../../../../assets/images/logo_scan_diet.png';
+        let logo = '../../assets/images/logo_scan_diet.png';
         return (
             <View style={styles.main_container}>
                 <View style={styles.main_view}>
