@@ -1,6 +1,6 @@
 // @flow
 //
-// Main Reducer
+// Main reducer
 // -----------
 // Combine all App reducers
 

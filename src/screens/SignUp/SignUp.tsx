@@ -5,7 +5,7 @@ import {Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterielCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomButton from "../../components/Buttons/CustomButton";
-import {SetUserDetail, SetToken} from "../../Actions";
+import {SetUserDetail, SetToken} from "../../actions";
 import {connect} from 'react-redux';
 
 interface ISignupProps {

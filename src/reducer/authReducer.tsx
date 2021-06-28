@@ -1,10 +1,10 @@
 // @flow
 //
-// Profile Reducer
+// Profile reducer
 // ---------------
 // In charge the profile management
 
-import * as ACTIONS from '../Actions/actionTypes';
+import * as ACTIONS from '../actions/actionTypes';
 
 //TYPE
 export type authReducerType = {
@@ -43,7 +43,7 @@ const initialState = {
     isAuth: false
 };
 
-//Reducer function
+//reducer function
 export default (
     state: authReducerType = initialState,
     action: {type: string, email: number,

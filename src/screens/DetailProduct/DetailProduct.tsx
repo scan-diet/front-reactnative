@@ -1,6 +1,5 @@
 import React from "react";
-import {View} from "react-native";
-import styles from './styles';
+import {StyleSheet, View} from "react-native";
 import ProductInfo from "../../components/ProductInfo";
 
 export default class DetailProduct extends React.Component {
@@ -12,3 +11,10 @@ export default class DetailProduct extends React.Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    main: {
+        flex:1,
+        backgroundColor:"#F4F5FA"
+    }
+})

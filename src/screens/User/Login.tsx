@@ -1,7 +1,7 @@
 import React from "react";
 import {Image, StyleSheet, Text, TextInput, View} from "react-native";
-import {SetUserDetail} from "../../Actions";
-import {SetToken} from "../../Actions";
+import {SetUserDetail} from "../../actions";
+import {SetToken} from "../../actions";
 import {connect} from 'react-redux';
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";

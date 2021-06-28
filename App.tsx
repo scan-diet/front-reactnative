@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
-import Navigation from './components/Navigation';
+import Navigation from './src/components/Navigation';
 import {Provider} from "react-redux";
-import store from "./store";
+import store from "./src/store";
 
 export default class App extends React.Component {
   render() {
