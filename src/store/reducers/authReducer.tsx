@@ -1,6 +1,6 @@
 // @flow
 //
-// Profile reducer
+// Profile reducers
 // ---------------
 // In charge the profile management
 
@@ -43,7 +43,7 @@ const initialState = {
     isAuth: false
 };
 
-//reducer function
+//reducers function
 export default (
     state: authReducerType = initialState,
     action: {type: string, email: number,

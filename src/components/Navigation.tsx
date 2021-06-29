@@ -1,12 +1,12 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from "react";
 import {View, Image, Text} from "react-native";
-import Home from "../screens/Home/Home";
-import DetailProduct from "../screens/DetailProduct/DetailProduct";
-import Login from "../screens/User/Login";
-import Settings from "../screens/Settings/Settings";
-import Signup from "../screens/SignUp/SignUp";
-import Scan from "../screens/Scan/Scan";
+import Home from "../screens/main/Home";
+import DetailProduct from "../screens/user/DetailProduct";
+import Login from "../screens/user/Login";
+import Settings from "../screens/main/Settings";
+import Signup from "../screens/main/SignUp";
+import Scan from "../screens/main/Scan";
 const Tab = createBottomTabNavigator();
 
 const Navigation = () =>{

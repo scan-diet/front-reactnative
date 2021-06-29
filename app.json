@@ -26,8 +26,8 @@
       "package": "com.esgi.groupe7",
       "adaptiveIcon": {
         "backgroundColor": "#171717",
-        "backgroundImage": "./assets/images/square_logo_scan_diet.png",
-        "foregroundImage": "./assets/images/square_logo_scan_diet.png"
+        "backgroundImage": "../../assets/images/square_logo_scan_diet.png",
+        "foregroundImage": "../../../assets/images/square_logo_scan_diet.png"
       },
       "permissions": [
         "CAMERA",
