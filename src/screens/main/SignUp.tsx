@@ -59,7 +59,7 @@ class Signup extends React.Component<ISignupProps> {
             const{email, pwd}= this.state;
 
             let response = await fetch(
-                'http://192.168.1.40:3200/users/authenticate', {
+                'https://scandiet-nestjs-back.herokuapp.com/users/authenticate', {
                     method: "post",
                     headers: {
                         Accept: 'application/json',
@@ -93,7 +93,7 @@ class Signup extends React.Component<ISignupProps> {
             // const jwt = require('jsonwebtoken')
             const {email, name, weight, height, weightGoal, gluten, lactose, vege, vegan} = this.state;
             let response = await fetch(
-                'http://192.168.1.40:3200/users/update-profile', {
+                'https://scandiet-nestjs-back.herokuapp.com/users/update-profile', {
                     method: "post",
                     headers: {
                         Accept: 'application/json',
@@ -139,8 +139,8 @@ class Signup extends React.Component<ISignupProps> {
             const{email, pwd}= this.state;
 
             let response = await fetch(
-                'http://192.168.1.40:3200/users/create', {
-                    method: "post",
+                'https://scandiet-nestjs-back.herokuapp.com/users/create', {
+                    method: "POST",
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json'

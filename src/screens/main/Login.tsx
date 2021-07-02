@@ -28,7 +28,7 @@ class Login extends React.Component<ILoginProps> {
     async getUser(token: any){
         try{
             let response = await fetch(
-                'http://192.168.1.40:3200/users/current-user', {
+                'https://scandiet-nestjs-back.herokuapp.com/users/current-user', {
                     method: "get",
                     headers:{
                         "jwt-token":token
@@ -50,7 +50,7 @@ class Login extends React.Component<ILoginProps> {
             const{email, pwd}= this.state;
 
             let response = await fetch(
-                'http://192.168.1.40:3200/users/authenticate', {
+                'https://scandiet-nestjs-back.herokuapp.com/users/authenticate', {
                     method: "post",
                     headers: {
                         Accept: 'application/json',
@@ -86,7 +86,7 @@ class Login extends React.Component<ILoginProps> {
                 <View style={styles.main_view}>
                     <Image style={styles.logo} source={require(logo)}/>
                     <Text style={styles.home_title}>Bienvenue sur ScanDiet</Text>
-                    <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({email: text})}} placeholder='adresse e-mail'/>
+                    <TextInput style={styles.text_input} keyboardType={"email-address"} onChangeText={(text )=> {this.setState({email: text})}} placeholder='adresse e-mail'/>
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Mot de passe'/>
                     <Text style={styles.other_info}>Mot de passe oublié?</Text>
                     <View style={{marginBottom:'15%'}}>

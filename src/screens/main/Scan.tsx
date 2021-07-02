@@ -19,7 +19,7 @@ export default function App() {
 
         //TODO: call the API here
         let response = await fetch(
-            `http://192.168.1.40:3200/products/${data}`, {
+            `https://scandiet-nestjs-back.herokuapp.com/products/${data}`, {
                 method: "GET",
                 headers: {
                     Accept: 'application/json',
