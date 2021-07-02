@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity} from "react-native";
 import React, {FC} from "react";
-import {useTransparentColor} from "../../hooks/colorVariables";
+import {useTransparentColor} from "../../../hooks/colorVariables";
 
 interface IBorderlessButtonProps {
     title: string;

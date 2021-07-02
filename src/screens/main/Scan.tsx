@@ -13,9 +13,26 @@ export default function App() {
         })();
     }, []);
 
-    const handleBarCodeScanned = ({ type, data }) => {
+    const handleBarCodeScanned = async ({type, data}: any) => {
         setScanned(true);
-        alert(`TYPE : ${type} \n BARCODE ${data}`);
+        alert(`TYPE : ${type} \nBARCODE ${data}`);
+
+        //TODO: call the API here
+        let response = await fetch(
+            `http://192.168.1.40:3200/products/${data}`, {
+                method: "GET",
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+
+        let json = await response.json();
+        if (response.status === 200) {
+            console.log(json)
+        } else {
+            console.log("nothing")
+        }
     };
 
     if (hasPermission === null) {
@@ -31,7 +48,7 @@ export default function App() {
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={StyleSheet.absoluteFillObject}
             />
-            {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+            {scanned && <Button title={'Tap to scan again'} onPress={() => setScanned(false)} />}
         </View>
     );
 }
@@ -40,6 +57,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
-    },
+        justifyContent: 'center'
+    }
 });

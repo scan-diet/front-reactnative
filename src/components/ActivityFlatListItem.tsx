@@ -2,8 +2,7 @@ import React from 'react';
 import {View, StyleSheet, useWindowDimensions} from "react-native";
 import CardActivity from "./CardActivity";
 
-// @ts-ignore
-const ActivityFlatListItem = ({item}) => {
+const ActivityFlatListItem = (item:any) => {
     const {width} = useWindowDimensions();
     return(
         <View style={[styles.container, {width}]}>
@@ -19,15 +18,8 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     image: {
-        flex: 0.7,
-
-    },
-    /*title: {
-        fontWeight: "800",
-        fontSize: 28,
-        marginBottom: 10,
-        textAlign: ' center',
-    },*/
+        flex: 0.7
+    }
 });
 
 export default ActivityFlatListItem;

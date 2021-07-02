@@ -1,10 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, useWindowDimensions, TouchableHighlight} from "react-native";
-import Navigation from "./Navigation";
-import Produit from "./Produit";
+import {View, Text, StyleSheet, Image, useWindowDimensions} from "react-native";
 
-// @ts-ignore
-const ProductFlatListItem = ({item}) => {
+const ProductFlatListItem = ({item}:any) => {
     const {width} = useWindowDimensions();
     return(
         <View style={[styles.container, {width}]}>

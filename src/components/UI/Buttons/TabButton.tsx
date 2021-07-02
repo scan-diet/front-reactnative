@@ -1,11 +1,11 @@
 import React, {FC} from "react";
 import {StyleSheet, TouchableOpacity, Text} from "react-native";
-import {useBlueColor, useTransparentColor, useWhiteColor} from "../../hooks/colorVariables";
+import {useBlueColor, useTransparentColor, useWhiteColor} from "../../../hooks/colorVariables";
 
 interface ITabButtonProps {
     title: string,
     onPress: any,
-    isActive: false
+    isActive: boolean
 }
 
 export const TabButtons: FC<Partial<ITabButtonProps>> = ({title, onPress, isActive}) => {

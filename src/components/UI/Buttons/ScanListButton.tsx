@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {useGreenColor} from "../../hooks/colorVariables";
+import {useGreenColor} from "../../../hooks/colorVariables";
 import {Ionicons} from "@expo/vector-icons";
 import {StyleSheet, TouchableOpacity} from "react-native";
 
@@ -12,7 +12,7 @@ export const ScanListButton: FC<Partial<ScanButtonProps>> = ({ onPress }) => {
         <TouchableOpacity style={styles.scanButton}>
             <Ionicons
                 name={"scan-circle"}
-                size={64}
+                size={75}
                 color={useGreenColor}
                 onPress={onPress}
                 style={styles.scanIcon}
@@ -24,11 +24,12 @@ export const ScanListButton: FC<Partial<ScanButtonProps>> = ({ onPress }) => {
 const styles = StyleSheet.create({
     scanButton: {
         position: "absolute",
-        top: "80%",
+        top: "85%",
         right: 20,
         bottom: 0,
     },
     scanIcon: {
-        flex: 1,
+        marginVertical:60
+
     },
 });

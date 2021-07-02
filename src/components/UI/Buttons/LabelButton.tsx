@@ -1,4 +1,4 @@
-import {useGreenColor} from "../../hooks/colorVariables";
+import {useGreenColor} from "../../../hooks/colorVariables";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {FC} from "react";
 import React from "react";

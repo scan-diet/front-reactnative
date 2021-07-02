@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, TouchableOpacity} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import {useWhiteColor} from "../../hooks/colorVariables";
+import {useWhiteColor} from "../../../hooks/colorVariables";
 
 interface ReactiveButtonProps {
     title: string

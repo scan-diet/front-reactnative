@@ -1,9 +1,9 @@
 import React from "react";
-import {Image, OpaqueColorValue, ProgressBarAndroid, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {Image, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import {ProgressBar, Colors} from 'react-native-paper'
 import {Cercle} from './Cercle'
 import ProductFlatList from "./ProductFlatList";
-// @ts-ignore
+
 const ProductInfo = () => {
     const {width} = useWindowDimensions();
     return(

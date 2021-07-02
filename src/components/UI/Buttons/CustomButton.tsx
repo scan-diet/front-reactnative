@@ -29,7 +29,7 @@ const CustomButton: FC<CustomButtonProps> = ({titre, onPress, hauteurBouton, lar
                 margin: 5,
 
             }}>
-            <Image style={{marginHorizontal:7}} source={require('../../assets/images/image_addition_symbol.png')} />
+            <Image style={{marginHorizontal:7}} source={require('../../../assets/images/image_addition_symbol.png')} />
             <Text style={{color:'#FFFFFF', marginRight:8}}>
                 {titre}
             </Text>

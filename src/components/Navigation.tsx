@@ -1,9 +1,9 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from "react";
 import {View, Image, Text} from "react-native";
-import Home from "../screens/main/Home";
+import Home from "../screens/user/Home";
 import DetailProduct from "../screens/user/DetailProduct";
-import Login from "../screens/user/Login";
+import Login from "../screens/main/Login";
 import Settings from "../screens/main/Settings";
 import Signup from "../screens/main/SignUp";
 import Scan from "../screens/main/Scan";
@@ -16,7 +16,7 @@ const Navigation = () =>{
                 showLabel: false
             }}
         >
-            <Tab.Screen name="Accueil" component={Home} options={{
+            <Tab.Screen name="Home" component={Home} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image

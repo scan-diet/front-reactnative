@@ -1,8 +1,7 @@
 import React from "react";
 import {StyleSheet, Text, View} from 'react-native';
 
-// @ts-ignore
-const CardActivity = props => {
+const CardActivity = (props:any) => {
     return (
         <View style={{...styles.container, ...props.style}}>
             {props.children}

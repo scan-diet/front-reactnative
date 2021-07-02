@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";
+import {useBlueColor, useWhiteColor} from "../../../hooks/colorVariables";
 
 interface NavButtonsProps {
     title: string

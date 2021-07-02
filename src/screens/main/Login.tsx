@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, TextInput, View} from "react-native";
 import {SetUserDetail} from "../../store/actions";
 import {SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
-import {BasicButton} from "../../components/Buttons/BasicButton";
+import {BasicButton} from "../../components/UI/Buttons/BasicButton";
 import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";
 
 interface ILoginProps {
@@ -68,6 +68,7 @@ class Login extends React.Component<ILoginProps> {
             if (status === 200){
                 console.log("ok");
                 this.props.SetToken(json.token)
+                this.props.navigation.navigate('BottomTabScreen')
                 //await this.getUser(json.token)
             }
             console.log(email);
@@ -92,7 +93,11 @@ class Login extends React.Component<ILoginProps> {
                         <BasicButton title={"Se connecter "} onPress={this.login.bind(this)} />
                     </View>
 
-                    <Text style={styles.other_info}>Pas de compte? <Text style={{fontWeight:"bold"}}>S'inscrire</Text></Text>
+                    <Text style={styles.other_info}>Pas de compte? <Text style={{fontWeight:"bold"}} onPress={()=>{this.props.navigation.navigate('Signup')}}>S'inscrire</Text></Text>
+                </View>
+
+                <View>
+                    <Text style={{textDecorationStyle:"dashed"}} onPress={()=>{this.props.navigation.navigate('Scan')}}>Je souhaite d'abord tester l'application</Text>
                 </View>
             </View>
         )

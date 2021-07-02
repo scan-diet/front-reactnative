@@ -1,12 +1,5 @@
-// @flow
-//
-// Profile reducers
-// ---------------
-// In charge the profile management
-
 import * as ACTIONS from '../actions/actionTypes';
 
-//TYPE
 export type authReducerType = {
     email: string,
     profile: {
@@ -24,7 +17,6 @@ export type authReducerType = {
     token: string
 }
 
-//INITIAL VALUE
 const initialState = {
     email: '',
     profile: {

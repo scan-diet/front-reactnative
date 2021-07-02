@@ -1,8 +1,7 @@
 import React from "react";
 import {StyleSheet, View} from 'react-native';
 
-// @ts-ignore
-export const Cercle = props => {
+export const Cercle = (props:any) => {
     return (
         <View style={{...styles.circle, ...props.style}}/>
     );
