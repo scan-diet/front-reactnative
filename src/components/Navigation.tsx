@@ -35,7 +35,7 @@ const Navigation = () =>{
                     </View>
                 )
             }}/>
-            <Tab.Screen name="profil" component={Login} options={{
+            <Tab.Screen name="profile" component={Login} options={{
                 tabBarIcon: ({focused})=>(
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Image
@@ -49,7 +49,7 @@ const Navigation = () =>{
                         />
                         <Text
                             style={{color: focused ? '#1A1D53' : '#748c94',fontSize: 12}}>
-                            Profil
+                            Profile
                         </Text>
                     </View>
                 )

@@ -86,7 +86,7 @@ class Login extends React.Component<ILoginProps> {
                 <View style={styles.main_view}>
                     <Image style={styles.logo} source={require(logo)}/>
                     <Text style={styles.home_title}>Bienvenue sur ScanDiet</Text>
-                    <TextInput style={styles.text_input} keyboardType={"email-address"} onChangeText={(text )=> {this.setState({email: text})}} placeholder='adresse e-mail'/>
+                    <TextInput style={styles.text_input} keyboardType={"email-address"} autoCapitalize={"none"} onChangeText={(text )=> {this.setState({email: text})}} placeholder='adresse e-mail'/>
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Mot de passe'/>
                     <Text style={styles.other_info}>Mot de passe oublié?</Text>
                     <View style={{marginBottom:'15%'}}>

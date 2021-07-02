@@ -10,7 +10,7 @@ export default class Settings extends React.Component {
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button color={'#1A1D53'} title='Modifier mon profil' onPress={()=>{}} />
+                    <Button color={'#1A1D53'} title='Modifier mon profile' onPress={()=>{}} />
                 </View>
 
                 <View style={styles.button_view}>

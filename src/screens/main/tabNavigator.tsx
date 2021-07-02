@@ -6,6 +6,9 @@ import {Entypo, MaterialIcons, Ionicons} from "@expo/vector-icons";
 import Signup from "./SignUp";
 import Scan from "../../screens/main/Scan";
 import Login from "./Login";
+import Settings from "./Settings";
+import Shopping from "../user/Shopping";
+import Profile from "../user/Profile";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -32,10 +35,10 @@ const BottomTabScreen = () => {
             />
 
             <Tab.Screen
-                component={Login}
-                name={"Login"}
+                component={Profile}
+                name={"Profil"}
                 options={{
-                    tabBarLabel:"Login",
+                    tabBarLabel:"Profile",
                     tabBarIcon: () => {
                         return <MaterialIcons name={'account-circle'} size={24} color={useGreyColor} />
                     }
@@ -43,8 +46,8 @@ const BottomTabScreen = () => {
             />
 
             <Tab.Screen
-                component={Scan}
-                name={"Scan"}
+                component={Shopping}
+                name={"Shopping"}
                 options={{
                     tabBarLabel:"Shopping",
                     tabBarIcon: () => {
@@ -54,10 +57,10 @@ const BottomTabScreen = () => {
             />
 
             <Tab.Screen
-                component={Signup}
-                name={"Signup"}
+                component={Settings}
+                name={"Settings"}
                 options={{
-                    tabBarLabel:"Signup",
+                    tabBarLabel:"Settings",
                     tabBarIcon: () => {
                         return <Ionicons name={'settings'} size={24} color={useGreyColor} />;
                     }
