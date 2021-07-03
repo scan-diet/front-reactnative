@@ -1,32 +1,26 @@
 import React from 'react'
-import {View, Text, Button, StyleSheet} from 'react-native'
+import {View, Text, Button, StyleSheet } from 'react-native'
+import {useBlueColor} from "../../hooks/colorVariables";
+import {openURL} from "expo-linking";
 
 export default class Settings extends React.Component {
     render() {
         return (
             <View style={styles.main_view}>
                 <View style={styles.title_view}>
-                    <Text style={styles.text}>Réglages</Text>
+                    <Text style={styles.text}>Settings</Text>
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button color={'#1A1D53'} title='Modifier mon profile' onPress={()=>{}} />
+                    <Button color={useBlueColor} title='Privacy policy' onPress={()=>{openURL("https://scan-diet.github.io/PrivacyPolicy/")}} />
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button color={'#1A1D53'} title='Modifier mon adresse e-mail' onPress={()=>{}} />
+                    <Button color={useBlueColor} title='F.A.Q' onPress={()=>{}} />
                 </View>
 
                 <View style={styles.button_view}>
-                    <Button color={'#1A1D53'} title='C.G.U' onPress={()=>{}} />
-                </View>
-
-                <View style={styles.button_view}>
-                    <Button color={'#1A1D53'} title='F.A.Q' onPress={()=>{}} />
-                </View>
-
-                <View style={styles.button_view}>
-                    <Button color={'#1A1D53'} title='Nous contacter' onPress={()=>{}} />
+                    <Button color={useBlueColor} title='Contact us' onPress={()=>{}} />
                 </View>
             </View>
         )
