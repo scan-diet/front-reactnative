@@ -1,14 +1,12 @@
 import React from "react";
 import {Image, StyleSheet, Text, TextInput, View} from "react-native";
-import {SetUserDetail} from "../../store/actions";
-import {SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
 import {BasicButton} from "../../components/UI/Buttons/BasicButton";
 import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";
+import {login} from "../../store/actions/auth";
 
 interface ILoginProps {
-    SetUserDetail: typeof SetUserDetail,
-    SetToken: typeof SetToken
+    dispatch : any
 }
 
 class Login extends React.Component<ILoginProps> {
@@ -25,60 +23,16 @@ class Login extends React.Component<ILoginProps> {
         pwd: string,
         error: string,
     }
-    async getUser(token: any){
-        try{
-            let response = await fetch(
-                'https://scandiet-nestjs-back.herokuapp.com/users/current-user', {
-                    method: "get",
-                    headers:{
-                        "jwt-token":token
-                    }
-                }
-            );
-            let json = await response.json();
-            let status = response.status;
-            if (status === 200){
-                this.props.SetUserDetail(json)
-            }
-
-        } catch (error) {
-            console.error(error);
-        }
+    handleLogin(){
+        this.setState({loading: true});
+        this.props
+            .dispatch(
+                login(this.state.email, this.state.pwd)
+            )
+            .then(()=>{
+                //Page d'accueil
+            })
     }
-    async login() {
-        try {
-            const{email, pwd}= this.state;
-
-            let response = await fetch(
-                'https://scandiet-nestjs-back.herokuapp.com/users/authenticate', {
-                    method: "post",
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(
-                        {
-                            "email":email,
-                            "password":pwd
-                        }
-            )});
-
-            let json = await response.json();
-            let status = response.status;
-            if (status === 200){
-                console.log("ok");
-                this.props.SetToken(json.token)
-                this.props.navigation.navigate('BottomTabScreen')
-                //await this.getUser(json.token)
-            }
-            console.log(email);
-            console.log(json.token);
-            console.log(json);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     render() {
         let logo = '../../assets/images/logo_scan_diet.png';
         return (
@@ -90,7 +44,7 @@ class Login extends React.Component<ILoginProps> {
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Mot de passe'/>
                     <Text style={styles.other_info}>Mot de passe oublié?</Text>
                     <View style={{marginBottom:'15%'}}>
-                        <BasicButton title={"Se connecter "} onPress={this.login.bind(this)} />
+                        <BasicButton title={"Se connecter "} onPress={this.handleLogin.bind(this)} />
                     </View>
 
                     <Text style={styles.other_info}>Pas de compte? <Text style={{fontWeight:"bold"}} onPress={()=>{this.props.navigation.navigate('Signup')}}>S'inscrire</Text></Text>
@@ -104,10 +58,15 @@ class Login extends React.Component<ILoginProps> {
     }
 }
 
-export default connect(null, {
-    SetToken,
-    SetUserDetail
-})(Login);
+function mapStateToProps(state: any) {
+    const { isLoggedIn } = state.auth;
+    const { message } = state.message;
+    return {
+        isLoggedIn,
+        message
+    };
+}
+export default connect(mapStateToProps)(Login);
 
 const styles = StyleSheet.create({
     main_container: {

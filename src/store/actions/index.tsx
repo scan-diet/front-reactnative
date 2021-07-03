@@ -1,32 +1,10 @@
-import * as ACTIONS from "./actionTypes";
+import { SET_MESSAGE, CLEAR_MESSAGE } from "./types";
 
-export const SetToken = (token: string) => {
-    return ({
-        token,
-        type: ACTIONS.SET_TOKEN
-    });
-};
+export const setMessage = (message: string) => ({
+    type: SET_MESSAGE,
+    payload: message,
+});
 
-/*
-export async function SetToken(token:string) {
-    return ({
-        token,
-        type: ACTIONS.SET_TOKEN
-    });
-}
-
- */
-
-export const SetUserDetail = (userDetail: any) => {
-    return ({
-        email: userDetail.email,
-        profil: userDetail.profil,
-        type: ACTIONS.SET_PROFILE
-    })
-};
-
-export const Logout = () => {
-    return ({
-        type: ACTIONS.LOGOUT
-    })
-}
+export const clearMessage = () => ({
+    type: CLEAR_MESSAGE,
+});

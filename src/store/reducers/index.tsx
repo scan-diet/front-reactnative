@@ -1,11 +1,8 @@
-import { combineReducers } from 'redux';
-import authReducer from "./authReducer";
-import type {authReducerType} from "./authReducer";
+import {combineReducers} from "redux";
+import auth from "./auth";
+import message from "./message";
 
 export default combineReducers({
-    auth: authReducer,
+    auth,
+    message,
 });
-
-export type RootState = {
-    auth: authReducerType,
-};
