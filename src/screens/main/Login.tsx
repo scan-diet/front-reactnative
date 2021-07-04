@@ -5,6 +5,7 @@ import {SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
 import {BasicButton} from "../../components/UI/Buttons/BasicButton";
 import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";
+import User from "../../models/User";
 
 interface ILoginProps {
     SetUserDetail: typeof SetUserDetail,

@@ -7,6 +7,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CustomButton from "../../components/UI/Buttons/CustomButton";
 import {SetUserDetail, SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
+import User from "../../models/User";
+import Profile from "../user/Profile";
+import UserProfile from "../../models/UserProfile";
+import Diet from "../../models/Diet";
 
 interface ISignupProps {
     SetUserDetail: typeof SetUserDetail,
@@ -77,7 +81,7 @@ class Signup extends React.Component<ISignupProps> {
                 console.log("login")
                 console.log(json.token)
                 this.props.SetToken(json.token)
-                await this.createProfil(json.token);
+                await this.updateProfile(json.token, pwd);
             }
         } catch (error) {
             console.error(error);
@@ -85,10 +89,10 @@ class Signup extends React.Component<ISignupProps> {
     };
 
     /**
-     * CREATE PROFILE
+     * UPDATE PROFILE
      * @param token
      */
-    async createProfil(token: any) {
+    async updateProfile(token: any, pwd:any) {
         try {
             // const jwt = require('jsonwebtoken')
             const {email, name, weight, height, weightGoal, gluten, lactose, vege, vegan} = this.state;
@@ -121,6 +125,12 @@ class Signup extends React.Component<ISignupProps> {
             if (response.status === 200){
                 console.log("profile created")
                 this.props.navigation.navigate('BottomTabScreen')
+
+                const diet = new Diet(lactose, gluten, vegan, vege);
+
+                const profile = new UserProfile(name, weight, height, weightGoal, diet);
+
+                const user = new User(email, pwd, token, profile);
             } else {
                 console.log("profile not created")
                 console.log(token)

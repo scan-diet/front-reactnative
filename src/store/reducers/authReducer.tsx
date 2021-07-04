@@ -1,3 +1,4 @@
+/*
 import * as ACTIONS from '../actions/actionTypes';
 
 export type authReducerType = {
@@ -75,3 +76,16 @@ export default (
             return state;
     }
 };
+*/
+
+import User from "../../models/User";
+
+const initialState = {
+    user: User
+};
+
+const userReducer = (state = initialState, action:any) => {
+    return state;
+}
+
+export default userReducer;
