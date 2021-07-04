@@ -34,6 +34,7 @@ const ProductInfo = () => {
                 <Text style={styles.progress}>Lipide</Text>
                 <ProgressBar progress={0.7} color={Colors.green800} style={styles.progress} />
             </View>
+
             <View style={styles.recommandation}>
                 <Text style={styles.subTitle}>Recommandations</Text>
                 <ProductFlatList/>

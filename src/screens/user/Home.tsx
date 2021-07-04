@@ -67,6 +67,10 @@ export default class Home extends React.Component {
                 <View>
                     <Header>Activites</Header>
                 </View>
+
+                <View>
+
+                </View>
                 {/*<View style={{alignItems:"center", paddingBottom:30}}>
                     <Carousel
                         // ref={(c) => this.carousel = c}

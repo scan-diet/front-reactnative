@@ -1,3 +1,9 @@
+/**
+ * Author
+ * Enes UYAR
+ * HUGO TERRAL
+ */
+
 import React, {useRef, useState, useEffect} from 'react';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import {View, Text, Dimensions, StyleSheet, TouchableOpacity, Platform} from 'react-native';

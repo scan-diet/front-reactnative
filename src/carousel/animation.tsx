@@ -1,3 +1,9 @@
+/**
+ * Author
+ * Enes UYAR
+ * HUGO TERRAL
+ */
+
 import { Dimensions } from 'react-native';
 import { getInputRangeFromIndexes } from 'react-native-snap-carousel';
 
