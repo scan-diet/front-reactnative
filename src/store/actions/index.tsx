@@ -16,7 +16,6 @@ export async function SetToken(token:string) {
 }
 
  */
-
 export const SetUserDetail = (userDetail: any) => {
     return ({
         email: userDetail.email,
