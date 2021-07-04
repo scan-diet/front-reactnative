@@ -124,13 +124,11 @@ class Signup extends React.Component<ISignupProps> {
             let json = await response.json();
             if (response.status === 200){
                 console.log("profile created")
-                this.props.navigation.navigate('BottomTabScreen')
-
                 const diet = new Diet(lactose, gluten, vegan, vege);
-
                 const profile = new UserProfile(name, weight, height, weightGoal, diet);
-
                 const user = new User(email, pwd, token, profile);
+                this.props.SetUserDetail(user);
+                this.props.navigation.navigate('BottomTabScreen')
             } else {
                 console.log("profile not created")
                 console.log(token)
@@ -284,7 +282,16 @@ class Signup extends React.Component<ISignupProps> {
     }
 }
 
-export default connect(null, {
-    SetToken,
-    SetUserDetail
-})(Signup);
+const mapStateToProps = (state : any) => {
+    return {
+        user:state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch: any )=> {
+    return {
+        SetUserDetail: (user: any) => dispatch(SetUserDetail(user)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

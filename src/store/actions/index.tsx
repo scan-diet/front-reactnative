@@ -1,4 +1,5 @@
 import * as ACTIONS from "./actionTypes";
+import User from "../../models/User";
 
 export const SetToken = (token: string) => {
     return ({
@@ -7,20 +8,10 @@ export const SetToken = (token: string) => {
     });
 };
 
-/*
-export async function SetToken(token:string) {
-    return ({
-        token,
-        type: ACTIONS.SET_TOKEN
-    });
-}
-
- */
-
-export const SetUserDetail = (userDetail: any) => {
+export const SetUserDetail = (userDetail: User) => {
     return ({
         email: userDetail.email,
-        profil: userDetail.profil,
+        profile: userDetail.profile,
         type: ACTIONS.SET_PROFILE
     })
 };
