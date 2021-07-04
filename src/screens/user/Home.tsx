@@ -11,6 +11,7 @@ import Header from "./Header";
 import {useWhiteColor} from "../../hooks/colorVariables";
 import {ScanListButton} from "../../components/UI/Buttons/ScanListButton";
 import {WEEKLY_ENTRIES} from "../../carousel/weeklyEntries";
+import store from "../../store/store";
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
@@ -69,7 +70,7 @@ export default class Home extends React.Component {
                 </View>
 
                 <View>
-
+                    <Text>{store.getState()}</Text>
                 </View>
                 {/*<View style={{alignItems:"center", paddingBottom:30}}>
                     <Carousel
