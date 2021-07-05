@@ -10,8 +10,7 @@ export const SetToken = (token: string) => {
 
 export const SetUserDetail = (userDetail: User) => {
     return ({
-        email: userDetail.email,
-        profile: userDetail.profile,
+        user: userDetail,
         type: ACTIONS.SET_PROFILE
     })
 };

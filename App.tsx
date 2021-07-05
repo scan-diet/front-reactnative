@@ -14,16 +14,12 @@ import Signup from "./src/screens/main/SignUp";
 import {combineReducers, createStore} from "redux";
 import userReducer from "./src/store/reducers/authReducer";
 import store from "./src/store/store";
+import Profile from "./src/screens/user/Profile";
+import DetailProduct from "./src/screens/user/DetailProduct";
 
 enableScreens();
 
 const Stack = createStackNavigator();
-
-/*const rootReducer = combineReducers({
-    users: userReducer
-});
-const store = createStore(rootReducer);
- */
 
 export default class App extends React.Component {
   render() {
@@ -33,8 +29,10 @@ export default class App extends React.Component {
                   {/*<Navigation />*/}
                   <Stack.Navigator screenOptions={{headerShown:false}}>
                       <Stack.Screen name="Login" component={Login}/>
+                      <Stack.Screen name="DetailProduct" component={DetailProduct}/>
                       <Stack.Screen name="Scan" component={Scan} />
                       <Stack.Screen name="Signup" component={Signup} />
+                      <Stack.Screen name="Profile" component={Profile} />
                       <Stack.Screen name={"BottomTabScreen"} component={BottomTabScreen} />
                   </Stack.Navigator>
               </NavigationContainer>

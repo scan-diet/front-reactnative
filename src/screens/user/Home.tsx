@@ -1,4 +1,4 @@
-import React, {Props} from "react";
+import React from "react";
 import {Dimensions, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import HomeNav from "../../components/HomeNav";
 import ActivityFlatList from "../../components/ActivityFlatList";
@@ -91,10 +91,7 @@ class Home extends React.Component<IHome> {
             <SafeAreaView style={{ flex: 1, padding:25 }}>
                 <View>
                     <Header>Activites</Header>
-                </View>
-
-                <View>
-                    <Text>`${this.props.user}`</Text>
+                    <Text>{this.props.user.email}</Text>
                 </View>
 
                 {/*<View>
@@ -122,7 +119,7 @@ class Home extends React.Component<IHome> {
                     <Card />
                 </CardView>
                 <ItemTabView />
-                {/*<ScanListButton onPress={()=>{this.props.navigation.navigate('Scan')}} />*/}
+                <ScanListButton onPress={()=>{this.props.navigation.navigate('Scan',this.props)}} />
             </SafeAreaView>
         )
     }

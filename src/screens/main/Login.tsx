@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Image, StyleSheet, Text, TextInput, View} from "react-native";
 import {SetUserDetail} from "../../store/actions";
 import {SetToken} from "../../store/actions";
@@ -86,19 +86,20 @@ class Login extends React.Component<ILoginProps> {
             <View style={styles.main_container}>
                 <View style={styles.main_view}>
                     <Image style={styles.logo} source={require(logo)}/>
-                    <Text style={styles.home_title}>Bienvenue sur ScanDiet</Text>
-                    <TextInput style={styles.text_input} keyboardType={"email-address"} autoCapitalize={"none"} onChangeText={(text )=> {this.setState({email: text})}} placeholder='adresse e-mail'/>
-                    <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Mot de passe'/>
-                    <Text style={styles.other_info}>Mot de passe oublié?</Text>
+                    <Text style={styles.home_title}>Welcome to ScanDiet</Text>
+                    <TextInput style={styles.text_input} keyboardType={"email-address"} autoCapitalize={"none"} onChangeText={(text )=> {this.setState({email: text})}} placeholder='E-mail address'/>
+                    <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Password'/>
+                    <Text style={styles.other_info}>Forgot password?</Text>
                     <View style={{marginBottom:'15%'}}>
-                        <BasicButton title={"Se connecter "} onPress={this.login.bind(this)} />
+                        <BasicButton title={"Login"} onPress={this.login.bind(this)} />
                     </View>
 
-                    <Text style={styles.other_info}>Pas de compte? <Text style={{fontWeight:"bold"}} onPress={()=>{this.props.navigation.navigate('Signup')}}>S'inscrire</Text></Text>
-                </View>
+                    <Text style={[{fontWeight:"bold"},styles.other_info]} onPress={()=>{this.props.navigation.navigate('Signup')}}>
+                        Create account
+                    </Text>
 
-                <View>
-                    <Text style={{textDecorationStyle:"dashed"}} onPress={()=>{this.props.navigation.navigate('Scan')}}>Je souhaite d'abord tester l'application</Text>
+
+                    <Text style={{textAlign:"center"}} onPress={()=>{this.props.navigation.navigate('Scan')}}>Test the app before signing up</Text>
                 </View>
             </View>
         )

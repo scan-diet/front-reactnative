@@ -122,8 +122,6 @@ class Signup extends React.Component<ISignupProps> {
                         }
                     )
                 });
-            console.log("BEFORE LET JSON")
-            console.log("RESPONSE IS")
             console.log(response)
             let result = response.status;
             console.log(result)
@@ -131,9 +129,9 @@ class Signup extends React.Component<ISignupProps> {
             if (response.status === 202){
                 console.log("PROFILE CREATED")
 
-                const diet = new Diet(lactose, gluten, vegan, vege);
-                const profile = new UserProfile(name, weight, height, weightGoal, diet);
-                const user = new User(email, pwd, token, profile);
+                // const diet = new Diet(lactose, gluten, vegan, vege);
+                // const profile = new UserProfile(name, weight, height, weightGoal, diet);
+                const user = new User(email, name, token,height,weight, weightGoal, lactose, gluten, vegan, vege);
 
                 this.props.SetUserDetail(user);
                 this.props.navigation.navigate('BottomTabScreen')
@@ -207,17 +205,12 @@ class Signup extends React.Component<ISignupProps> {
                         <View style={{width:250}}>
                             <Input
                                 placeholder='E-mail'
+                                autoCapitalize={"none"}
+                                autoCorrect={false}
                                 keyboardType={"email-address"}
                                 onChangeText={(text )=> {this.setState({email: text})}}
-                                leftIcon={
-                                    <Icon
-                                        name='envelope'
-                                        size={24}
-                                        color='black'
-                                    />
-                                }
+                                leftIcon={<Icon name='envelope' size={24} color='black'/>}
                             />
-
                         </View>
 
                         <View style={{width:250}}>
@@ -227,13 +220,7 @@ class Signup extends React.Component<ISignupProps> {
                                 errorStyle={{ color: 'red' }}
                                 //passwordRules={"required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8;"}
                                 secureTextEntry={true}
-                                leftIcon={
-                                    <Icon
-                                        name='lock'
-                                        size={24}
-                                        color='black'
-                                    />
-                                }
+                                leftIcon={<Icon name='lock' size={24} color='black'/>}
                             />
                         </View>
                     </View>
@@ -246,6 +233,7 @@ class Signup extends React.Component<ISignupProps> {
                             keyboardType={'number-pad'}
                             leftIcon={personHeight}
                             onChangeText={(text )=> {this.setState({height: text})}}
+
                         />
 
                         <Input
