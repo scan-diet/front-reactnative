@@ -13,22 +13,24 @@ import Scan from "./src/screens/main/Scan";
 import Signup from "./src/screens/main/SignUp";
 import {combineReducers, createStore} from "redux";
 import userReducer from "./src/store/reducers/authReducer";
+import store from "./src/store/store";
 
 enableScreens();
 
 const Stack = createStackNavigator();
 
-const rootReducer = combineReducers({
+/*const rootReducer = combineReducers({
     users: userReducer
 });
 const store = createStore(rootReducer);
+ */
 
-/*export default class App extends React.Component {
+export default class App extends React.Component {
   render() {
       return (
           <Provider store={store}>
               <NavigationContainer>
-                  {/!*<Navigation />*!/}
+                  {/*<Navigation />*/}
                   <Stack.Navigator screenOptions={{headerShown:false}}>
                       <Stack.Screen name="Login" component={Login}/>
                       <Stack.Screen name="Scan" component={Scan} />
@@ -39,18 +41,19 @@ const store = createStore(rootReducer);
           </Provider>
       )
   }
-};*/
+};
 /**
  * NEW VERSION TO REMOVE IF NOT WORKING
  */
 
-export default class App extends React.Component {
+
+/*export default class App extends React.Component {
 
     render(){
         return (
             <Provider store={store}>
                 <NavigationContainer>
-                    {{/*<Navigation />*/}}
+                    {{/!*<Navigation />*!/}}
                     <Stack.Navigator screenOptions={{headerShown:false}}>
                         <Stack.Screen name="Login" component={Login}/>
                         <Stack.Screen name="Scan" component={Scan} />
@@ -61,4 +64,4 @@ export default class App extends React.Component {
             </Provider>
         );
     }
-}
+}*/

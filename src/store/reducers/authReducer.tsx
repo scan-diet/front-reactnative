@@ -2,6 +2,7 @@ import * as ACTIONS from '../actions/actionTypes';
 import User from "../../models/User";
 import UserProfile from "../../models/UserProfile";
 import Diet from "../../models/Diet";
+import {LOGOUT} from "../actions/actionTypes";
 
 const initialState = {
     user: new User("","","",
@@ -11,8 +12,8 @@ const initialState = {
         )
 };
 
-const userReducer = (state = initialState,
-                     action: {type: string,
+/*const userReducer = (state = initialState,
+                     action: { type: string,
                          email: number,
                          profile: {
                                     name: string,
@@ -53,6 +54,30 @@ const userReducer = (state = initialState,
         default:
             return state;
     }
-}
+}*/
 
-export default userReducer;
+export default (state = initialState, action: {
+    type: string,
+    user: User,
+    token: string;
+}) => {
+    switch (action.type) {
+        case ACTIONS.SET_PROFILE:
+            return {
+                ...state,
+                token: action.token,
+                user: action.user
+            };
+
+        case ACTIONS.SET_TOKEN:
+            return {
+                ...state,
+                token: action.token
+            };
+
+        default:
+            return state;
+    }
+};
+
+//export default userReducer;

@@ -80,7 +80,7 @@ class Signup extends React.Component<ISignupProps> {
             if (response.status === 200){
                 console.log("login")
                 console.log(json.token)
-                this.props.SetToken(json.token)
+                //this.props.SetToken(json.token)
                 await this.updateProfile(json.token, pwd);
             }
         } catch (error) {
@@ -91,18 +91,19 @@ class Signup extends React.Component<ISignupProps> {
     /**
      * UPDATE PROFILE
      * @param token
+     * @param pwd
      */
-    async updateProfile(token: any, pwd:any) {
+    async updateProfile(token: string, pwd:any) {
         try {
             // const jwt = require('jsonwebtoken')
             const {email, name, weight, height, weightGoal, gluten, lactose, vege, vegan} = this.state;
             let response = await fetch(
                 'https://scandiet-nestjs-back.herokuapp.com/users/update-profile', {
-                    method: "post",
+                    method: "POST",
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
-                        // 'Authorization':`Bearer ${jwt.encode(token)}`
+                        'jwt-token': token
                     },
                     body: JSON.stringify({
                             "email": email,
@@ -121,18 +122,27 @@ class Signup extends React.Component<ISignupProps> {
                         }
                     )
                 });
-            let json = await response.json();
-            if (response.status === 200){
-                console.log("profile created")
+            console.log("BEFORE LET JSON")
+            console.log("RESPONSE IS")
+            console.log(response)
+            let result = response.status;
+            console.log(result)
+
+            if (response.status === 202){
+                console.log("PROFILE CREATED")
+
                 const diet = new Diet(lactose, gluten, vegan, vege);
                 const profile = new UserProfile(name, weight, height, weightGoal, diet);
                 const user = new User(email, pwd, token, profile);
+
                 this.props.SetUserDetail(user);
                 this.props.navigation.navigate('BottomTabScreen')
             } else {
-                console.log("profile not created")
-                console.log(token)
+                console.log("PROFILE NOT CREATED")
+                console.log("TOKEN IS \n"+ token)
+                console.log("JSON IS")
                 console.log(json)
+
             }
         } catch (error) {
             console.error(error);
@@ -284,7 +294,7 @@ class Signup extends React.Component<ISignupProps> {
 
 const mapStateToProps = (state : any) => {
     return {
-        user:state.user
+        user:state.auth.user
     }
 }
 
