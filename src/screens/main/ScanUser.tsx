@@ -3,6 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import DetailProduct from "../user/DetailProduct";
 import {Product} from "../../models/Product";
+import Nutriment from "../../models/Nutriment";
 
 interface IApp {
 
@@ -36,29 +37,33 @@ export default function App(props:any) {
 
         let json = await response.json();
 
+        /**
+         * check if value is null
+         */
+        let nutriment:Nutriment[] = []
+
+        for (let i=0; i<json.product.nutriments.length; i++){
+            if (json.product.nutriments[i]){
+                const nutri:Nutriment = new Nutriment(
+                    json.product.nutriments[i].name,
+                    json.product.nutriments[i].raw_value.value
+                )
+                console.log(nutri)
+                nutriment.push(nutri)
+            }
+        }
+
         if (response.status === 200) {
             console.log("ok")
-            // props.navigation.navigate('DetailProduct', new Product(json.product))
+            console.log(nutriment)
             const p = json.product
             props.navigation.navigate('DetailProduct', new Product(
-                // p.name,
-                // p.image.path,
-                // p.nutriments[0].raw_value.value,
-                // p.nutriments[1].raw_value,
-                // p.nutriments[2].raw_value.value,
-                // p.nutriments[3].raw_value.value,
-                // p.nutriscore_,
-                // p.energetic_income[0].value
-                '',
-                '',
-                0,
-                0,
-                0,
-                0,
-                '',
-                0,
+                p.name,
+                p.image.path,
+                nutriment,
+                p.nutriscore_grade,
+                p.energetic_income[0].value
                 )
-
             )
 
         } else {

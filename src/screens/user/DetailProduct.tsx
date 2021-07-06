@@ -29,7 +29,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
                         <Text style={styles.info_txt}>{json.kcal} kcal / 100g</Text>
                         <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={styles.info_txt}>Nutri-score</Text>
-                            <Text style={styles.note}>{json.nutriscore}</Text>
+                            <Text style={styles.note}>{json.nutriscore.toUpperCase()}</Text>
                         </View>
                     </View>
                 </View>
@@ -40,14 +40,14 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
                 <View style={styles.progress_container}>
                     <Text style={styles.subTitle}>Valeurs nutritives</Text>
-                    <Text style={styles.progress}>Protéine</Text>
-                    <ProgressBar progress={json.protein} color={Colors.red800} style={styles.progress}  />
-                    <Text style={styles.progress}>Fibre</Text>
-                    <ProgressBar progress={json.fibre/100} color={Colors.blue800} style={styles.progress} />
-                    <Text style={styles.progress}>Glucide</Text>
-                    <ProgressBar progress={json.glucide/100} color={Colors.yellow800} style={styles.progress}  />
-                    <Text style={styles.progress}>Lipide</Text>
-                    <ProgressBar progress={json.lipide/100} color={Colors.green800} style={styles.progress} />
+                    <Text style={styles.progress}>{json.nutriments[0].name}</Text>
+                    <ProgressBar progress={json.nutriments[0].value} color={Colors.red800} style={styles.progress}  />
+                    <Text style={styles.progress}>{json.nutriments[1].name}</Text>
+                    <ProgressBar progress={json.nutriments[1].value/100} color={Colors.blue800} style={styles.progress} />
+                    <Text style={styles.progress}>{json.nutriments[2].name}</Text>
+                    <ProgressBar progress={json.nutriments[2].value/100} color={Colors.yellow800} style={styles.progress}  />
+                    <Text style={styles.progress}>{json.nutriments[3].name}</Text>
+                    <ProgressBar progress={json.nutriments[3].value/100} color={Colors.green800} style={styles.progress} />
                 </View>
 
                 <View style={styles.recommandation}>

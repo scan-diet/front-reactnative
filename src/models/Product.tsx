@@ -1,35 +1,18 @@
-/*export interface ImageUrl {
-    path:string
-}
-
-export interface ProductDTO {
-    name:string,
-    image: ImageUrl
-}*/
+import Nutriment from "./Nutriment";
 
 export class Product {
     name: string;
     image: string;
-    protein:number
-    fibre: number
-    glucide: number
-    lipide: number
+    nutriments:Nutriment[]
     nutriscore: string
     kcal: number
 
-    /*constructor(product: ProductDTO) {
-        Object.assign(this,product)
-    }*/
-
-    constructor(name:string, image:string, protein:number, fibre:number, glucide:number, lipide:number,nutriscore:string,kcal:number) {
+    constructor(name:string, image:string, nutriments:Nutriment[], nutriscore:string,kcal:number) {
         this.name = name
         this.image = image
-        this.protein = protein
-        this.fibre = fibre
-        this.glucide = glucide
-        this.lipide = lipide
         this.nutriscore = nutriscore
         this.kcal = kcal
+        this.nutriments = nutriments
     }
 }
 
