@@ -32,6 +32,8 @@ class Login extends React.Component<ILoginProps> {
                 'https://scandiet-nestjs-back.herokuapp.com/users/current-user', {
                     method: "get",
                     headers:{
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                         "jwt-token":token
                     }
                 }
@@ -39,7 +41,9 @@ class Login extends React.Component<ILoginProps> {
             let json = await response.json();
             let status = response.status;
             if (status === 200){
-                this.props.SetUserDetail(json)
+                const user = new User(json.email, json.profile.name, token,json.profile.height,json.profile.weight, json.profile.weightGoal, json.profile.diet.withoutLactose, json.profile.diet.withoutGluten, json.profile.diet.vegan, json.profile.diet.vegetarian);
+                this.props.SetUserDetail(user);
+                this.props.navigation.navigate('BottomTabScreen')
             }
 
         } catch (error) {
@@ -68,9 +72,8 @@ class Login extends React.Component<ILoginProps> {
             let status = response.status;
             if (status === 200){
                 console.log("ok");
-                this.props.SetToken(json.token)
+                await this.getUser(json.token)
                 this.props.navigation.navigate('BottomTabScreen')
-                //await this.getUser(json.token)
             }
             console.log(email);
             console.log(json.token);
