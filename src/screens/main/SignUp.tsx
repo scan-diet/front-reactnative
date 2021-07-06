@@ -56,106 +56,14 @@ class Signup extends React.Component<ISignupProps> {
     }
 
     /**
-     * LOGIN
-     */
-    async login(){
-        try {
-            const{email, pwd}= this.state;
-
-            let response = await fetch(
-                'https://scandiet-nestjs-back.herokuapp.com/users/authenticate', {
-                    method: "post",
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(
-                        {
-                            "email":email,
-                            "password":pwd
-                        }
-                    )});
-
-            let json = await response.json();
-            if (response.status === 200){
-                console.log("login")
-                console.log(json.token)
-                //this.props.SetToken(json.token)
-                await this.updateProfile(json.token, pwd);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    /**
-     * UPDATE PROFILE
-     * @param token
-     * @param pwd
-     */
-    async updateProfile(token: string, pwd:any) {
-        try {
-            // const jwt = require('jsonwebtoken')
-            const {email, name, weight, height, weightGoal, gluten, lactose, vege, vegan} = this.state;
-            let response = await fetch(
-                'https://scandiet-nestjs-back.herokuapp.com/users/update-profile', {
-                    method: "POST",
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        'jwt-token': token
-                    },
-                    body: JSON.stringify({
-                            "email": email,
-                            "profile": {
-                                "name": name,
-                                "weight": weight,
-                                "height": height,
-                                "weightGoal": weightGoal,
-                                "diet": {
-                                    "withoutLactose": lactose,
-                                    "withoutGluten": gluten,
-                                    "vegan": vegan,
-                                    "vegetarian": vege
-                                }
-                            }
-                        }
-                    )
-                });
-            console.log(response)
-            let result = response.status;
-            console.log(result)
-
-            if (response.status === 202){
-                console.log("PROFILE CREATED")
-
-                // const diet = new Diet(lactose, gluten, vegan, vege);
-                // const profile = new UserProfile(name, weight, height, weightGoal, diet);
-                const user = new User(email, name, token,height,weight, weightGoal, lactose, gluten, vegan, vege);
-
-                this.props.SetUserDetail(user);
-                this.props.navigation.navigate('BottomTabScreen')
-            } else {
-                console.log("PROFILE NOT CREATED")
-                console.log("TOKEN IS \n"+ token)
-                console.log("JSON IS")
-                console.log(json)
-
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    /**
      * REGISTER FUNCTION
      */
     async register() {
         try {
-            const{email, pwd}= this.state;
+            const {email, pwd, name, weight, height, weightGoal, gluten, lactose, vege, vegan} = this.state;
 
             let response = await fetch(
-                'https://scandiet-nestjs-back.herokuapp.com/users/create', {
+                'https://scandiet-nestjs-back.herokuapp.com/users/register', {
                     method: "POST",
                     headers: {
                         Accept: 'application/json',
@@ -163,16 +71,32 @@ class Signup extends React.Component<ISignupProps> {
                     },
                     body: JSON.stringify(
                         {
-                            "email":email,
-                            "password":pwd
+                            "user" : {
+                                "email":email,
+                                "password":pwd
+                            },
+                            "profile" : {
+                                "name":name,
+                                "weight":weight,
+                                "height":height,
+                                "weightGoal":weightGoal,
+                                "diet": {
+                                    "withoutLactose": lactose,
+                                    "withoutGluten": gluten,
+                                    "vegan":vegan,
+                                    "vegetarian":vege
+                                }
+                            }
+
                         }
                     )});
-
             let status = response.status;
-
+            let json = await response.json();
             if (status === 201){
-                console.log("registred")
-                await this.login();
+                const user = new User(email, name, json.token,height,weight, weightGoal, lactose, gluten, vegan, vege);
+                this.props.SetUserDetail(user);
+                this.props.navigation.navigate('BottomTabScreen')
+
             } else {
                 console.log("not registred")
             }

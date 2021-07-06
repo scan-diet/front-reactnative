@@ -16,6 +16,7 @@ import userReducer from "./src/store/reducers/authReducer";
 import store from "./src/store/store";
 import Profile from "./src/screens/user/Profile";
 import DetailProduct from "./src/screens/user/DetailProduct";
+import ScanUser from "./src/screens/main/ScanUser";
 
 enableScreens();
 
@@ -31,6 +32,7 @@ export default class App extends React.Component {
                       <Stack.Screen name="Login" component={Login}/>
                       <Stack.Screen name="DetailProduct" component={DetailProduct}/>
                       <Stack.Screen name="Scan" component={Scan} />
+                      <Stack.Screen name="ScanUser" component={ScanUser} />
                       <Stack.Screen name="Signup" component={Signup} />
                       <Stack.Screen name="Profile" component={Profile} />
                       <Stack.Screen name={"BottomTabScreen"} component={BottomTabScreen} />

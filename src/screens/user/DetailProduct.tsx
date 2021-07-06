@@ -16,10 +16,6 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
         super(props);
 
         const json = this.props.route.params
-        console.log("DETAIL PRODUCT")
-        // console.log(json.prod)
-
-        console.log(json.protein)
     }
 
     render() {

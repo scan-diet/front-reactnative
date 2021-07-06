@@ -29,7 +29,8 @@ export default function App(props:any) {
                 method: "GET",
                 headers: {
                     Accept: 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "jwt-token":props.route.params.user._token
                 }
             });
 

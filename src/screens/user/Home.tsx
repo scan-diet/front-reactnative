@@ -90,8 +90,7 @@ class Home extends React.Component<IHome> {
             </View>*/
             <SafeAreaView style={{ flex: 1, padding:25 }}>
                 <View>
-                    <Header>Activites</Header>
-                    <Text>{this.props.user.email}</Text>
+                    <Header>Home</Header>
                 </View>
 
                 {/*<View>
@@ -119,13 +118,11 @@ class Home extends React.Component<IHome> {
                     <Card />
                 </CardView>
                 <ItemTabView />
-                <ScanListButton onPress={()=>{this.props.navigation.navigate('Scan',this.props)}} />
+                <ScanListButton onPress={()=>{this.props.navigation.navigate('ScanUser',this.props)}} />
             </SafeAreaView>
         )
     }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
 
