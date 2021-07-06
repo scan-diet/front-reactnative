@@ -98,10 +98,8 @@ class Signup extends React.Component<ISignupProps> {
                 this.props.navigation.navigate('BottomTabScreen')
 
             } else {
-                console.log("not registred")
             }
         } catch (error) {
-            console.error(error);
         }
     };
 

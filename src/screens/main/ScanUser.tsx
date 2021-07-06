@@ -41,6 +41,7 @@ export default function App(props:any) {
          * check if value is null
          */
         let nutriment:Nutriment[] = []
+        let suggest: Product[]= []
 
         for (let i=0; i<json.product.nutriments.length; i++){
             if (json.product.nutriments[i]){
@@ -48,26 +49,51 @@ export default function App(props:any) {
                     json.product.nutriments[i].name,
                     json.product.nutriments[i].raw_value.value
                 )
-                console.log(nutri)
                 nutriment.push(nutri)
             }
         }
 
+        for (let i=0; i<3; i++){
+
+            let res = await fetch(
+                `https://scandiet-nestjs-back.herokuapp.com/products/${json.suggested_products[i].bar_code}`, {
+                    method: "GET",
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        "jwt-token":props.route.params.user._token
+                    }
+                });
+
+            let recommandation = await res.json()
+
+            let rec = new Product(
+                recommandation.product.name,
+                recommandation.product.image.path,
+                [],
+                recommandation.product.nutriscore_grade,
+                recommandation.product.energetic_income.value,
+                json.suggested_products.bar_code,
+                []
+            )
+            suggest.push(rec)
+        }
+
         if (response.status === 200) {
-            console.log("ok")
-            console.log(nutriment)
             const p = json.product
+
             props.navigation.navigate('DetailProduct', new Product(
                 p.name,
                 p.image.path,
                 nutriment,
                 p.nutriscore_grade,
-                p.energetic_income[0].value
+                p.energetic_income[0].value,
+                data,
+                suggest
                 )
             )
 
         } else {
-            console.log("nothing")
         }
     };
 

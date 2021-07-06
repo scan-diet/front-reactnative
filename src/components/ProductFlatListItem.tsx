@@ -3,11 +3,12 @@ import {View, Text, StyleSheet, Image, useWindowDimensions} from "react-native";
 
 const ProductFlatListItem = ({item}:any) => {
     const {width} = useWindowDimensions();
+
     return(
         <View style={[styles.container, {width}]}>
-            <Image source={require("../assets/images/panzani.png")} style={[styles.image,{width, resizeMode: 'contain'}]}/>
+            <Image source={{uri: item.item.image}} style={[styles.image,{width, resizeMode: 'contain'}]}/>
             <View style={{flex: 0.3}}>
-                <Text>Panzani</Text>
+                <Text>{item.item.name}</Text>
             </View>
         </View>
     );
@@ -20,8 +21,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     image: {
-        flex: 0.7,
-
+        flex: 0.7
     },
     /*title: {
         fontWeight: "800",

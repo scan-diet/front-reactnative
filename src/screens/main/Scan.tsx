@@ -36,7 +36,6 @@ export default function App(props:any) {
         let json = await response.json();
 
         if (response.status === 200) {
-            console.log("ok")
             // props.navigation.navigate('DetailProduct', new Product(json.product))
             const p = json.product
             props.navigation.navigate('DetailProduct', new Product(
@@ -61,7 +60,6 @@ export default function App(props:any) {
             )
 
         } else {
-            console.log("nothing")
         }
     };
 

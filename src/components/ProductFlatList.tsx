@@ -1,23 +1,27 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, FC} from 'react';
 import {View, Text, StyleSheet, FlatList, Animated, useWindowDimensions} from "react-native";
-
-import Navigation from "./Navigation";
 import ProductFlatListItem from "./ProductFlatListItem";
 import Produit from "./Produit";
 
-const ProductFlatList = () => {
+interface IProdFlatList {
+    json:any
+}
+
+//const ProductFlatList = () => {
+const ProductFlatList: FC<IProdFlatList> = ({json}) => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const scrollx = useRef(new Animated.Value(0)).current;
     const {width} = useWindowDimensions();
+
     return(
         <View style={[styles.container, {width}]}>
-            <FlatList data={Produit}
+            <FlatList data={json.recommandations}
                       renderItem={({item}) => <ProductFlatListItem item={{item}}/>}
                       horizontal
                       showsHorizontalScrollIndicator
                       pagingEnabled
                       bounces={false}
-                      keyExtractor={(item) => item.id}
+                      keyExtractor={(item) => item.name}
                       onScroll={Animated.event([{nativeEvent: {contentOffset:{x: scrollx}}}],{useNativeDriver: false})}
             />
 

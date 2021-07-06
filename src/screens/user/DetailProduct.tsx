@@ -40,7 +40,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
                 <View style={styles.progress_container}>
                     <Text style={styles.subTitle}>Valeurs nutritives</Text>
-                    <Text style={styles.progress}>{json.nutriments[0].name}</Text>
+                    <Text style={styles.progress}>{json.nutriments[0].name} </Text>
                     <ProgressBar progress={json.nutriments[0].value} color={Colors.red800} style={styles.progress}  />
                     <Text style={styles.progress}>{json.nutriments[1].name}</Text>
                     <ProgressBar progress={json.nutriments[1].value/100} color={Colors.blue800} style={styles.progress} />
@@ -52,7 +52,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
                 <View style={styles.recommandation}>
                     <Text style={styles.subTitle}>Recommandations</Text>
-                    <ProductFlatList/>
+                    <ProductFlatList  json={json} />
                 </View>
             </View>
         )

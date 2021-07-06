@@ -15,7 +15,6 @@ export default (state = initialState, action: {
 }) => {
     switch (action.type) {
         case ACTIONS.SET_PROFILE:
-            console.log(action)
             return {
                 ...state,
                 token: action.token,

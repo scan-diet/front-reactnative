@@ -9,7 +9,6 @@ const myWeight = 80
 const myWeightGoal = 75
 const myHeight = 180
 const BMIcalculation = myWeight/(myHeight*myHeight)*10000
-console.log(BMIcalculation)
 
 const mapStateToProps = (state : any) => {
     return {
