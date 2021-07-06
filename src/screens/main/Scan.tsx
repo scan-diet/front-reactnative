@@ -41,14 +41,25 @@ export default function App(props:any) {
             // props.navigation.navigate('DetailProduct', new Product(json.product))
             const p = json.product
             props.navigation.navigate('DetailProduct', new Product(
-                p.name,
-                p.image.path,
-                p.nutriments[0].raw_value.value,
-                p.nutriments[1].raw_value,
-                p.nutriments[2].raw_value.value,
-                p.nutriments[3].raw_value.value,
-                p.nutriscore_grade,
-                p.energetic_income[0].value))
+                // p.name,
+                // p.image.path,
+                // p.nutriments[0].raw_value.value,
+                // p.nutriments[1].raw_value,
+                // p.nutriments[2].raw_value.value,
+                // p.nutriments[3].raw_value.value,
+                // p.nutriscore_,
+                // p.energetic_income[0].value
+                '',
+                '',
+                0,
+                0,
+                0,
+                0,
+                '',
+                0,
+                )
+
+            )
 
         } else {
             console.log("nothing")
