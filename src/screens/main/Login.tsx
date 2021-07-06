@@ -71,13 +71,9 @@ class Login extends React.Component<ILoginProps> {
             let json = await response.json();
             let status = response.status;
             if (status === 200){
-                console.log("ok");
                 await this.getUser(json.token)
                 this.props.navigation.navigate('BottomTabScreen')
             }
-            console.log(email);
-            console.log(json.token);
-            console.log(json);
         } catch (error) {
             console.error(error);
         }

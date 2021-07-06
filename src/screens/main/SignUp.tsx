@@ -92,8 +92,7 @@ class Signup extends React.Component<ISignupProps> {
                     )});
             let status = response.status;
             let json = await response.json();
-            if (status === 202){
-                console.log("registred")
+            if (status === 201){
                 const user = new User(email, name, json.token,height,weight, weightGoal, lactose, gluten, vegan, vege);
                 this.props.SetUserDetail(user);
                 this.props.navigation.navigate('BottomTabScreen')
