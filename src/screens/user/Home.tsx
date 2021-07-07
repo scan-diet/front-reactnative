@@ -16,6 +16,8 @@ import {connect, ConnectedProps} from "react-redux";
 import {Use} from "react-native-svg";
 import User from "../../models/User";
 import {SetUserDetail} from "../../store/actions";
+import {Product} from "../../models/Product";
+import Nutriment from "../../models/Nutriment";
 
 // const SLIDER_WIDTH = Dimensions.get('window').width;
 // const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
@@ -61,8 +63,7 @@ class Home extends React.Component<IHome> {
     constructor(props:any) {
         super(props);
         const u = props.user;
-        // this._renderItem = this._renderItem.bind(this)
-    }
+
     // _renderItem({ weeknumber, weekresult }:any) {
     //     return (
     //         <View style={styles.itemContainer}>
@@ -72,6 +73,7 @@ class Home extends React.Component<IHome> {
     //     );
     // }
 
+    }
     render() {
         return (
             /*<View style={styles.main}>
@@ -117,7 +119,7 @@ class Home extends React.Component<IHome> {
                     <Card />
                     <Card />
                 </CardView>
-                <ItemTabView />
+                <ItemTabView token={this.props.user.token} />
                 <ScanListButton onPress={()=>{this.props.navigation.navigate('ScanUser',this.props)}} />
             </SafeAreaView>
         )
