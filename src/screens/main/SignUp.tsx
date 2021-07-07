@@ -34,8 +34,6 @@ class Signup extends React.Component<ISignupProps> {
             vege:false,
             lactose:false,
             gluten:false,
-            halal:false,
-            kosher:false,
             error:'',
         }
     }
@@ -50,8 +48,6 @@ class Signup extends React.Component<ISignupProps> {
         vege:boolean,
         lactose:boolean,
         gluten:boolean,
-        halal:boolean,
-        kosher:boolean,
         error: string,
     }
 
@@ -185,11 +181,6 @@ class Signup extends React.Component<ISignupProps> {
                         <View style={{flexDirection:'row'}}>
                             <CustomButton titre={'Lactose-Free'} onPress={()=>{this.setState({lactose: true})}} largeurBouton={"auto"} hauteurBouton={40}/>
                             <CustomButton titre={'Gluten-Free'} onPress={()=>{this.setState({gluten: true})}} largeurBouton={"auto"} hauteurBouton={40}/>
-                        </View>
-
-                        <View style={{flexDirection:'row'}}>
-                            <CustomButton titre={'Halal'} onPress={()=>{this.setState({halal: true})}} largeurBouton={"auto"} hauteurBouton={40}/>
-                            <CustomButton titre={'Kosher'} onPress={()=>{this.setState({kosher: true})}} largeurBouton={"auto"} hauteurBouton={40}/>
                         </View>
                     </View>
 

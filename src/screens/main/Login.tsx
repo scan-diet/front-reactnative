@@ -91,7 +91,7 @@ class Login extends React.Component<ILoginProps> {
                     <Text style={styles.home_title}>Welcome to ScanDiet</Text>
                     <TextInput style={styles.text_input} keyboardType={"email-address"} autoCapitalize={"none"} onChangeText={(text )=> {this.setState({email: text})}} placeholder='E-mail address'/>
                     <TextInput style={styles.text_input} onChangeText={(text )=> {this.setState({pwd: text})}} secureTextEntry placeholder='Password'/>
-                    <Text style={styles.other_info}>Forgot password?</Text>
+
                     <View style={{marginBottom:'15%'}}>
                         <BasicButton title={"Login"} onPress={this.login.bind(this)} />
                     </View>
@@ -99,8 +99,6 @@ class Login extends React.Component<ILoginProps> {
                     <Text style={[{fontWeight:"bold"},styles.other_info]} onPress={()=>{this.props.navigation.navigate('Signup')}}>
                         Create account
                     </Text>
-
-                    <Text style={{textAlign:"center"}} onPress={()=>{this.props.navigation.navigate('Scan')}}>Test the app before signing up</Text>
                 </View>
             </View>
         )
