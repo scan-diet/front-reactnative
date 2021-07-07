@@ -16,6 +16,7 @@ import {connect, ConnectedProps} from "react-redux";
 import {Use} from "react-native-svg";
 import User from "../../models/User";
 import {SetUserDetail} from "../../store/actions";
+import CardNews from "../../components/CardNews";
 
 // const SLIDER_WIDTH = Dimensions.get('window').width;
 // const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
@@ -25,10 +26,6 @@ import {SetUserDetail} from "../../store/actions";
 // for (let i = 0; i < 5; i++) {
 //     DATA.push(i)
 // }
-
-let date = new Date().getDate();
-let month = new Date().getMonth()+1;
-let year = new Date().getFullYear();
 
 const mapStateToProps = (state : any) => {
     return {
@@ -112,12 +109,9 @@ class Home extends React.Component<IHome> {
                     />
                 </View>*/}
 
-                <CardView>
-                    <Card />
-                    <Card />
-                    <Card />
-                </CardView>
-                <ItemTabView />
+                <View style={{alignItems:"center"}}>
+                    <Card></Card>
+                </View>
                 <ScanListButton onPress={()=>{this.props.navigation.navigate('ScanUser',this.props)}} />
             </SafeAreaView>
         )

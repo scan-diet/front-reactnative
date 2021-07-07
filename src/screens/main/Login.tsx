@@ -75,6 +75,7 @@ class Login extends React.Component<ILoginProps> {
                 this.props.navigation.navigate('BottomTabScreen')
             } else {
                 //TODO: add information password incorrect to user
+                alert(json.message)
             }
         } catch (error) {
             console.error(error);
@@ -98,7 +99,6 @@ class Login extends React.Component<ILoginProps> {
                     <Text style={[{fontWeight:"bold"},styles.other_info]} onPress={()=>{this.props.navigation.navigate('Signup')}}>
                         Create account
                     </Text>
-
 
                     <Text style={{textAlign:"center"}} onPress={()=>{this.props.navigation.navigate('Scan')}}>Test the app before signing up</Text>
                 </View>

@@ -45,7 +45,7 @@ const BottomTabScreen = () => {
                 }}
             />
 
-            <Tab.Screen
+            {/*<Tab.Screen
                 component={Shopping}
                 name={"Shopping"}
                 options={{
@@ -54,7 +54,7 @@ const BottomTabScreen = () => {
                         return <Entypo name={'shopping-cart'} size={24} color={useGreyColor} />;
                     }
                 }}
-            />
+            />*/}
 
             <Tab.Screen
                 component={Settings}

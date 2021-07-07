@@ -27,23 +27,11 @@ const ItemTabView = () => {
                     isActive={lastScanList}
                     onPress={showLastScansHandler}
                 />
-                <TabButtons
-                    title={"Items"}
-                    isActive={itemsList}
-                    onPress={showItemsHandler}
-                />
             </View>
             {lastScanList ? (
                 <View style={{ flex: 1 }}>
                     <ScrollView>
                         <Text>Last scans</Text>
-                    </ScrollView>
-                </View>
-            ) : null}
-            {itemsList ? (
-                <View style={{ flex: 1 }}>
-                    <ScrollView>
-                        <Text>Items</Text>
                     </ScrollView>
                 </View>
             ) : null}

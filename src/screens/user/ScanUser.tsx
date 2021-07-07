@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
-import DetailProduct from "../user/DetailProduct";
+import DetailProduct from "./DetailProduct";
 import {Product} from "../../models/Product";
 import Nutriment from "../../models/Nutriment";
-
-interface IApp {
-
-}
+import Diet from "../../models/Diet";
 
 export default function App(props:any) {
     const [hasPermission, setHasPermission] = useState(null);
@@ -22,9 +19,7 @@ export default function App(props:any) {
 
     const handleBarCodeScanned = async ({type, data}: any) => {
         setScanned(true);
-        alert(`TYPE : ${type} \nBARCODE ${data}`);
 
-        //TODO: call the API here
         let response = await fetch(
             `https://scandiet-nestjs-back.herokuapp.com/products/${data}`, {
                 method: "GET",
@@ -36,12 +31,17 @@ export default function App(props:any) {
             });
 
         let json = await response.json();
-
         /**
          * check if value is null
          */
         let nutriment:Nutriment[] = []
         let suggest: Product[]= []
+        let diet:Diet = new Diet(
+            json.diet_preference.withoutLactose,
+            json.diet_preference.withoutGluten,
+            json.diet_preference.vegan,
+            json.diet_preference.vegetarian
+        )
 
         for (let i=0; i<json.product.nutriments.length; i++){
             if (json.product.nutriments[i]){
@@ -54,7 +54,6 @@ export default function App(props:any) {
         }
 
         for (let i=0; i<3; i++){
-
             let res = await fetch(
                 `https://scandiet-nestjs-back.herokuapp.com/products/${json.suggested_products[i].bar_code}`, {
                     method: "GET",
@@ -74,7 +73,9 @@ export default function App(props:any) {
                 recommandation.product.nutriscore_grade,
                 recommandation.product.energetic_income.value,
                 json.suggested_products.bar_code,
-                []
+                [],
+                recommandation.product.diet_tags,
+                recommandation.product.complete
             )
             suggest.push(rec)
         }
@@ -89,10 +90,10 @@ export default function App(props:any) {
                 p.nutriscore_grade,
                 p.energetic_income[0].value,
                 data,
-                suggest
-                )
-            )
-
+                suggest,
+                diet,
+                p.complete
+            ))
         } else {
         }
     };

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#F4F5FA"
+        // backgroundColor: "#F4F5FA"
     },
     image: {
         flex: 0.7,

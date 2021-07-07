@@ -12,7 +12,7 @@ export const ScanListButton: FC<Partial<ScanButtonProps>> = ({ onPress }) => {
         <TouchableOpacity style={styles.scanButton}>
             <Ionicons
                 name={"scan-circle"}
-                size={75}
+                size={85}
                 color={useGreenColor}
                 onPress={onPress}
                 style={styles.scanIcon}

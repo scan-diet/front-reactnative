@@ -1,4 +1,5 @@
 import Nutriment from "./Nutriment";
+import Diet from "./Diet";
 
 export class Product {
     name: string;
@@ -8,8 +9,10 @@ export class Product {
     kcal: number
     barcode: any
     recommandations: any[]
+    respectsDiet: Diet
+    isItemInfoComplete: boolean
 
-    constructor(name:string, image:string, nutriments:Nutriment[], nutriscore:string,kcal:number, barcode:any, recommandations:any) {
+    constructor(name:string, image:string, nutriments:Nutriment[], nutriscore:string,kcal:number, barcode:any, recommandations:any, respectsDiet: Diet, isItemInfoComplete: boolean) {
         this.name = name
         this.image = image
         this.nutriscore = nutriscore
@@ -17,6 +20,7 @@ export class Product {
         this.nutriments = nutriments
         this.barcode = barcode
         this.recommandations = recommandations
+        this.respectsDiet = respectsDiet
+        this.isItemInfoComplete = isItemInfoComplete
     }
 }
-

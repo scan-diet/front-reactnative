@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, View} from "react-native";
-import {useGreenColor, useWhiteColor} from "../../../hooks/colorVariables";
 import {openURL} from "expo-linking";
+import {useGreenColor, useWhiteColor} from "../hooks/colorVariables";
 
 interface ICardProps {
     //TODO: add props if necessary
@@ -11,7 +11,7 @@ let date = new Date().getDate();
 let month = new Date().getMonth()+1;
 let year = new Date().getFullYear();
 
-const Card: FC<ICardProps> = ({}) => {
+const CardNews: FC<ICardProps> = ({}) => {
     return (
         <View style={styles.container}>
             <View>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Card;
+export default CardNews;

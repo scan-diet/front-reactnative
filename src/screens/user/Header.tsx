@@ -13,7 +13,7 @@ const Header: FC<IProps> = ({}) => {
                 paddingTop:30,
                 marginBottom:-40
             }}>
-                Activities</Text>
+                Home</Text>
         </View>
     );
 };
