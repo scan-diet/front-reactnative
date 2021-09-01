@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {StyleSheet, TouchableOpacity, Text} from "react-native";
-import {useBlueColor, useTransparentColor, useWhiteColor} from "../../../hooks/colorVariables";
+import {useBlueColor, useTransparentColor, useWhiteColor} from "../../hooks/colorVariables";
 
 interface ITabButtonProps {
     title: string,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, useWindowDimensions} from "react-native";
 
-const ProductFlatListItem = ({item}:any) => {
+const Item = ({item}:any) => {
     const {width} = useWindowDimensions();
 
     return(
@@ -22,13 +22,7 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 0.7
-    },
-    /*title: {
-        fontWeight: "800",
-        fontSize: 28,
-        marginBottom: 10,
-        textAlign: ' center',
-    },*/
+    }
 });
 
-export default ProductFlatListItem;
+export default Item;

@@ -1,25 +1,26 @@
-import React, {useState, useRef} from 'react';
-import {View, Text, StyleSheet, FlatList, Animated, useWindowDimensions} from "react-native";
-import Produit from "./Produit";
-import ActivityFlatListItem from "./ActivityFlatListItem";
+import React, {useRef, FC} from 'react';
+import {View, StyleSheet, FlatList, Animated, useWindowDimensions} from "react-native";
+import Item from "./Item";
 
-const ActivityFlatList = () => {
-    const [currentIndex, setCurrentIndex] = useState(0)
+interface IProdFlatList {
+    json:any
+}
+
+const List: FC<IProdFlatList> = ({json}) => {
     const scrollx = useRef(new Animated.Value(0)).current;
     const {width} = useWindowDimensions();
+
     return(
         <View style={[styles.container, {width}]}>
-            <FlatList data={Produit}
-                      renderItem={({item}) => <ActivityFlatListItem item={{item}}/>}
+            <FlatList data={json.recommandations}
+                      renderItem={({item}) => <Item item={{item}}/>}
                       horizontal
                       showsHorizontalScrollIndicator
                       pagingEnabled
-                      centerContent={true}
                       bounces={false}
-                      keyExtractor={(item) => item.id}
+                      keyExtractor={(item) => item.name}
                       onScroll={Animated.event([{nativeEvent: {contentOffset:{x: scrollx}}}],{useNativeDriver: false})}
             />
-
         </View>
     );
 }
@@ -28,8 +29,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#F4F5FA"
+        alignItems: "center"
     },
     image: {
         flex: 0.7,
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
         fontWeight: "800",
         fontSize: 28,
         marginBottom: 10,
-        textAlign:'center',
+        textAlign: 'center',
     },
 });
-export default ActivityFlatList;
+
+export default List;

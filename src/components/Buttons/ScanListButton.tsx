@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {useGreenColor} from "../../../hooks/colorVariables";
+import {useGreenColor} from "../../hooks/colorVariables";
 import {Ionicons} from "@expo/vector-icons";
 import {StyleSheet, TouchableOpacity} from "react-native";
 

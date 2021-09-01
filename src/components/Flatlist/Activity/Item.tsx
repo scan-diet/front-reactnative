@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, useWindowDimensions} from "react-native";
-import CardActivity from "./CardActivity";
+import CardActivity from "../../Card/CardActivity";
 
-const ActivityFlatListItem = (item:any) => {
+const Item = (item:any) => {
     const {width} = useWindowDimensions();
     return(
         <View style={[styles.container, {width}]}>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ActivityFlatListItem;
+export default Item;

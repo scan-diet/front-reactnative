@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, View} from "react-native";
-import {useGreenColor, useWhiteColor} from "../../../hooks/colorVariables";
+import {useGreenColor, useWhiteColor} from "../../hooks/colorVariables";
 import {openURL} from "expo-linking";
 
 interface ICardProps {
-    //TODO: add props if necessary
+    //add props if necessary
 }
 
 let date = new Date().getDate();

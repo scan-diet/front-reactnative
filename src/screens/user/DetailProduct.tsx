@@ -2,9 +2,8 @@ import React from "react";
 import {Image, StyleSheet, Text, View} from "react-native";
 import {RouteProp} from "@react-navigation/native"
 import {Product} from "../../models/Product";
-import {Cercle} from "../../components/Cercle";
 import {Colors, ProgressBar} from "react-native-paper";
-import ProductFlatList from "../../components/ProductFlatList";
+import List from "../../components/Flatlist/Product/List";
 import Diet from "../../models/Diet";
 import {AntDesign, Entypo} from '@expo/vector-icons';
 
@@ -29,7 +28,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
                 <Text>This item doesn't respect your diet.</Text>
             </View>
         }*/
-        if ((diet.vegetarian && diet.vegan && diet.glutenFree && diet.lactoseFree) !== false){
+        if ((diet.vegetarian && diet.vegan && diet.glutenFree && diet.lactoseFree)){
             return <View style={{flexDirection:"row"}}>
                 <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10, paddingTop:10}}/>
                 <Text style={{paddingLeft:3, paddingTop:15}}>This item respects your diet.</Text>
@@ -104,7 +103,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
                 <View style={styles.recommandation}>
                     <Text style={styles.subTitle}>Recommandations</Text>
-                    <ProductFlatList  json={json} props={this.props} />
+                    <List  json={json} props={this.props} />
                 </View>
             </View>*/
 
@@ -162,7 +161,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
                 <View style={{paddingTop:40, flex:1, alignItems:"center"}}>
                     <Text style={{fontSize:24, fontWeight:"bold"}}>Recommandations</Text>
-                    <ProductFlatList json={json} props={this.props} />
+                    <List json={json} props={this.props} />
                 </View>
             </View>
         )

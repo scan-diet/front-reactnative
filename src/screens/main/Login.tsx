@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Image, StyleSheet, Text, TextInput, View} from "react-native";
 import {SetUserDetail} from "../../store/actions";
 import {SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
-import {BasicButton} from "../../components/UI/Buttons/BasicButton";
+import {BasicButton} from "../../components/Buttons/BasicButton";
 import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";
 import User from "../../models/User";
 

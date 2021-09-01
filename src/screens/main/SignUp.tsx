@@ -4,13 +4,10 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import CustomButton from "../../components/UI/Buttons/CustomButton";
+import CustomButton from "../../components/Buttons/CustomButton";
 import {SetUserDetail, SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
 import User from "../../models/User";
-import Profile from "../user/Profile";
-import UserProfile from "../../models/UserProfile";
-import Diet from "../../models/Diet";
 
 interface ISignupProps {
     SetUserDetail: typeof SetUserDetail,

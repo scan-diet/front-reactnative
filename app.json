@@ -4,8 +4,8 @@
     "slug": "scan-diet",
     "description": "This app helps you eat healthy according to your diet.",
     "privacy": "public",
-    "version": "3.0.0",
-    "sdkVersion": "38.0.0",
+    "version": "1.0.0",
+    "sdkVersion": "41.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],

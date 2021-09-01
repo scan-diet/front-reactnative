@@ -3,10 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import DetailProduct from "../user/DetailProduct";
 import {Product} from "../../models/Product";
-
-interface IApp {
-
-}
+import Nutriment from "../../models/Nutriment";
 
 export default function App(props:any) {
     const [hasPermission, setHasPermission] = useState(null);
@@ -15,6 +12,7 @@ export default function App(props:any) {
     useEffect(() => {
         (async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
+            // @ts-ignore
             setHasPermission(status === 'granted');
         })();
     }, []);
@@ -33,30 +31,18 @@ export default function App(props:any) {
                 }
             });
 
-        let json = await response.json();
-
         if (response.status === 200) {
-            // props.navigation.navigate('DetailProduct', new Product(json.product))
-            const p = json.product
             props.navigation.navigate('DetailProduct', new Product(
-                // p.name,
-                // p.image.path,
-                // p.nutriments[0].raw_value.value,
-                // p.nutriments[1].raw_value,
-                // p.nutriments[2].raw_value.value,
-                // p.nutriments[3].raw_value.value,
-                // p.nutriscore_,
-                // p.energetic_income[0].value
                 '',
                 '',
-                0,
+                new Nutriment('','0'),
                 0,
                 0,
                 0,
                 '',
                 0,
+                false
                 )
-
             )
 
         } else {
