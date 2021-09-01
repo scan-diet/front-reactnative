@@ -1,8 +1,5 @@
 import * as ACTIONS from '../actions/actionTypes';
 import User from "../../models/User";
-import UserProfile from "../../models/UserProfile";
-import Diet from "../../models/Diet";
-import {LOGOUT} from "../actions/actionTypes";
 
 const initialState = {
     user: new User("","", "",0,0,0, false,false,false,false)
@@ -31,5 +28,3 @@ export default (state = initialState, action: {
             return state;
     }
 };
-
-//export default userReducer;

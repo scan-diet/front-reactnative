@@ -3,11 +3,7 @@ import React from "react";
 import {useBlueColor, useGreyColor, useWhiteColor} from "../../hooks/colorVariables";
 import Home from "../user/Home";
 import {Entypo, MaterialIcons, Ionicons} from "@expo/vector-icons";
-import Signup from "./SignUp";
-import Scan from "../../screens/main/Scan";
-import Login from "./Login";
 import Settings from "./Settings";
-import Shopping from "../user/Shopping";
 import Profile from "../user/Profile";
 
 const Tab = createMaterialBottomTabNavigator();

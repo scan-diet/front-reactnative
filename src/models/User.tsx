@@ -1,5 +1,3 @@
-import UserProfile from "./UserProfile";
-
 class User {
     get email(): string {
         return this._email;
@@ -16,14 +14,6 @@ class User {
     set token(value: string) {
         this._token = value;
     }
-
-    /*get profile(): UserProfile {
-        return this._profile;
-    }
-
-    set profile(value: UserProfile) {
-        this._profile = value;
-    }*/
 
     private _email: string;
     private _token: string;
@@ -118,7 +108,6 @@ class User {
         this._email = email;
         this._name = name;
         this._token = token;
-        // this._profile = profile;
         this._height = height;
         this._weight = weight;
         this._weightGoal = weightGoal;
