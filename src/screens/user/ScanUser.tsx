@@ -13,6 +13,7 @@ export default function App(props:any) {
     useEffect(() => {
         (async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
+            // @ts-ignore
             setHasPermission(status === 'granted');
         })();
     }, []);
@@ -31,9 +32,7 @@ export default function App(props:any) {
             });
 
         let json = await response.json();
-        /**
-         * check if value is null
-         */
+        console.log(json)
         let nutriment:Nutriment[] = []
         let suggest: Product[]= []
         let diet:Diet = new Diet(

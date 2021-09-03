@@ -21,7 +21,6 @@ export default function App(props:any) {
         setScanned(true);
         alert(`TYPE : ${type} \nBARCODE ${data}`);
 
-        //TODO: call the API here
         let response = await fetch(
             `https://scandiet-nestjs-back.herokuapp.com/products/${data}`, {
                 method: "GET",
