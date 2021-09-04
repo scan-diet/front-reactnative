@@ -12,6 +12,7 @@ import User from "../../models/User";
 interface ISignupProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken
+    navigation: any
 }
 
 const personWeight = <FontAwesome5 name={'weight'} />;
