@@ -108,6 +108,7 @@ class Signup extends React.Component<ISignupProps> {
                             placeholder='Firstname'
                             onChangeText={(text )=> {this.setState({name: text})}}
                             keyboardType={"default"}
+                            returnKeyType={"next"}
                             leftIcon={
                                 <Icon
                                     name='user'
@@ -123,6 +124,7 @@ class Signup extends React.Component<ISignupProps> {
                                 autoCapitalize={"none"}
                                 autoCorrect={false}
                                 keyboardType={"email-address"}
+                                returnKeyType={"next"}
                                 onChangeText={(text )=> {this.setState({email: text})}}
                                 leftIcon={<Icon name='envelope' size={24} color='black'/>}
                             />
@@ -133,7 +135,7 @@ class Signup extends React.Component<ISignupProps> {
                                 placeholder='Password'
                                 onChangeText={(text )=> {this.setState({pwd: text})}}
                                 errorStyle={{ color: 'red' }}
-                                //passwordRules={"required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8;"}
+                                passwordRules={"required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8;"}
                                 secureTextEntry={true}
                                 leftIcon={<Icon name='lock' size={24} color='black'/>}
                             />
