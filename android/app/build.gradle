@@ -164,6 +164,9 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
+            //ajout de cette ligne pour debug l'appli dans le play store
+            ndk.debugSymbolLevel = { FULL }
         }
     }
 
