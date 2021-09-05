@@ -5,7 +5,6 @@
     "description": "This app helps you eat healthy according to your diet.",
     "privacy": "public",
     "version": "5.0.0",
-    "sdkVersion": "41.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],

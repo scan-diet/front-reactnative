@@ -49,9 +49,6 @@ class Signup extends React.Component<ISignupProps> {
         error: string,
     }
 
-    /**
-     * REGISTER FUNCTION
-     */
     async register() {
         try {
             const {email, pwd, name, weight, height, weightGoal, gluten, lactose, vege, vegan} = this.state;
@@ -96,7 +93,6 @@ class Signup extends React.Component<ISignupProps> {
         } catch (error) {
         }
     };
-
 
     render() {
         return (

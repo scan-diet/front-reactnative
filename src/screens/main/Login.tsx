@@ -10,6 +10,7 @@ import User from "../../models/User";
 interface ILoginProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken
+    navigation:any
 }
 
 class Login extends React.Component<ILoginProps> {

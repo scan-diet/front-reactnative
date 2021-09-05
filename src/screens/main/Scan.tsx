@@ -3,7 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import DetailProduct from "../user/DetailProduct";
 import {Product} from "../../models/Product";
-import Nutriment from "../../models/Nutriment";
+import Diet from "../../models/Diet";
 
 export default function App(props:any) {
     const [hasPermission, setHasPermission] = useState(null);
@@ -34,13 +34,13 @@ export default function App(props:any) {
             props.navigation.navigate('DetailProduct', new Product(
                 '',
                 '',
-                new Nutriment('',0),
-                0,
-                0,
-                0,
+                [],
                 '',
                 0,
-                false
+                '',
+                [],
+                new Diet(false, false, false, false),
+                true
                 )
             )
 
