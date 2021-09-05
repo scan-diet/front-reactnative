@@ -34,7 +34,7 @@ export default function App(props:any) {
             props.navigation.navigate('DetailProduct', new Product(
                 '',
                 '',
-                new Nutriment('','0'),
+                new Nutriment('',0),
                 0,
                 0,
                 0,

@@ -25,6 +25,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>
 
 interface IHome extends PropsFromRedux {
     user: User
+    navigation: any
 }
 
 class Home extends React.Component<IHome> {
