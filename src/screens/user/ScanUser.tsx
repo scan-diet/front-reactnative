@@ -22,7 +22,7 @@ export default function App(props:any) {
         setScanned(true);
 
         let response = await fetch(
-            `https://scandiet-nestjs-back.herokuapp.com/products/${data}`, {
+            `https://scandiet-nestjs-back.herokuapp.com/products/authenticated/${data}`, {
                 method: "GET",
                 headers: {
                     Accept: 'application/json',
