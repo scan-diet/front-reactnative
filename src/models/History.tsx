@@ -1,6 +1,6 @@
 import {Product} from "./Product";
 
-export class History {
+class History {
     products: Product[]= []
 
     constructor(
@@ -10,3 +10,4 @@ export class History {
     }
 }
 
+export default History;
