@@ -1,16 +1,18 @@
 import React from "react";
 import {Image, StyleSheet, Text, TextInput, View} from "react-native";
-import {SetUserDetail} from "../../store/actions";
+import {SetHistory, SetUserDetail} from "../../store/actions";
 import {SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {useBlueColor, useWhiteColor} from "../../hooks/colorVariables";
 import User from "../../models/User";
+import {Product} from "../../models/Product";
+import Diet from "../../models/Diet";
 
 interface ILoginProps {
     SetUserDetail: typeof SetUserDetail,
-    SetToken: typeof SetToken
-    navigation:any
+    SetToken: typeof SetToken,
+    SetHistory: typeof SetHistory,
 }
 
 class Login extends React.Component<ILoginProps> {
@@ -26,6 +28,45 @@ class Login extends React.Component<ILoginProps> {
         email: string,
         pwd: string,
         error: string,
+    }
+    async getHistory(token: any){
+        try{
+            let response = await fetch(
+                'https://scandiet-nestjs-back.herokuapp.com/scans/history', {
+                    method: "get",
+                    headers:{
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        "jwt-token":token
+                    }
+                }
+            );
+            let json = await response.json();
+            let status = response.status;
+            console.log(json)
+            let history:Product[] = []
+            for (let i=0; i<json.length; i++){
+                let product:Product = new Product(
+                    json[i].name,
+                    json[i].image.path,
+                    [],
+                    "",
+                    0,
+                    json[i].bar_code,
+                    0,
+                    new Diet(false,false,false,false),
+                    false
+                )
+                history.push(product)
+            }
+            if (status === 200){
+                this.props.SetHistory(history);
+                this.props.navigation.navigate('BottomTabScreen')
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
     }
     async getUser(token: any){
         try{
@@ -44,7 +85,7 @@ class Login extends React.Component<ILoginProps> {
             if (status === 200){
                 const user = new User(json.email, json.profile.name, token,json.profile.height,json.profile.weight, json.profile.weightGoal, json.profile.diet.withoutLactose, json.profile.diet.withoutGluten, json.profile.diet.vegan, json.profile.diet.vegetarian);
                 this.props.SetUserDetail(user);
-                this.props.navigation.navigate('BottomTabScreen')
+                await this.getHistory(token);
             }
 
         } catch (error) {
@@ -108,7 +149,8 @@ class Login extends React.Component<ILoginProps> {
 
 export default connect(null, {
     SetToken,
-    SetUserDetail
+    SetUserDetail,
+    SetHistory
 })(Login);
 
 const styles = StyleSheet.create({
