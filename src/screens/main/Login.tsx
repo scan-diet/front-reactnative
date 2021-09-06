@@ -13,6 +13,7 @@ interface ILoginProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken,
     SetHistory: typeof SetHistory,
+    navigation: any
 }
 
 class Login extends React.Component<ILoginProps> {
