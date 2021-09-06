@@ -50,8 +50,8 @@ function whatBMI(BMI:number){
     }
 }
 
-function BMIcalculate(height:number,weight:number){
-    return whatBMI(weight/(height*height))
+function BMIcalculate(weight:number,height:number){
+    return whatBMI(weight/(height*height)*10000)
 }
 
 function gainOrLooseWeight(weight:number, weightGoal:number){
