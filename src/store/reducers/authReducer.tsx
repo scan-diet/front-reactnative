@@ -1,7 +1,7 @@
 import * as ACTIONS from '../actions/actionTypes';
 import User from "../../models/User";
 import {Product} from "../../models/Product";
-import {History} from "../../models/History";
+import History from "../../models/History";
 
 const initialState = {
     user: new User("","", "",0,0,0, false,false,false,false),
