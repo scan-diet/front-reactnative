@@ -1,5 +1,11 @@
 import React, {useRef, FC} from 'react';
-import {View, StyleSheet, FlatList, Animated, useWindowDimensions} from "react-native";
+import {
+    View,
+    StyleSheet,
+    FlatList,
+    Animated,
+    useWindowDimensions
+} from "react-native";
 import Item from "./Item";
 
 interface IProdFlatList {
@@ -12,15 +18,15 @@ const List: FC<IProdFlatList> = ({json}) => {
 
     return(
         <View style={[styles.container, {width}]}>
-            <FlatList data={json}
-                      renderItem={({item}) => <Item item={{item}}/>}
-                      horizontal
-                      showsHorizontalScrollIndicator
-                      pagingEnabled
-                      bounces={false}
-                      keyExtractor={(item) => item.name}
-                      onScroll={Animated.event([{nativeEvent: {contentOffset:{x: scrollx}}}],{useNativeDriver: false})}
-            />
+                <FlatList data={json}
+                          renderItem={({item}) => <Item item={{item}}/>}
+                          horizontal
+                          showsHorizontalScrollIndicator
+                          pagingEnabled
+                          bounces={false}
+                          keyExtractor={(item) => item.name}
+                          onScroll={Animated.event([{nativeEvent: {contentOffset:{x: scrollx}}}],{useNativeDriver: false})}
+                />
         </View>
     );
 }
@@ -33,7 +39,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 0.7,
-
     },
     title: {
         fontWeight: "800",

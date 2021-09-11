@@ -5,6 +5,7 @@ import Home from "../user/Home";
 import {Entypo, MaterialIcons, Ionicons} from "@expo/vector-icons";
 import Settings from "./Settings";
 import Profile from "../user/Profile";
+import Shopping from "../user/Shopping";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -41,7 +42,7 @@ const BottomTabScreen = () => {
                 }}
             />
 
-            {/*<Tab.Screen
+            <Tab.Screen
                 component={Shopping}
                 name={"Shopping"}
                 options={{
@@ -50,7 +51,7 @@ const BottomTabScreen = () => {
                         return <Entypo name={'shopping-cart'} size={24} color={useGreyColor} />;
                     }
                 }}
-            />*/}
+            />
 
             <Tab.Screen
                 component={Settings}

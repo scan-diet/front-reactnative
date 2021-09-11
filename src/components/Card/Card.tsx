@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, View} from "react-native";
-import {useGreenColor, useWhiteColor} from "../../hooks/colorVariables";
+import {useBlueColor, useGreenColor, useWhiteColor} from "../../hooks/colorVariables";
 import {openURL} from "expo-linking";
 
 interface ICardProps {
@@ -15,7 +15,7 @@ const Card: FC<ICardProps> = ({}) => {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={{fontWeight:"bold", fontSize:40, color:useGreenColor}}>Welcome to ScanDiet</Text>
+                <Text style={{fontWeight:"bold", fontSize:40, color:useBlueColor}}>Welcome to ScanDiet</Text>
             </View>
 
             <View>
