@@ -85,30 +85,30 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
                     <Text style={{fontSize:24, fontWeight:"bold"}}>Nutrition values</Text>
 
                     {/*PROTEINS*/}
-                    <View style={{flexDirection:"row", paddingTop:15, paddingBottom:5}}>
-                        <Text style={{paddingRight:150}}>{json.nutriments[0].name.toUpperCase()}</Text>
-                        <Text >{json.nutriments[0].value}/100g</Text>
+                    <View style={{flexDirection:"row", justifyContent:"space-between", paddingTop:15, paddingBottom:5}}>
+                        <Text>{json.nutriments[0].name.toUpperCase()}</Text>
+                        <Text>{json.nutriments[0].value}/100g</Text>
                     </View>
                     <ProgressBar progress={json.nutriments[0].value/100} color={Colors.red800} style={{height:8}} />
 
                     {/*FAT*/}
-                    <View style={{flexDirection:"row", paddingTop:15, paddingBottom:5}}>
-                        <Text style={{paddingRight:191}}>{json.nutriments[1].name.toUpperCase()}</Text>
-                        <Text >{json.nutriments[1].value}/100g</Text>
+                    <View style={{flexDirection:"row", justifyContent:"space-between", paddingTop:15, paddingBottom:5}}>
+                        <Text>{json.nutriments[1].name.toUpperCase()}</Text>
+                        <Text>{json.nutriments[1].value}/100g</Text>
                     </View>
                     <ProgressBar progress={json.nutriments[1].value/100} color={Colors.blue800} style={{height:8}} />
 
                     {/*SUGAR*/}
-                    <View style={{flexDirection:"row", paddingTop:15, paddingBottom:5}}>
-                        <Text style={{paddingRight:168}}>{json.nutriments[2].name.toUpperCase()}</Text>
-                        <Text >{json.nutriments[2].value}/100g</Text>
+                    <View style={{flexDirection:"row", justifyContent:"space-between", paddingTop:15, paddingBottom:5}}>
+                        <Text>{json.nutriments[2].name.toUpperCase()}</Text>
+                        <Text>{json.nutriments[2].value}/100g</Text>
                     </View>
                     <ProgressBar progress={json.nutriments[2].value/100} color={Colors.yellow800} style={{height:8}} />
 
                     {/*SALT*/}
-                    <View style={{flexDirection:"row", paddingTop:15, paddingBottom:5}}>
-                        <Text style={{paddingRight:180}}>{json.nutriments[3].name.toUpperCase()}</Text>
-                        <Text >{json.nutriments[3].value}/100g</Text>
+                    <View style={{flexDirection:"row", justifyContent:"space-between", paddingTop:15, paddingBottom:5}}>
+                        <Text>{json.nutriments[3].name.toUpperCase()}</Text>
+                        <Text>{json.nutriments[3].value}/100g</Text>
                     </View>
                     <ProgressBar progress={json.nutriments[3].value/100} color={Colors.green800} style={{height:8}} />
                 </View>
