@@ -17,7 +17,6 @@ export const SetUserDetail = (userDetail: User) => {
 };
 
 export const  SetHistory = ( userHistory : Product[] = []) => {
-    console.log('ok1')
     return ({
         history: userHistory,
         type: ACTIONS.SET_HISTORY
@@ -25,7 +24,7 @@ export const  SetHistory = ( userHistory : Product[] = []) => {
 }
 
 export const Logout = () => {
-    return ({
+    return {
         type: ACTIONS.LOGOUT
-    })
+    }
 }

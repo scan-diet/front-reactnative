@@ -44,7 +44,6 @@ class Login extends React.Component<ILoginProps> {
             );
             let json = await response.json();
             let status = response.status;
-            console.log(json)
             let history:Product[] = []
             for (let i=0; i<json.length; i++){
                 let product:Product = new Product(
