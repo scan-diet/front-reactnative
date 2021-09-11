@@ -8,6 +8,7 @@ import User from "../../models/User";
 import {SetHistory, SetUserDetail} from "../../store/actions";
 import List from "../../components/Flatlist/History/List";
 import History from "../../models/History";
+import {Text} from "react-native-elements";
 
 const mapStateToProps = (state : any) => {
     return {
@@ -42,13 +43,11 @@ class Home extends React.Component<IHome> {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, padding:25 }}>
-                <View>
-                    <Header>Home</Header>
-                </View>
-
                 <View style={{alignItems:"center"}}>
                     <Card></Card>
                 </View>
+
+                <Text h3>Last scanned</Text>
                 <List json={this.props.history} props={this.props} />
                 <ScanListButton onPress={()=>{this.props.navigation.navigate('ScanUser',this.props)}} />
             </SafeAreaView>
