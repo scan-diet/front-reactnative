@@ -3,7 +3,11 @@ import {View, Text, Button, StyleSheet } from 'react-native'
 import {useBlueColor} from "../../hooks/colorVariables";
 import {openURL} from "expo-linking";
 
-export default class Settings extends React.Component {
+interface ISettings {
+    navigation: any
+}
+
+export default class Settings extends React.Component<ISettings> {
     render() {
         return (
             <View style={styles.main_view}>
@@ -21,6 +25,12 @@ export default class Settings extends React.Component {
 
                 <View style={styles.button_view}>
                     <Button color={useBlueColor} title='Contact us' onPress={()=>{}} />
+                </View>
+
+                <View style={styles.button_view}>
+                    <Button color={useBlueColor} title='LOGOUT' onPress={()=>{
+                        this.props.navigation.navigate('Login');
+                    }} />
                 </View>
             </View>
         )
