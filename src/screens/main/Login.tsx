@@ -46,18 +46,20 @@ class Login extends React.Component<ILoginProps> {
             let status = response.status;
             let history:Product[] = []
             for (let i=0; i<json.length; i++){
-                let product:Product = new Product(
-                    json[i].name,
-                    json[i].image.path,
-                    [],
-                    "",
-                    0,
-                    json[i].bar_code,
-                    0,
-                    new Diet(false,false,false,false),
-                    false
-                )
-                history.push(product)
+                if(json[i]!=null){
+                    let product:Product = new Product(
+                        json[i].name,
+                        json[i].image.path,
+                        [],
+                        "",
+                        0,
+                        json[i].bar_code,
+                        0,
+                        new Diet(false,false,false,false),
+                        false
+                    )
+                    history.push(product)
+                }
             }
             if (status === 200){
                 this.props.SetHistory(history);

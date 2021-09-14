@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, useWindowDimensions} from "react-native";
+import {View, Text, StyleSheet, Image, useWindowDimensions, TouchableOpacity} from "react-native";
 
 const Item = ({item}:any) => {
     const {width} = useWindowDimensions();

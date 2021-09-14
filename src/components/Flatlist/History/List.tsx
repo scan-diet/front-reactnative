@@ -4,22 +4,24 @@ import {
     StyleSheet,
     FlatList,
     Animated,
+    Text,
     useWindowDimensions
 } from "react-native";
 import Item from "./Item";
 
 interface IProdFlatList {
     json:any
+    props:any
 }
 
-const List: FC<IProdFlatList> = ({json}) => {
+const List: FC<IProdFlatList> = ({json,props}) => {
     const scrollx = useRef(new Animated.Value(0)).current;
     const {width} = useWindowDimensions();
 
     return(
         <View style={[styles.container, {width}]}>
                 <FlatList data={json}
-                          renderItem={({item}) => <Item item={{item}}/>}
+                          renderItem={({item}) => <Item item={item} props={props}/>}
                           horizontal
                           showsHorizontalScrollIndicator
                           pagingEnabled
