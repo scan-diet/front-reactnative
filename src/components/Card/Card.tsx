@@ -2,14 +2,13 @@ import React, {FC} from "react";
 import {StyleSheet, Text, View} from "react-native";
 import {useBlueColor, useGreenColor, useWhiteColor} from "../../hooks/colorVariables";
 import {openURL} from "expo-linking";
+import moment from "moment";
 
 interface ICardProps {
     //add props if necessary
 }
 
-let date = new Date().getDate();
-let month = new Date().getMonth()+1;
-let year = new Date().getFullYear();
+let dayDate = moment().locale('fr').format('Do MMMM YYYY');
 
 const Card: FC<ICardProps> = ({}) => {
     return (
@@ -19,7 +18,7 @@ const Card: FC<ICardProps> = ({}) => {
             </View>
 
             <View>
-                <Text style={{fontSize:17, paddingVertical:10}}>Today, the {date}/{month}/{year}</Text>
+                <Text style={{fontSize:17, paddingVertical:10}}>{dayDate}</Text>
             </View>
 
             <View>
