@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
 import {Provider} from "react-redux";
-import BottomTabScreen from "./src/screens/main/tabNavigator";
+import BottomTabScreen from "./src/navigation/tabNavigator";
 import {enableScreens} from 'react-native-screens'
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from "./src/screens/main/Login";
@@ -37,26 +37,3 @@ export default class App extends React.Component {
       )
   }
 };
-/**
- * NEW VERSION TO REMOVE IF NOT WORKING
- */
-
-
-/*export default class App extends React.Component {
-
-    render(){
-        return (
-            <Provider store={store}>
-                <NavigationContainer>
-                    {{/!*<Navigation />*!/}}
-                    <Stack.Navigator screenOptions={{headerShown:false}}>
-                        <Stack.Screen name="Login" component={Login}/>
-                        <Stack.Screen name="Scan" component={Scan} />
-                        <Stack.Screen name="Signup" component={Signup} />
-                        <Stack.Screen name={"BottomTabScreen"} component={BottomTabScreen} />
-                    </Stack.Navigator>
-                </NavigationContainer>
-            </Provider>
-        );
-    }
-}*/

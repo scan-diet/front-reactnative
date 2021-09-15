@@ -1,11 +1,12 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
+import {Text} from "react-native-elements"
 
 export default class Shopping extends React.Component {
     render() {
         return (
             <View style={styles.main_container}>
-                <Text>Vue Course</Text>
+                <Text h3>Vue Course</Text>
             </View>
         )
     }

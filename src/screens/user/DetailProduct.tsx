@@ -59,7 +59,6 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
     render() {
         const json = this.props.route.params
-
         return (
             <View style={{ flex:1, padding:50}}>
                 <View style={{flexDirection:"row"}}>
@@ -115,6 +114,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
                 <View style={{paddingTop:40, flex:1, alignItems:"center"}}>
                     <Text style={{fontSize:24, fontWeight:"bold"}}>Recommandations</Text>
+                    {/* @ts-ignore */}
                     <List json={json} props={this.props} />
                 </View>
             </View>

@@ -1,11 +1,11 @@
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import React from "react";
-import {useBlueColor, useGreyColor, useWhiteColor} from "../../hooks/colorVariables";
-import Home from "../user/Home";
+import {useBlueColor, useGreyColor, useWhiteColor} from "../hooks/colorVariables";
+import Home from "../screens/user/Home";
 import {Entypo, MaterialIcons, Ionicons} from "@expo/vector-icons";
-import Settings from "./Settings";
-import Profile from "../user/Profile";
-import Shopping from "../user/Shopping";
+import Settings from "../screens/main/Settings";
+import Profile from "../screens/user/Profile";
+import Shopping from "../screens/user/Shopping";
 
 const Tab = createMaterialBottomTabNavigator();
 

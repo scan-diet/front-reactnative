@@ -1,5 +1,6 @@
 import React from 'react'
-import {View, Text, Button, StyleSheet } from 'react-native'
+import {View, Button, StyleSheet } from 'react-native';
+import {Text} from "react-native-elements";
 import {useBlueColor} from "../../hooks/colorVariables";
 import {openURL} from "expo-linking";
 
@@ -12,7 +13,7 @@ export default class Settings extends React.Component<ISettings> {
         return (
             <View style={styles.main_view}>
                 <View style={styles.title_view}>
-                    <Text style={styles.text}>Settings</Text>
+                    <Text h3>Settings</Text>
                 </View>
 
                 <View style={styles.button_view}>

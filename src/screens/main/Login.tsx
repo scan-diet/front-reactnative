@@ -118,7 +118,6 @@ class Login extends React.Component<ILoginProps> {
                 await this.getUser(json.token)
                 this.props.navigation.navigate('BottomTabScreen')
             } else {
-                //TODO: add information password incorrect to user
                 alert(json.message)
             }
         } catch (error) {
