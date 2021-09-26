@@ -6,7 +6,7 @@ import Diet from "../../../models/Diet";
 interface IProdItem {
     item:any
     props:any
-};
+}
 async function handleBarCodeScanned(barcode: any,props: any) {
     let response = await fetch(
         `https://scandiet-nestjs-back.herokuapp.com/products/authenticated/${barcode}`, {

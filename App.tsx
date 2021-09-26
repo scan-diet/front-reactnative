@@ -23,14 +23,14 @@ export default class App extends React.Component {
           <Provider store={store}>
               <NavigationContainer>
                   <Stack.Navigator screenOptions={{headerShown:false}}>
-                      <Stack.Screen name="Login" component={Login}/>
-                      <Stack.Screen name="DetailProduct" component={DetailProduct}/>
-                      <Stack.Screen name="Scan" component={Scan} />
-                      <Stack.Screen name="ScanUser" component={ScanUser} />
-                      <Stack.Screen name="Signup" component={Signup} />
-                      <Stack.Screen name="Profile" component={Profile} />
-                      <Stack.Screen name="ProductFlatlistItem" component={Item} />
-                      <Stack.Screen name={"BottomTabScreen"} component={BottomTabScreen} />
+                      <Stack.Screen name="Login"                component={Login}           />
+                      <Stack.Screen name="DetailProduct"        component={DetailProduct}   />
+                      <Stack.Screen name="Scan"                 component={Scan}            />
+                      <Stack.Screen name="ScanUser"             component={ScanUser}        />
+                      <Stack.Screen name="Signup"               component={Signup}          />
+                      <Stack.Screen name="Profile"              component={Profile}         />
+                      <Stack.Screen name="ProductFlatlistItem"  component={Item}            />
+                      <Stack.Screen name="BottomTabScreen"      component={BottomTabScreen} />
                   </Stack.Navigator>
               </NavigationContainer>
           </Provider>

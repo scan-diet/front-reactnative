@@ -22,7 +22,7 @@ export default function App(props:any) {
         setScanned(true);
 
         let response = await fetch(
-            `https://scandiet-nestjs-back.herokuapp.com/products/authenticated/${data}`, {
+            `https://scandiet-nestjs-back.herokuapp.com/products/authenticated/${data}`,{
                 method: "GET",
                 headers: {
                     Accept: 'application/json',
@@ -81,8 +81,7 @@ export default function App(props:any) {
 
         if (response.status === 200) {
             const p = json.product
-
-            props.navigation.navigate('DetailProduct', new Product(
+            props.navigation.navigate('DetailProduct', [new Product(
                 p.name,
                 p.image.path,
                 nutriment,
@@ -92,7 +91,7 @@ export default function App(props:any) {
                 suggest,
                 diet,
                 p.complete
-            ))
+            ),props.route.params.user._token])
         } else {
         }
     };

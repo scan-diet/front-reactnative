@@ -100,7 +100,7 @@ class Login extends React.Component<ILoginProps> {
 
             let response = await fetch(
                 'https://scandiet-nestjs-back.herokuapp.com/users/authenticate', {
-                    method: "post",
+                    method: "POST",
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json'
@@ -115,6 +115,7 @@ class Login extends React.Component<ILoginProps> {
             let json = await response.json();
             let status = response.status;
             if (status === 200){
+                console.log(json.token)
                 await this.getUser(json.token)
                 this.props.navigation.navigate('BottomTabScreen')
             } else {
