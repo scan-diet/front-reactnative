@@ -20,8 +20,9 @@ export default function App(props:any) {
 
     const handleBarCodeScanned = async ({type, data}: any) => {
         setScanned(true);
+
         let response = await fetch(
-            `https://scandiet-nestjs-back.herokuapp.com/products/authenticated/${data}`,{
+            `https://scandiet-nestjs-back.herokuapp.com/products/authenticated/${data}`, {
                 method: "GET",
                 headers: {
                     Accept: 'application/json',
@@ -29,44 +30,26 @@ export default function App(props:any) {
                     "jwt-token":props.route.params.user._token
                 }
             });
+
         let json = await response.json();
-        console.log(json)
         let nutriment:Nutriment[] = []
         let suggest: Product[]= []
-        let lactose = false
-        let gluten = false
-        let vegan = false
-        let vegetarian = false
-        if (json.diet_preference.withoutLactose){
-            lactose = json.diet_preference.withoutLactose
-        }
-        if (json.diet_preference.withoutGluten){
-            gluten = json.diet_preference.withoutGluten
-        }
-        if (json.diet_preference.vegan){
-            vegan = json.diet_preference.vegan
-        }
-        if (json.diet_preference.vegetarian){
-            vegetarian = json.diet_preference.vegetarian
-        }
         let diet:Diet = new Diet(
-            lactose,
-            gluten,
-            vegan,
-            vegetarian
+            json.diet_preference.withoutLactose,
+            json.diet_preference.withoutGluten,
+            json.diet_preference.vegan,
+            json.diet_preference.vegetarian
         )
 
-           for (let i=0; i<json.product.nutriments.length; i++){
-               if (json.product.nutriments[i]){
-                   const nutri:Nutriment = new Nutriment(
-                       json.product.nutriments[i].name,
-                       json.product.nutriments[i].raw_value.value
-                   )
-                   nutriment.push(nutri)
-               }
-           }
-
-
+        for (let i=0; i<json.product.nutriments.length; i++){
+            if (json.product.nutriments[i]){
+                const nutri:Nutriment = new Nutriment(
+                    json.product.nutriments[i].name,
+                    0//json.product.nutriments[i].raw_value.value
+                )
+                nutriment.push(nutri)
+            }
+        }
 
         for (let i=0; i<3; i++){
             let res = await fetch(
@@ -97,17 +80,17 @@ export default function App(props:any) {
 
         if (response.status === 200) {
             const p = json.product
-            props.navigation.navigate('DetailProduct', [new Product(
+            props.navigation.navigate('DetailProductShopping', [new Product(
                 p.name,
                 p.image.path,
                 nutriment,
                 p.nutriscore_grade,
-                p.energetic_income[0].value,
+                0,//p.energetic_income[0].value,
                 data,
                 suggest,
                 diet,
                 p.complete
-            ),props.route.params.user._token])
+            ),props])
         } else {
         }
     };
