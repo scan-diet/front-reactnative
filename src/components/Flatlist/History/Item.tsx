@@ -68,7 +68,7 @@ async function handleBarCodeScanned(barcode: any,props: any) {
     if (response.status === 200) {
         const p = json.product
 
-        props.navigation.navigate('DetailProduct', new Product(
+        props.navigation.navigate('DetailProduct', [new Product(
             p.name,
             p.image.path,
             nutriment,
@@ -78,7 +78,7 @@ async function handleBarCodeScanned(barcode: any,props: any) {
             suggest,
             diet,
             p.complete
-        ))
+        ),props.user.token])
     } else {
     }
 }

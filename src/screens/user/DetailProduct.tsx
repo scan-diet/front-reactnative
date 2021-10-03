@@ -132,6 +132,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
 
     render() {
         const json = this.props.route.params[0];
+        console.log(json);
         const getNote = this.getProductGrade();
 
         return (
