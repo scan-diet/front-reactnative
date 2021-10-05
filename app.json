@@ -4,7 +4,7 @@
     "slug": "scan-diet",
     "description": "This app helps you eat healthy according to your diet.",
     "privacy": "public",
-    "version": "5.0.0",
+    "version": "6.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -23,7 +23,7 @@
     },
     "android": {
       "package": "com.esgi.groupe7",
-      "versionCode": 5,
+      "versionCode": 6,
       "adaptiveIcon": {
         "backgroundColor": "#171717",
         "backgroundImage": "./src/assets/images/square_logo_scan_diet.png",

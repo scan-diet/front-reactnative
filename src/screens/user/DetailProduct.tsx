@@ -130,10 +130,13 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
         }
     }
 
+    componentDidMount() {
+        this.getProductGrade()
+    }
+
     render() {
         const json = this.props.route.params[0];
         console.log(json);
-        const getNote = this.getProductGrade();
 
         return (
             <View style={{ flex:1, padding:50}}>

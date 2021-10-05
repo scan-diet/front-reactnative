@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import {FlatList, StyleSheet, View, Text, Image, useWindowDimensions} from "react-native";
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {SetShopping, SetUserDetail} from "../../store/actions";
 import {connect, ConnectedProps} from "react-redux";
@@ -12,7 +12,6 @@ const mapStateToProps = (state : any) => {
     return {
         user: state.auth.user,
         shopping: state.auth.shopping
-
     }
 }
 
@@ -31,7 +30,7 @@ interface IPanier extends PropsFromRedux {
     SetShopping:typeof SetShopping
     user: User
     navigation: any
-    shopping: History
+    shopping: Product[]
 
 }
 
@@ -39,6 +38,7 @@ class Panier extends React.Component<IPanier>{
     constructor(props:any) {
         super(props);
     }
+
     async course() {
         this.props.navigation.navigate('ScanShopping',this.props)
     };
@@ -67,9 +67,12 @@ class Panier extends React.Component<IPanier>{
             );
             let status = await response.status;
             if (status === 200){
+                console.log("======================================")
+                console.log("ICI")
+                console.log("======================================")
                 const shop : Product[] = []
                 this.props.SetShopping(shop)
-                 this.props.navigation.replace('Shopping')
+                this.props.navigation.replace('Shopping')
             }
             else{
                 console.log("Cousre non crééer");
@@ -82,7 +85,6 @@ class Panier extends React.Component<IPanier>{
 
 
     render() {
-            console.log(this.props.shopping)
             return (
                 <View style={styles.main_container}>
 
@@ -90,15 +92,34 @@ class Panier extends React.Component<IPanier>{
                         <BasicButton title={"Scanner un produit"} onPress={this.course.bind(this)} />
                         <BasicButton title={"Terminer"} onPress={this.fin.bind(this)} />
                     </View>
+
+                    <View>
+                        <Text style={{fontSize:25}}>My basket</Text>
+                        <FlatList
+                            scrollEnabled={true}
+                            data={this.props.shopping}
+                            renderItem={({item}) =>
+                                <View style={{flexDirection:"column", backgroundColor:'cyan'}}>
+                                    <Image source={{uri: item.image}} style={styles.image}/>
+                                </View>
+                            }
+                            ItemSeparatorComponent={() => <Text></Text>}
+                        >
+                        </FlatList>
+                    </View>
                 </View>
             )
-
     }
 }
 
 const styles = StyleSheet.create({
     main_container: {
         padding: 50
+    },
+    image: {
+        flex: 0.7,
+        width:100,
+        height:100
     }
 })
 

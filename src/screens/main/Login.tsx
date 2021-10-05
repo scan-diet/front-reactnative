@@ -58,7 +58,15 @@ class Login extends React.Component<ILoginProps> {
                         new Diet(false,false,false,false),
                         false
                     )
-                    history.push(product)
+                    let inList = false
+                    for(let k=0;k>history.length;k++){
+                        if(json[i].name==history[k].name){
+                            inList = true
+                        }
+                    }
+                    if(inList == false){
+                        history.push(product)
+                    }
                 }
             }
             if (status === 200){

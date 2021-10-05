@@ -1,8 +1,8 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import {FlatList, StyleSheet, View} from "react-native";
 import {Text} from "react-native-elements"
 import {BasicButton} from "../../components/Buttons/BasicButton";
-import {SetHistoryShopping, SetUserDetail} from "../../store/actions";
+import {SetHistoryShopping, SetShopping, SetUserDetail} from "../../store/actions";
 import {connect, ConnectedProps} from "react-redux";
 import User from "../../models/User";
 import {Product} from "../../models/Product";
@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch: any )=> {
     return {
         SetUserDetail: (user: any) => dispatch(SetUserDetail(user)),
         SetHistoryShopping: (historyShopping: any) => dispatch(SetHistoryShopping(historyShopping)),
+        SetShopping: (shopping: any) => dispatch(SetShopping(shopping))
     }
 }
 
@@ -34,18 +35,21 @@ interface IShopping extends PropsFromRedux {
     user: User
     navigation: any
     historyShopping: HistoryShopping
+    SetShopping:typeof SetShopping
 }
 class Shopping extends React.Component<IShopping>{
     constructor(props: IShopping) {
         super(props);
         this.state = {
             historyShopping: new HistoryShopping(),
+            liste: []
         }
     }
     state: {
         historyShopping: HistoryShopping,
     }
     async course() {
+        this.props.SetShopping([])
         this.props.navigation.navigate('Panier',this.props)
     };
 
@@ -62,35 +66,20 @@ class Shopping extends React.Component<IShopping>{
                 }
             );
             let json = await response.json();
-            let status = response.status;
-            let shop: HistoryShopping[] = []
-            for (let i=0; i<json.length; i++){
-                let tabShopping: HistoryShopping = new HistoryShopping()
-                if(json[i]!=null){
-                    if(json[i].products!=null){
-                        let tabProduct: Product[] = []
-                        for(let j=0; j<json[i].products.length; j++){
-                            let product:Product = new Product(
-                                json[i].products[j].name,
-                                json[i].products[j].image.path,
-                                [],
-                                "",
-                                0,
-                                json[i].products[j].bar_code,
-                                0,
-                                new Diet(false,false,false,false),
-                                false
-                            )
-                            tabProduct.push(product)
-                        }
-                        tabShopping= new HistoryShopping(tabProduct,json[i].endDate,json[i].startDate)
-                    }
-                }
-                shop.push(tabShopping)
-            }
+            console.log(json);
 
-            if (status === 200){
-                this.props.SetHistoryShopping(shop)
+            this.setState({
+                liste: json.map((element:any) => {
+                    //TODO: formater la date ici
+                    // element.endDate = 'formater la date';
+                    return element
+                })
+            })
+
+            if(response.status == 200){
+                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                console.log("historique récupéré")
+                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             }
 
         } catch (error) {
@@ -103,13 +92,19 @@ class Shopping extends React.Component<IShopping>{
 
     render() {
         return (
-
             <View style={styles.main_container}>
                 <Text h3>Vue Course</Text>
                 <View style={{marginBottom:'15%'}}>
                     <BasicButton title={"Creer une liste de courses"} onPress={this.course.bind(this)} />
                 </View>
 
+                <FlatList data={this.state.liste}
+                          renderItem={({item}) => <Text key={item.endDate}>{item.endDate}</Text>}
+                          // ItemSeparatorComponent={() => <Text>fff</Text>}
+                          ListEmptyComponent={() => <Text>Nothing</Text>}
+                >
+
+                </FlatList>
             </View>
         )
     }
