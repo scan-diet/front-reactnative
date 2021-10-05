@@ -43,7 +43,7 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
         tab = this.props.shopping;
         tab.push(json)
         this.props.SetShopping(tab);
-        this.props.navigation.navigate('Panier')
+        this.props.navigation.replace('Panier')
     };
     notAdd(){
         this.props.navigation.navigate('Panier')
