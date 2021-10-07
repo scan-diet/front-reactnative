@@ -30,7 +30,6 @@ export default function App(props:any) {
                 }
             });
         let json = await response.json();
-        console.log(json)
         let nutriment:Nutriment[] = []
         let suggest: Product[]= []
         let lactose = false
@@ -55,16 +54,25 @@ export default function App(props:any) {
             vegan,
             vegetarian
         )
+        if(json.product.nutriments.length>0){
+            for (let i=0; i<json.product.nutriments.length; i++){
+                if (json.product.nutriments[i]){
+                    const nutri:Nutriment = new Nutriment(
+                        json.product.nutriments[i].name,
+                        json.product.nutriments[i].raw_value.value
+                    )
+                    nutriment.push(nutri)
+                }
+            }
+        }
+        else{
+            const proteins:Nutriment=new Nutriment("proteins",0)
+            const fat:Nutriment=new Nutriment("fat",0)
+            const sugar:Nutriment=new Nutriment("sugar",0)
+            const salt:Nutriment=new Nutriment("salt",0)
+            nutriment.push(proteins,fat,sugar,salt)
+        }
 
-           for (let i=0; i<json.product.nutriments.length; i++){
-               if (json.product.nutriments[i]){
-                   const nutri:Nutriment = new Nutriment(
-                       json.product.nutriments[i].name,
-                       json.product.nutriments[i].raw_value.value
-                   )
-                   nutriment.push(nutri)
-               }
-           }
 
 
 
@@ -97,12 +105,16 @@ export default function App(props:any) {
 
         if (response.status === 200) {
             const p = json.product
+            let energeticIncome = 0
+            if(p.energetic_income.length>0){
+                energeticIncome=p.energetic_income[0].value
+            }
             props.navigation.navigate('DetailProduct', [new Product(
                 p.name,
                 p.image.path,
                 nutriment,
                 p.nutriscore_grade,
-                p.energetic_income[0].value,
+                energeticIncome,
                 data,
                 suggest,
                 diet,

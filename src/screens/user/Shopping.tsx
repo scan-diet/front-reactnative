@@ -1,5 +1,5 @@
 import React from "react";
-import {FlatList, StyleSheet, View} from "react-native";
+import {FlatList, StyleSheet, TouchableOpacity, View} from "react-native";
 import {Text} from "react-native-elements"
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {SetHistoryShopping, SetShopping, SetUserDetail} from "../../store/actions";
@@ -52,7 +52,6 @@ class Shopping extends React.Component<IShopping>{
         this.props.SetShopping([])
         this.props.navigation.navigate('Panier',this.props)
     };
-
     async getShopping(){
         try{
             let response = await fetch(
@@ -66,8 +65,6 @@ class Shopping extends React.Component<IShopping>{
                 }
             );
             let json = await response.json();
-            console.log(json);
-
             this.setState({
                 liste: json.map((element:any) => {
                     //TODO: formater la date ici
@@ -78,7 +75,7 @@ class Shopping extends React.Component<IShopping>{
 
             if(response.status == 200){
                 console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                console.log("historique récupéré")
+                console.log(json)
                 console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             }
 
@@ -88,6 +85,24 @@ class Shopping extends React.Component<IShopping>{
     }
     componentDidMount() {
         this.getShopping()
+    }
+    lstCourse(products:any,props:any){
+        this.props.navigation.navigate('LstCourse',[props,products])
+    }
+    getDate(item:any):string{
+        const date = new Date(item);
+        const day = date.getDate();
+        const monthIndex = date.getMonth()+1;
+        const year = date.getFullYear();
+        const dateRet = day + "/"+monthIndex+"/"+year
+        return dateRet
+    }
+    getTime(item:any):string{
+        const date = new Date(item);
+        const min = date.getMinutes();
+        const hour = date.getHours();
+        const dateRet = hour + ":"+min
+        return dateRet
     }
 
     render() {
@@ -99,8 +114,11 @@ class Shopping extends React.Component<IShopping>{
                 </View>
 
                 <FlatList data={this.state.liste}
-                          renderItem={({item}) => <Text key={item.endDate}>{item.endDate}</Text>}
-                          // ItemSeparatorComponent={() => <Text>fff</Text>}
+                          renderItem={({item}) => <TouchableOpacity  onPress={() => this.lstCourse(item.products,this.props)}>
+                              <Text key={item.endDate}>Course du : {this.getDate(item.endDate)}</Text>
+                              <Text key={item.endDate}>Fait à {this.getTime(item.endDate)}</Text>
+                          </TouchableOpacity>}
+                          ItemSeparatorComponent={() => <Text></Text>}
                           ListEmptyComponent={() => <Text>Nothing</Text>}
                 >
 
