@@ -1,7 +1,6 @@
 import React from "react";
 import {SafeAreaView, View} from "react-native";
 import Card from "../../components/Card/Card";
-import Header from "./Header";
 import {ScanListButton} from "../../components/Buttons/ScanListButton";
 import {connect, ConnectedProps} from "react-redux";
 import User from "../../models/User";

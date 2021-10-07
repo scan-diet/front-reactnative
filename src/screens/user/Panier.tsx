@@ -1,11 +1,15 @@
 import React from "react";
-import {FlatList, StyleSheet, View, Text, Image, useWindowDimensions} from "react-native";
+import {FlatList, StyleSheet, View, Text, Image} from "react-native";
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {SetShopping, SetUserDetail} from "../../store/actions";
 import {connect, ConnectedProps} from "react-redux";
 import User from "../../models/User";
-import History from "../../models/History";
 import {Product} from "../../models/Product";
+import {
+    useBlueColor,
+    useTransparentColor
+} from "../../hooks/colorVariables";
+import {Divider} from "react-native-elements";
 
 
 const mapStateToProps = (state : any) => {
@@ -67,9 +71,6 @@ class Panier extends React.Component<IPanier>{
             );
             let status = await response.status;
             if (status === 200){
-                console.log("======================================")
-                console.log("ICI")
-                console.log("======================================")
                 const shop : Product[] = []
                 this.props.SetShopping(shop)
                 this.props.navigation.replace('Shopping')
@@ -89,21 +90,33 @@ class Panier extends React.Component<IPanier>{
                 <View style={styles.main_container}>
 
                     <View style={{marginBottom:'15%'}}>
-                        <BasicButton title={"Scanner un produit"} onPress={this.course.bind(this)} />
-                        <BasicButton title={"Terminer"} onPress={this.fin.bind(this)} />
+                        <BasicButton title={"Scan an item"} onPress={this.course.bind(this)} />
+                        <BasicButton title={"Finished"} onPress={this.fin.bind(this)} />
                     </View>
 
                     <View>
-                        <Text style={{fontSize:25}}>My basket</Text>
+                        <Text style={{fontSize:25, color:useBlueColor, fontWeight:'bold', marginBottom:15}}>My basket</Text>
                         <FlatList
                             scrollEnabled={true}
                             data={this.props.shopping}
                             renderItem={({item}) =>
-                                <View style={{flexDirection:"column", backgroundColor:'cyan'}}>
+                                <View style={{flexDirection:"column"}}>
                                     <Image source={{uri: item.image}} style={styles.image}/>
                                 </View>
                             }
-                            ItemSeparatorComponent={() => <Text></Text>}
+                            ItemSeparatorComponent={(item) =>
+                                <Divider
+                                    width={15}
+                                    color={useTransparentColor}
+                                />
+                            }
+                            ListEmptyComponent={() =>
+                                <View>
+                                    <View>
+                                        <Image source={require("../../assets/images/cart_is_empty.png")} style={styles.emptyCart}/>
+                                    </View>
+                                </View>
+                            }
                         >
                         </FlatList>
                     </View>
@@ -120,6 +133,14 @@ const styles = StyleSheet.create({
         flex: 0.7,
         width:100,
         height:100
+    },
+    emptyCart: {
+        flex:1,
+        width:450,
+        height:200,
+        alignSelf:"center",
+        color:"green",
+        resizeMode:'contain'
     }
 })
 
