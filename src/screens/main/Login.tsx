@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, Text, TextInput, View} from "react-native";
+import {Image, StyleSheet, Text, TextInput, View, ActivityIndicator} from "react-native";
 import {SetHistory, SetUserDetail} from "../../store/actions";
 import {SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
@@ -146,6 +146,7 @@ class Login extends React.Component<ILoginProps> {
 
                     <View style={{marginBottom:'15%'}}>
                         <BasicButton title={"Login"} onPress={this.login.bind(this)} />
+                        <ActivityIndicator size="large" />
                     </View>
 
                     <Text style={[{fontWeight:"bold"},styles.other_info]} onPress={()=>{this.props.navigation.navigate('Signup')}}>

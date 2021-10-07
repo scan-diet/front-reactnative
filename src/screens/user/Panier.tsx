@@ -95,7 +95,7 @@ class Panier extends React.Component<IPanier>{
                     </View>
 
                     <View>
-                        <Text style={{fontSize:25, color:useBlueColor, fontWeight:'bold', marginBottom:15}}>My basket</Text>
+                        <Text style={{fontSize:25, color:useBlueColor, fontWeight:'bold', marginBottom:15}}>My Cart</Text>
                         <FlatList
                             scrollEnabled={true}
                             data={this.props.shopping}
