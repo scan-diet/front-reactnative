@@ -16,6 +16,7 @@ import Item from "./src/components/Flatlist/Product/Item";
 import Panier from "./src/screens/user/Panier";
 import DetailProductShopping from "./src/screens/user/DetailProductShopping";
 import Shopping from "./src/screens/user/Shopping";
+import LstCourse from "./src/screens/user/LstCourse";
 
 enableScreens();
 
@@ -33,6 +34,7 @@ export default class App extends React.Component {
                         <Stack.Screen name="Scan" component={Scan} />
                         <Stack.Screen name="ScanUser" component={ScanUser} />
                         <Stack.Screen name="Shopping" component={Shopping} />
+                        <Stack.Screen name="LstCourse" component={LstCourse} />
                         <Stack.Screen name="ScanShopping" component={ScanShopping} />
                         <Stack.Screen name="Signup" component={Signup} />
                         <Stack.Screen name="Profile" component={Profile} />
