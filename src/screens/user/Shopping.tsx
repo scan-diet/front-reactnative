@@ -1,20 +1,17 @@
 import React from "react";
-import {FlatList, StyleSheet, TouchableOpacity, View} from "react-native";
-import {Text} from "react-native-elements"
+import {FlatList, Image, SafeAreaView, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Divider, Text} from "react-native-elements"
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {SetHistoryShopping, SetShopping, SetUserDetail} from "../../store/actions";
 import {connect, ConnectedProps} from "react-redux";
 import User from "../../models/User";
-import {Product} from "../../models/Product";
-import Diet from "../../models/Diet";
 import HistoryShopping from "../../models/HistoryShopping";
-
+import {Text as TRNE} from "react-native-elements"
 
 const mapStateToProps = (state : any) => {
     return {
         user: state.auth.user,
         historyShopping: state.auth.historyShopping
-
     }
 }
 
@@ -73,12 +70,6 @@ class Shopping extends React.Component<IShopping>{
                 })
             })
 
-            if(response.status == 200){
-                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                console.log(json)
-                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            }
-
         } catch (error) {
             console.error(error);
         }
@@ -94,23 +85,21 @@ class Shopping extends React.Component<IShopping>{
         const day = date.getDate();
         const monthIndex = date.getMonth()+1;
         const year = date.getFullYear();
-        const dateRet = day + "/"+monthIndex+"/"+year
-        return dateRet
+        return day + "/" + monthIndex + "/" + year
     }
     getTime(item:any):string{
         const date = new Date(item);
         const min = date.getMinutes();
         const hour = date.getHours();
-        const dateRet = hour + ":"+min
-        return dateRet
+        return hour + ":" + min
     }
 
     render() {
         return (
-            <View style={styles.main_container}>
-                <Text h3>Vue Course</Text>
+            <SafeAreaView style={styles.main_container}>
+                <Text h3>Shopping Mode</Text>
                 <View style={{marginBottom:'15%'}}>
-                    <BasicButton title={"Creer une liste de courses"} onPress={this.course.bind(this)} />
+                    <BasicButton title={"Create a shopping list"} onPress={this.course.bind(this)} />
                 </View>
 
                 <FlatList data={this.state.liste}
@@ -118,12 +107,18 @@ class Shopping extends React.Component<IShopping>{
                               <Text key={item.endDate}>Course du : {this.getDate(item.endDate)}</Text>
                               <Text key={item.endDate}>Fait à {this.getTime(item.endDate)}</Text>
                           </TouchableOpacity>}
-                          ItemSeparatorComponent={() => <Text></Text>}
-                          ListEmptyComponent={() => <Text>Nothing</Text>}
+                          ItemSeparatorComponent={() => <Divider width={1}/>}
+                          ListEmptyComponent={() =>
+                              <View>
+                                  <View>
+                                      <Image source={require("../../assets/images/list_empty.png")} style={styles.emptyShopping}/>
+                                      <Text style={{textAlign:"center", fontSize:20, fontStyle:"italic"}}>Your shopping list is empty</Text>
+                                  </View>
+                              </View>
+                          }
                 >
-
                 </FlatList>
-            </View>
+            </SafeAreaView>
         )
     }
 }
@@ -131,6 +126,14 @@ class Shopping extends React.Component<IShopping>{
 const styles = StyleSheet.create({
     main_container: {
         padding: 50
+    },
+    emptyShopping: {
+        flex:1,
+        width:450,
+        height:200,
+        alignSelf:"center",
+        color:"green",
+        resizeMode:'contain'
     }
 })
 

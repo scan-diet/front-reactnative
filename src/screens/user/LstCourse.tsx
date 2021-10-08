@@ -18,6 +18,7 @@ export default class LstCourse extends React.Component<IDetailProduct> {
         let b=0
         let c=0
         let d=0
+        let e=0
         const json=this.props.route.params[1]
         for(let i=0;i<json.length;i++){
             console.log(json[i].nutriscore_grade)
@@ -33,6 +34,9 @@ export default class LstCourse extends React.Component<IDetailProduct> {
                     break;
                 case 'd':
                     d=d+1;
+                    break;
+                case 'e':
+                    e=e+1;
                     break;
         }
     }
@@ -60,6 +64,13 @@ export default class LstCourse extends React.Component<IDetailProduct> {
         {
             name : "D",
             nbr: d,
+            color:"orange",
+            legendFontColor:"orange",
+            legendFontSize:15
+        },
+        {
+            name : "E",
+            nbr: e,
             color:"red",
             legendFontColor:"red",
             legendFontSize:15
@@ -97,14 +108,15 @@ export default class LstCourse extends React.Component<IDetailProduct> {
                 </FlatList>
                 <PieChart
                     data={this.stat()}
-                    width={500}
+                    width={500} // modifier ici pour l'adapter à l'appareil
                     height={250}
                     chartConfig={chartConfig}
                     accessor={"nbr"}
                     backgroundColor={"transparent"}
                     paddingLeft={"50"}
                     center={[1,15]}
-                    absolute/>
+                    absolute
+                />
             </View>
         )
     }
