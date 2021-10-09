@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, Text, TextInput, View, ActivityIndicator} from "react-native";
+import {Image, StyleSheet, Text, TextInput, View, ActivityIndicator, SafeAreaView} from "react-native";
 import {SetHistory, SetUserDetail} from "../../store/actions";
 import {SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
@@ -123,6 +123,7 @@ class Login extends React.Component<ILoginProps> {
             let json = await response.json();
             let status = response.status;
             if (status === 200){
+                console.log(json.token);
                 await this.getUser(json.token)
                 this.props.navigation.navigate('BottomTabScreen')
             } else {
@@ -136,7 +137,7 @@ class Login extends React.Component<ILoginProps> {
     render() {
         let logo = '../../assets/images/logo_scan_diet.png';
         return (
-            <View style={styles.main_container}>
+            <SafeAreaView style={styles.main_container}>
                 <View style={styles.main_view}>
                     <Image style={styles.logo} source={require(logo)}/>
                     <Text style={styles.home_title}>Welcome to ScanDiet</Text>
@@ -152,7 +153,7 @@ class Login extends React.Component<ILoginProps> {
                         Create account
                     </Text>
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
 }

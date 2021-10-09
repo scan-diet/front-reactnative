@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
-import DetailProduct from "./DetailProduct";
 import {Product} from "../../models/Product";
 import Nutriment from "../../models/Nutriment";
 import Diet from "../../models/Diet";
@@ -38,18 +37,22 @@ export default function App(props:any) {
         let gluten = false
         let vegan = false
         let vegetarian = false
-        if (json.diet_preference.withoutLactose){
-            lactose = json.diet_preference.withoutLactose
+
+        if(json.diet_preference){
+            if (json.diet_preference.withoutLactose) {
+                lactose = json.diet_preference.withoutLactose
+            }
+            if (json.diet_preference.withoutGluten) {
+                gluten = json.diet_preference.withoutGluten
+            }
+            if (json.diet_preference.vegan) {
+                vegan = json.diet_preference.vegan
+            }
+            if (json.diet_preference.vegetarian) {
+                vegetarian = json.diet_preference.vegetarian
+            }
         }
-        if (json.diet_preference.withoutGluten){
-            gluten = json.diet_preference.withoutGluten
-        }
-        if (json.diet_preference.vegan){
-            vegan = json.diet_preference.vegan
-        }
-        if (json.diet_preference.vegetarian){
-            vegetarian = json.diet_preference.vegetarian
-        }
+
         let diet:Diet = new Diet(
             lactose,
             gluten,
@@ -111,7 +114,7 @@ export default function App(props:any) {
             if(p.energetic_income.length>0){
                 energeticIncome=p.energetic_income[0].value
             }
-            props.navigation.navigate('DetailProductShopping', [new Product(
+            props.navigation.replace('DetailProductShopping', [new Product(
                 p.name,
                 p.image.path,
                 nutriment,

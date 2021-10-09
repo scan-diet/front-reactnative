@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-native-fontawesome": "^0.2.6",
@@ -36,6 +37,7 @@
     "react-dom": "16.13.1",
     "react-native": "0.63.4",
     "react-native-appearance": "~0.3.3",
+    "react-native-chart-kit": "^6.11.0",
     "react-native-elements": "^3.4.1",
     "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "~1.10.2",
@@ -45,7 +47,6 @@
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
-    "react-native-chart-kit": "^6.11.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-star-rating": "^1.1.0",
     "react-native-svg": "12.1.1",

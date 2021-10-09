@@ -1,5 +1,5 @@
 import React from "react";
-import {FlatList, Image, StyleSheet, Text, View} from "react-native";
+import {FlatList, Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {RouteProp} from "@react-navigation/native"
 
 import {PieChart} from "react-native-chart-kit";
@@ -13,40 +13,37 @@ export default class LstCourse extends React.Component<IDetailProduct> {
     constructor(props: IDetailProduct) {
         super(props);
     }
+
     stat(){
-        let a=0
-        let b=0
-        let c=0
-        let d=0
-        let e=0
+        let a,b,c,d,e = 0
         const json=this.props.route.params[1]
         for(let i=0;i<json.length;i++){
             console.log(json[i].nutriscore_grade)
             switch (json[i].nutriscore_grade) {
                 case 'a':
-                    a= a+1;
+                    a++;
                     break;
                 case 'b':
-                    b=b+1;
+                    b++;
                     break;
                 case 'c':
-                    c=c+1;
+                    c++;
                     break;
                 case 'd':
-                    d=d+1;
+                    d++;
                     break;
                 case 'e':
-                    e=e+1;
+                    e++;
                     break;
         }
     }
     const data = [{
             name : "A",
             nbr: a,
-        color:"green",
-        legendFontColor:"green",
-        legendFontSize:15
-    },
+            color:"green",
+            legendFontColor:"green",
+            legendFontSize:15
+        },
         {
             name : "B",
             nbr: b,
@@ -79,6 +76,7 @@ export default class LstCourse extends React.Component<IDetailProduct> {
         console.log(data)
     return data
     }
+
     render() {
         const json = this.props.route.params[1];
         const chartConfig = {
@@ -93,8 +91,8 @@ export default class LstCourse extends React.Component<IDetailProduct> {
         };
         console.log(this.props.route.params[1])
         return (
-            <View>
-                <Text style={{fontSize:25}}>My basket</Text>
+            <SafeAreaView style={{backgroundColor:'cyan', flex:1}}>
+                <Text style={{fontSize:25}}>Cart's health score</Text>
                 <FlatList
                     scrollEnabled={true}
                     data={json}
@@ -108,8 +106,8 @@ export default class LstCourse extends React.Component<IDetailProduct> {
                 </FlatList>
                 <PieChart
                     data={this.stat()}
-                    width={500} // modifier ici pour l'adapter à l'appareil
-                    height={250}
+                    width={100} // modifier ici pour l'adapter à l'appareil
+                    height={100}
                     chartConfig={chartConfig}
                     accessor={"nbr"}
                     backgroundColor={"transparent"}
@@ -117,7 +115,7 @@ export default class LstCourse extends React.Component<IDetailProduct> {
                     center={[1,15]}
                     absolute
                 />
-            </View>
+            </SafeAreaView>
         )
     }
 }

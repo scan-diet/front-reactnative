@@ -91,8 +91,16 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
             let status = response.status;
 
             if(status === 200) {
-                this.setState({defaultNote:json.averageGrade})
-                this.setState({yourNote:json.userGrade})
+                if(json.averageGrade){
+                    this.setState({defaultNote:json.averageGrade})
+                } else {
+                    this.setState({defaultNote:0})
+                }
+                if(json.userGrade){
+                    this.setState({yourNote:json.userGrade})
+                } else {
+                    this.setState({yourNote:0})
+                }
             } else if (status === 500) {
                 const itemAverageGrade = 0;
             }
@@ -104,7 +112,6 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
 
     async setProductGrade(token:any, barcode:any, rating?: number) {
         try {
-
             let response = await fetch(
                 'https://scandiet-nestjs-back.herokuapp.com/products/grade/add',
                 {
@@ -130,7 +137,6 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
 
             } else if (status === 500) {
                 const itemAverageGrade = 0;
-
             }
         } catch (e) {
             console.error(e);
@@ -164,7 +170,13 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
 
 
     render() {
-        const json = this.props.route.params[0]
+        const json = this.props.route.params[0];
+        let nutriscore = "u";
+
+        if(json.nutriscore){
+            nutriscore = json.nutriscore
+        }
+
         return (
             <View style={{ flex:1, padding:50}}>
                 <View style={{flexDirection:"row"}}>
@@ -176,7 +188,7 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
 
                         <View style={{flexDirection:"row"}}>
                             <Text style={{paddingHorizontal:10, fontSize:18}}>Nutri-score</Text>
-                            <Text style={[{backgroundColor:this.colorNutriscore(json.nutriscore),paddingHorizontal:10, fontSize:18, fontWeight:'bold'},styles.note]}>{json.nutriscore.toUpperCase()}</Text>
+                            <Text style={[{backgroundColor:this.colorNutriscore(nutriscore),paddingHorizontal:10, fontSize:18, fontWeight:'bold'},styles.note]}>{nutriscore.toUpperCase()}</Text>
                         </View>
 
                         {this.validDiet(json.respectsDiet)}

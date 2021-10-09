@@ -84,17 +84,19 @@ export default function App(props:any) {
         let gluten = false
         let vegan = false
         let vegetarian = false
-        if (json.diet_preference.withoutLactose){
-            lactose = json.diet_preference.withoutLactose
-        }
-        if (json.diet_preference.withoutGluten){
-            gluten = json.diet_preference.withoutGluten
-        }
-        if (json.diet_preference.vegan){
-            vegan = json.diet_preference.vegan
-        }
-        if (json.diet_preference.vegetarian){
-            vegetarian = json.diet_preference.vegetarian
+        if(json.diet_preference){
+            if (json.diet_preference.withoutLactose) {
+                lactose = json.diet_preference.withoutLactose
+            }
+            if (json.diet_preference.withoutGluten) {
+                gluten = json.diet_preference.withoutGluten
+            }
+            if (json.diet_preference.vegan) {
+                vegan = json.diet_preference.vegan
+            }
+            if (json.diet_preference.vegetarian) {
+                vegetarian = json.diet_preference.vegetarian
+            }
         }
         let diet:Diet = new Diet(
             lactose,
@@ -170,7 +172,7 @@ export default function App(props:any) {
             if(p.energetic_income.length>0){
                 energeticIncome=p.energetic_income[0].value
             }
-            props.navigation.navigate('DetailProduct', [new Product(
+            props.navigation.replace('DetailProduct', [new Product(
                 p.name,
                 p.image.path,
                 nutriment,
@@ -198,7 +200,7 @@ export default function App(props:any) {
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={StyleSheet.absoluteFillObject}
             />
-            {scanned && <Button title={'Tap to scan again'} onPress={() => setScanned(false)} />}
+            {scanned && <Button title={'Tap to scan a new product'} onPress={() => setScanned(false)} />}
         </View>
     );
 }

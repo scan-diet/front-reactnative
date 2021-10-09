@@ -30,6 +30,5 @@ const styles = StyleSheet.create({
     },
     scanIcon: {
         marginVertical:60
-
-    },
+    }
 });
