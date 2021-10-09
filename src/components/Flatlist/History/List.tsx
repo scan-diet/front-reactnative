@@ -28,12 +28,7 @@ const List: FC<IProdFlatList> = ({json,props}) => {
                           bounces={false}
                           keyExtractor={(item) => item.name}
                           onScroll={Animated.event([{nativeEvent: {contentOffset:{x: scrollx}}}],{useNativeDriver: false})}
-                          ListEmptyComponent={() =>
-                              <View>
-                                  <View>
-                                      <Image source={require("../../../assets/images/scan_items.png")} style={styles.scanItems}/>
-                                  </View>
-                              </View>
+                          ListEmptyComponent={() => <Text></Text>
                           }
                 />
         </View>

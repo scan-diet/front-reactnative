@@ -157,7 +157,7 @@ export default function App(props:any) {
                 [],
                 recommandation.product.nutriscore_grade,
                 recommandation.product.energetic_income.value,
-                json.suggested_products.bar_code,
+                json.suggested_products[i].bar_code,
                 [],
                 recommandation.product.diet_tags,
                 recommandation.product.complete

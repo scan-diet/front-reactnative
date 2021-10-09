@@ -15,25 +15,29 @@ export default class LstCourse extends React.Component<IDetailProduct> {
     }
 
     stat(){
-        let a,b,c,d,e = 0
+        let a = 0
+        let b = 0
+        let c = 0
+        let d = 0
+        let e = 0
         const json=this.props.route.params[1]
         for(let i=0;i<json.length;i++){
             console.log(json[i].nutriscore_grade)
             switch (json[i].nutriscore_grade) {
                 case 'a':
-                    a++;
+                    a = a+1;
                     break;
                 case 'b':
-                    b++;
+                    b = b+1;
                     break;
                 case 'c':
-                    c++;
+                    c= c+1;
                     break;
                 case 'd':
-                    d++;
+                    d = d+1;
                     break;
                 case 'e':
-                    e++;
+                    e = e+1;
                     break;
         }
     }
