@@ -7,9 +7,11 @@ import List from "../../components/Flatlist/Product/List";
 import Diet from "../../models/Diet";
 import {AntDesign, Entypo} from '@expo/vector-icons';
 import {AirbnbRating} from "react-native-ratings";
+import {BasicButton} from "../../components/Buttons/BasicButton";
 
 interface IDetailProduct {
     route: RouteProp<{ DetailProduct: [] },"DetailProduct">
+    navigation: any
 }
 
 export default class DetailProduct extends React.Component<IDetailProduct> {
@@ -25,7 +27,9 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
         defaultNote: number,
         yourNote: number,
     }
-
+    close(){
+        this.props.navigation.replace('BottomTabScreen')
+    }
     validDiet(diet:Diet){
         if ((diet.vegetarian && diet.vegan && diet.glutenFree && diet.lactoseFree)){
             return <View style={{flexDirection:"row"}}>
@@ -221,6 +225,9 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
                     <Text style={{fontSize:24, fontWeight:"bold"}}>Recommandations</Text>
                     {/* @ts-ignore */}
                     <List json={json} props={this.props} />
+                </View>
+                <View>
+                    <BasicButton title={"Close"} onPress={this.close.bind(this)}></BasicButton>
                 </View>
             </View>
         )

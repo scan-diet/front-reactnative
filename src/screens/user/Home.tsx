@@ -32,6 +32,7 @@ interface IHome extends PropsFromRedux {
     user: User
     navigation: any
     history: History
+    SetHistory: typeof SetHistory
 }
 
 class Home extends React.Component<IHome> {

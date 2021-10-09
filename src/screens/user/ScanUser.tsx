@@ -10,6 +10,53 @@ export default function App(props:any) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
 
+    async function getHistory(token: any){
+        try{
+            let response = await fetch(
+                'https://scandiet-nestjs-back.herokuapp.com/scans/history', {
+                    method: "get",
+                    headers:{
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        "jwt-token":token
+                    }
+                }
+            );
+            let json = await response.json();
+            let status = response.status;
+            let history:Product[] = []
+            for (let i=0; i<json.length; i++){
+                if(json[i]!=null){
+                    let product:Product = new Product(
+                        json[i].name,
+                        json[i].image.path,
+                        [],
+                        "",
+                        0,
+                        json[i].bar_code,
+                        0,
+                        new Diet(false,false,false,false),
+                        false
+                    )
+                    let inList = false
+                    for(let k=0;k>history.length;k++){
+                        if(json[i].name==history[k].name){
+                            inList = true
+                        }
+                    }
+                    if(inList == false){
+                        history.push(product)
+                    }
+                }
+            }
+            if (status === 200){
+                props.route.params.SetHistory(history);
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
     useEffect(() => {
         (async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -17,6 +64,7 @@ export default function App(props:any) {
             setHasPermission(status === 'granted');
         })();
     }, []);
+
 
     const handleBarCodeScanned = async ({type, data}: any) => {
         setScanned(true);
@@ -57,11 +105,23 @@ export default function App(props:any) {
         if(json.product.nutriments.length>0){
             for (let i=0; i<json.product.nutriments.length; i++){
                 if (json.product.nutriments[i]){
-                    const nutri:Nutriment = new Nutriment(
-                        json.product.nutriments[i].name,
-                        json.product.nutriments[i].raw_value.value
-                    )
-                    nutriment.push(nutri)
+                    if(json.product.nutriments[i].raw_value){
+                        const nutri:Nutriment = new Nutriment(
+                            json.product.nutriments[i].name,
+                            json.product.nutriments[i].raw_value.value
+                        )
+                        nutriment.push(nutri)
+                    }
+                    else{
+                        const nutri:Nutriment = new Nutriment(
+                            json.product.nutriments[i].name,
+                            0
+                        )
+                        nutriment.push(nutri)
+                    }
+
+
+
                 }
             }
         }
@@ -104,6 +164,7 @@ export default function App(props:any) {
         }
 
         if (response.status === 200) {
+            await getHistory(props.route.params.user._token)
             const p = json.product
             let energeticIncome = 0
             if(p.energetic_income.length>0){
