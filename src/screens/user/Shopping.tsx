@@ -1,12 +1,12 @@
 import React from "react";
 import {FlatList, Image, SafeAreaView, StyleSheet, TouchableOpacity, View} from "react-native";
-import {Divider, Text} from "react-native-elements"
+import {Text} from "react-native-elements"
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {SetHistoryShopping, SetShopping, SetUserDetail} from "../../store/actions";
 import {connect, ConnectedProps} from "react-redux";
 import User from "../../models/User";
 import HistoryShopping from "../../models/HistoryShopping";
-import {Text as TRNE} from "react-native-elements"
+import {useWhiteColor} from "../../hooks/colorVariables";
 
 const mapStateToProps = (state : any) => {
     return {
@@ -99,23 +99,27 @@ class Shopping extends React.Component<IShopping>{
             <SafeAreaView style={styles.main_container}>
                 <Text h3>Shopping Mode</Text>
                 <View style={{marginBottom:'15%'}}>
-                    <BasicButton title={"Create a shopping list"} onPress={this.course.bind(this)} />
+                    <BasicButton title="Create a shopping list" onPress={this.course.bind(this)} />
                 </View>
 
-                <FlatList data={this.state.liste}
-                          renderItem={({item}) => <TouchableOpacity  onPress={() => this.lstCourse(item.products,this.props)}>
-                              <Text key={item.endDate}>Course du : {this.getDate(item.endDate)}</Text>
-                              <Text key={item.endDate}>Fait à {this.getTime(item.endDate)}</Text>
-                          </TouchableOpacity>}
-                          ItemSeparatorComponent={() => <Divider width={1}/>}
-                          ListEmptyComponent={() =>
-                              <View>
-                                  <View>
-                                      <Image source={require("../../assets/images/list_empty.png")} style={styles.emptyShopping}/>
-                                      <Text style={{textAlign:"center", fontSize:20, fontStyle:"italic"}}>Your shopping list is empty</Text>
-                                  </View>
-                              </View>
-                          }
+                <FlatList
+                    data={this.state.liste}
+                    scrollEnabled={true}
+                    renderItem={({item}) =>
+                        <TouchableOpacity style={{backgroundColor:useWhiteColor, borderRadius:50, alignItems:"center"}}  onPress={() => this.lstCourse(item.products,this.props)}>
+                            <Text style={{fontSize:20}} key={item.endDate}>Course du {this.getDate(item.endDate)}</Text>
+                            <Text style={{fontSize:15}} key={item.endDate}>Fait à {this.getTime(item.endDate)}</Text>
+                        </TouchableOpacity>
+                    }
+                    ItemSeparatorComponent={() => <Text></Text>}
+                    ListEmptyComponent={() =>
+                        <View>
+                            <View>
+                                <Image source={require("../../assets/images/list_empty.png")} style={styles.emptyShopping}/>
+                                <Text style={{textAlign:"center", fontSize:20, fontStyle:"italic"}}>Your shopping list is empty</Text>
+                            </View>
+                        </View>
+                    }
                 >
                 </FlatList>
             </SafeAreaView>
