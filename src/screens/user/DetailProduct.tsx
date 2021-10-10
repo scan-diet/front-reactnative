@@ -1,13 +1,12 @@
 import React from "react";
 import {Image, StyleSheet, Text, View} from "react-native";
-import {Button, Text as TRNE} from "react-native-elements";
+import {Text as TRNE} from "react-native-elements";
 import {RouteProp} from "@react-navigation/native"
 import {Colors, ProgressBar} from "react-native-paper";
 import List from "../../components/Flatlist/Product/List";
 import Diet from "../../models/Diet";
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
 import {AirbnbRating} from "react-native-ratings";
-import {BasicButton} from "../../components/Buttons/BasicButton";
 import {useBlueColor} from "../../hooks/colorVariables";
 
 interface IDetailProduct {
@@ -256,7 +255,7 @@ const styles = StyleSheet.create({
     },
     getStartedContainer: {
         alignItems: 'center',
-        marginHorizontal: 50,
+        marginHorizontal: 30,
     },
     closeButton: {
         fontSize:50,
