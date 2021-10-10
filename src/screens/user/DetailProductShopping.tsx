@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, View} from "react-native";
 import {RouteProp} from "@react-navigation/native"
 import List from "../../components/Flatlist/Product/List";
 import Diet from "../../models/Diet";
-import {AntDesign, Entypo} from '@expo/vector-icons';
+import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
 import {BasicButton} from "../../components/Buttons/BasicButton";
 import {connect, ConnectedProps} from "react-redux";
 import {SetShopping} from "../../store/actions";
@@ -11,6 +11,7 @@ import History from "../../models/History";
 import {Text as TRNE} from "react-native-elements";
 import {AirbnbRating} from "react-native-ratings";
 import {Colors, ProgressBar} from "react-native-paper";
+import {useBlueColor} from "../../hooks/colorVariables";
 
 const mapStateToProps = (state : any) => {
     return {
@@ -48,6 +49,9 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
     state: {
         defaultNote: number,
         yourNote: number,
+    }
+    close(){
+        this.props.navigation.replace('ScanShopping')
     }
     add(json:any) {
         let tab: History
@@ -179,6 +183,8 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
 
         return (
             <View style={{ flex:1, padding:50}}>
+                <Ionicons name={"close-circle-outline"} color={useBlueColor} onPress={this.close.bind(this)} style={styles.closeButton} />
+
                 <View style={{flexDirection:"row"}}>
                     <Image source={{uri: json.image}} style={{width: 75, height: 200, resizeMode:"contain"}} />
 
@@ -277,5 +283,15 @@ const styles = StyleSheet.create({
         borderStyle:"solid",
         borderRadius:15,
         fontSize: 20
+    },
+    closeButton: {
+        fontSize:50,
+        position: "absolute",
+        right: 5,
+        top: 35
+    },
+    getStartedContainer: {
+        alignItems: 'center',
+        marginHorizontal: 30,
     },
 })
