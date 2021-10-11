@@ -48,7 +48,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
         if(isCompleted){
             return null
         } else {
-            return <Tooltip highlightColor={'black'} popover={<Text style={{color:'white'}}>Item's info not complete in database.</Text>}>
+            return <Tooltip popover={<Text style={{color:'white'}}>Item's info not complete in database.</Text>}>
                 <AntDesign name="warning" size={24} color="red"/>
             </Tooltip>
         }

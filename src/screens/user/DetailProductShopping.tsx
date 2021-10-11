@@ -151,7 +151,7 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
         if(isCompleted){
             return null
         } else {
-            return <Tooltip highlightColor={'black'} popover={<Text style={{color:'white'}}>Item's info not complete in database.</Text>}>
+            return <Tooltip popover={<Text style={{color:'white'}}>Item's info not complete in database.</Text>}>
                 <AntDesign name="warning" size={24} color="red"/>
             </Tooltip>
         }
@@ -262,9 +262,9 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
                     <ProgressBar progress={json.nutriments[3].value/100} color={Colors.green800} style={{height:8}} />
                 </View>
                 <View style={{flexDirection:"row", justifyContent:"center"}}>
-                    <BasicButton title={"Add to shopping list"} onPress={this.add.bind(this)}/>
+                    <BasicButton title={"Add to shopping list"} onPress={this.add.bind(this,json)}></BasicButton>
                 </View>
-                <View style={{paddingTop:40, flex:1, alignItems:"center"}}>
+                <View style={{flex:1, alignItems:"center"}}>
                     <Text style={{fontSize:24, fontWeight:"bold"}}>Recommandations</Text>
                     {/* @ts-ignore */}
                     <List json={json} props={this.props} />
