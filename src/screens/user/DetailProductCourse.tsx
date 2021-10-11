@@ -1,13 +1,12 @@
 import React from "react";
 import {Image, StyleSheet, Text, View} from "react-native";
-import {Button, Text as TRNE} from "react-native-elements";
+import {Text as TRNE, Tooltip} from "react-native-elements";
 import {RouteProp} from "@react-navigation/native"
 import {Colors, ProgressBar} from "react-native-paper";
 import List from "../../components/Flatlist/Product/List";
 import Diet from "../../models/Diet";
-import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
+import {AntDesign, Ionicons} from '@expo/vector-icons';
 import {AirbnbRating} from "react-native-ratings";
-import {BasicButton} from "../../components/Buttons/BasicButton";
 import {useBlueColor} from "../../hooks/colorVariables";
 
 interface IDetailProduct {
@@ -15,7 +14,7 @@ interface IDetailProduct {
     navigation: any
 }
 
-export default class DetailProductCourse extends React.Component<IDetailProduct> {
+export default class DetailProduct extends React.Component<IDetailProduct> {
     constructor(props: IDetailProduct) {
         super(props);
         this.state = {
@@ -30,15 +29,13 @@ export default class DetailProductCourse extends React.Component<IDetailProduct>
     }
     validDiet(diet:Diet){
         if ((diet.vegetarian && diet.vegan && diet.glutenFree && diet.lactoseFree)){
-            return <View style={{flexDirection:"row"}}>
-                <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10, paddingTop:10}}/>
-                <Text style={{paddingLeft:3, paddingTop:15}}>This item respects your diet</Text>
-            </View>
+            return <Tooltip popover={<Text style={{color:'white'}}>This product respects your diet.</Text>}>
+                <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10}}/>
+            </Tooltip>
         } else {
-            return <View style={{flexDirection:"row"}}>
-                <Entypo name="circle-with-cross" size={30} color="red" style={{paddingLeft:10, paddingTop:10}} />
-                <Text style={{paddingLeft:3, paddingTop:10}}>This item doesn't respect your diet</Text>
-            </View>
+            return <Tooltip popover={<Text style={{color:'white'}}>This product doesn't respect your diet.</Text>}>
+                <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10}}/>
+            </Tooltip>
         }
     }
 
@@ -46,10 +43,9 @@ export default class DetailProductCourse extends React.Component<IDetailProduct>
         if(isCompleted){
             return null
         } else {
-            return <View style={{flexDirection:"row"}}>
-                <AntDesign name="warning" size={24} color="red" />
-                <Text style={{paddingLeft:5, paddingTop:3, paddingBottom:30, fontWeight:"bold"}}>Item's info are not complete in our database</Text>
-            </View>
+            return <Tooltip popover={<Text style={{color:'white'}}>Item's info not complete in database.</Text>}>
+                <AntDesign name="warning" size={24} color="red"/>
+            </Tooltip>
         }
     }
 
@@ -166,11 +162,12 @@ export default class DetailProductCourse extends React.Component<IDetailProduct>
                             <Text style={[{backgroundColor:this.colorNutriscore(nutriscore),paddingHorizontal:10, fontSize:18, fontWeight:'bold'},styles.note]}>{nutriscore.toUpperCase()}</Text>
                         </View>
 
-                        {this.validDiet(json.respectsDiet)}
+                        <View style={{flexDirection:"row", marginLeft:20}}>
+                            {this.isItemInfoComplete(json.isItemInfoComplete)}
+                            {this.validDiet(json.respectsDiet)}
+                        </View>
                     </View>
                 </View>
-
-                {this.isItemInfoComplete(json.isItemInfoComplete)}
 
                 <View style={{flexDirection:"row", alignSelf:"center"}}>
                     <View style={styles.getStartedContainer}>
@@ -250,12 +247,6 @@ const styles = StyleSheet.create({
     },
     getStartedContainer: {
         alignItems: 'center',
-        marginHorizontal: 50,
+        marginHorizontal: 30,
     },
-    closeButton: {
-        fontSize:50,
-        position: "absolute",
-        right: 5,
-        top: 35
-    }
 })
