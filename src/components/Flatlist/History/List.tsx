@@ -5,7 +5,7 @@ import {
     FlatList,
     Animated,
     Text,
-    useWindowDimensions
+    useWindowDimensions, Image
 } from "react-native";
 import Item from "./Item";
 
@@ -31,7 +31,8 @@ const List: FC<IProdFlatList> = ({json,props}) => {
                           ListEmptyComponent={() =>
                               <View style={{}}>
                                   <View style={{}}>
-                                      <Text style={{textAlign:"center", fontSize:20, fontStyle:"italic"}}>Your history list is empty</Text>
+                                      <Image source={require("../../../assets/images/list_empty.png")} style={styles.emptyShopping}/>
+                                      <Text style={{ textAlign:"center", fontSize:20, fontStyle:"italic"}}>Your history list is empty</Text>
                                   </View>
                               </View>
                           }
@@ -64,6 +65,13 @@ const styles = StyleSheet.create({
         height:200,
         alignSelf:"flex-start",
         resizeMode:'contain',
+    },
+    emptyShopping: {
+        flexGrow:1,
+        width:450,
+        height:200,
+        alignSelf:"center",
+        resizeMode:'contain'
     }
 });
 
