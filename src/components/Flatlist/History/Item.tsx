@@ -74,33 +74,35 @@ async function handleBarCodeScanned(barcode: any,props: any) {
         const salt:Nutriment=new Nutriment("salt",0)
         nutriment.push(proteins,fat,sugar,salt)
     }
+  if(json.suggested_products){
+      for (let i=0; i<3; i++){
+          let res = await fetch(
+              `https://scandiet-nestjs-back.herokuapp.com/products/${json.suggested_products[i].bar_code}`, {
+                  method: "GET",
+                  headers: {
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+                      "jwt-token":props.user.token
+                  }
+              });
 
-    for (let i=0; i<3; i++){
-        let res = await fetch(
-            `https://scandiet-nestjs-back.herokuapp.com/products/${json.suggested_products[i].bar_code}`, {
-                method: "GET",
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    "jwt-token":props.user.token
-                }
-            });
+          let recommandation = await res.json()
 
-        let recommandation = await res.json()
+          let rec = new Product(
+              recommandation.product.name,
+              recommandation.product.image.path,
+              [],
+              recommandation.product.nutriscore_grade,
+              recommandation.product.energetic_income.value,
+              json.suggested_products.bar_code,
+              [],
+              recommandation.product.diet_tags,
+              recommandation.product.complete
+          )
+          suggest.push(rec)
+      }
+  }
 
-        let rec = new Product(
-            recommandation.product.name,
-            recommandation.product.image.path,
-            [],
-            recommandation.product.nutriscore_grade,
-            recommandation.product.energetic_income.value,
-            json.suggested_products.bar_code,
-            [],
-            recommandation.product.diet_tags,
-            recommandation.product.complete
-        )
-        suggest.push(rec)
-    }
 
     if (response.status === 200) {
         const p = json.product
