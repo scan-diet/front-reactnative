@@ -6,8 +6,7 @@ import {connect, ConnectedProps} from "react-redux";
 import User from "../../models/User";
 import {Product} from "../../models/Product";
 import {
-    useBlueColor,
-    useTransparentColor
+    useBlueColor
 } from "../../hooks/colorVariables";
 import {Divider} from "react-native-elements";
 
@@ -89,26 +88,24 @@ class Panier extends React.Component<IPanier>{
             return (
                 <View style={styles.main_container}>
 
-                    <View style={{marginBottom:'15%'}}>
+                    <View style={{marginBottom:'5%'}}>
                         <BasicButton title={"Scan an item"} onPress={this.course.bind(this)} />
                         <BasicButton title={"Finished"} onPress={this.fin.bind(this)} />
                     </View>
 
-                    <View>
-                        <Text style={{fontSize:25, color:useBlueColor, fontWeight:'bold', marginBottom:15}}>My Cart</Text>
+                    <View style={{}}>
+                        <Text style={{fontSize:25, color:useBlueColor, fontWeight:'bold'}}>My Cart</Text>
                         <FlatList
                             scrollEnabled={true}
                             data={this.props.shopping}
                             renderItem={({item}) =>
-                                <View style={{flexDirection:"column"}}>
+                                <View style={{flexDirection:"row", paddingBottom:'5%'}}>
                                     <Image source={{uri: item.image}} style={styles.image}/>
+                                    <Text style={{fontSize:20, marginRight:150, paddingLeft:5}}>{item.name}</Text>
                                 </View>
                             }
                             ItemSeparatorComponent={(item) =>
-                                <Divider
-                                    width={15}
-                                    color={useTransparentColor}
-                                />
+                                <Divider/>
                             }
                             ListEmptyComponent={() =>
                                 <View>
@@ -130,9 +127,9 @@ const styles = StyleSheet.create({
         padding: 50
     },
     image: {
-        flex: 0.7,
-        width:100,
-        height:100
+        flexGrow:1,
+        width:75,
+        height:75
     },
     emptyCart: {
         flex:1,

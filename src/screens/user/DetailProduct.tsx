@@ -5,9 +5,9 @@ import {RouteProp} from "@react-navigation/native"
 import {Colors, ProgressBar} from "react-native-paper";
 import List from "../../components/Flatlist/Product/List";
 import Diet from "../../models/Diet";
-import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
+import {AntDesign, Ionicons} from '@expo/vector-icons';
 import {AirbnbRating} from "react-native-ratings";
-import {useBlueColor, useGreyColor} from "../../hooks/colorVariables";
+import {useBlueColor} from "../../hooks/colorVariables";
 
 interface IDetailProduct {
     route: RouteProp<{ DetailProduct: [] },"DetailProduct">
@@ -32,15 +32,13 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
     }
     validDiet(diet:Diet){
         if ((diet.vegetarian && diet.vegan && diet.glutenFree && diet.lactoseFree)){
-            return <View style={{flexDirection:"row"}}>
-                <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10, paddingTop:10}}/>
-                <Text style={{paddingLeft:3, paddingTop:15}}>This item respects your diet</Text>
-            </View>
+            return <Tooltip popover={<Text style={{color:'white'}}>This product respects your diet.</Text>}>
+                <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10}}/>
+            </Tooltip>
         } else {
-            return <View style={{flexDirection:"row"}}>
-                <Entypo name="circle-with-cross" size={30} color="red" style={{paddingLeft:10, paddingTop:10}} />
-                <Text style={{paddingLeft:3, paddingTop:10}}>This item doesn't respect your diet</Text>
-            </View>
+            return <Tooltip popover={<Text style={{color:'white'}}>This product doesn't respect your diet.</Text>}>
+                <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10}}/>
+            </Tooltip>
         }
     }
 
@@ -170,7 +168,7 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
                             <Text style={[{backgroundColor:this.colorNutriscore(nutriscore),paddingHorizontal:10, fontSize:18, fontWeight:'bold'},styles.note]}>{nutriscore.toUpperCase()}</Text>
                         </View>
 
-                        <View style={{flexDirection:"row"}}>
+                        <View style={{flexDirection:"row", marginLeft:20}}>
                             {this.isItemInfoComplete(json.isItemInfoComplete)}
                             {this.validDiet(json.respectsDiet)}
                         </View>

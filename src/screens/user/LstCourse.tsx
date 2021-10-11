@@ -1,9 +1,8 @@
 import React from "react";
 import {FlatList, Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {RouteProp} from "@react-navigation/native"
-
 import {PieChart} from "react-native-chart-kit";
-import {color} from "react-native-elements/dist/helpers";
+import {Divider} from "react-native-elements";
 
 interface IDetailProduct {
     route: RouteProp<{ DetailProduct: [] },"LstCourse">
@@ -93,25 +92,26 @@ export default class LstCourse extends React.Component<IDetailProduct> {
             barPercentage: 0.5,
             useShadowColorFromDataset: false // optional
         };
-        console.log(this.props.route.params[1])
+
         return (
-            <SafeAreaView style={{backgroundColor:'cyan', flex:1}}>
-                <Text style={{fontSize:25}}>Cart's health score</Text>
+            <SafeAreaView style={{flex:1, padding:50}}>
+                <Text style={{fontSize:25}}>Shopping's health score</Text>
                 <FlatList
                     scrollEnabled={true}
                     data={json}
                     renderItem={({item}) =>
-                        <View style={{flexDirection:"column", backgroundColor:'cyan'}}>
+                        <View style={{flexDirection:"column"}}>
                             <Image source={{uri: item.image.path}} style={styles.image}/>
+                            <Text>{item.name}</Text>
                         </View>
                     }
-                    ItemSeparatorComponent={() => <View style={styles.lineStyle}></View>}
+                    ItemSeparatorComponent={() => <Divider style={{marginBottom:'5%'}}/>}
                 >
                 </FlatList>
                 <PieChart
                     data={this.stat()}
-                    width={100} // modifier ici pour l'adapter à l'appareil
-                    height={100}
+                    width={300} // modifier ici pour l'adapter à l'appareil
+                    height={300}
                     chartConfig={chartConfig}
                     accessor={"nbr"}
                     backgroundColor={"transparent"}
@@ -136,9 +136,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 50,
     },
     image: {
-        flex: 0.7,
-        width: 100,
-        height: 100
+        flexGrow:1,
+        width:75,
+        height:75
     },
     lineStyle: {
         borderWidth: 0.5,

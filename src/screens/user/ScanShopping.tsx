@@ -128,14 +128,12 @@ export default function App(props:any) {
         }
     };
 
-
     if (hasPermission === null) {
         return <Text>Asking for camera permission</Text>;
     }
     if (hasPermission === false) {
         return <Text>Please give permission to access camera</Text>;
     }
-
     return (
         <View style={styles.container}>
             <BarCodeScanner

@@ -5,7 +5,7 @@ import {
     FlatList,
     Animated,
     Text,
-    useWindowDimensions, Image
+    useWindowDimensions
 } from "react-native";
 import Item from "./Item";
 
@@ -28,7 +28,12 @@ const List: FC<IProdFlatList> = ({json,props}) => {
                           bounces={false}
                           keyExtractor={(item) => item.name}
                           onScroll={Animated.event([{nativeEvent: {contentOffset:{x: scrollx}}}],{useNativeDriver: false})}
-                          ListEmptyComponent={() => <Text></Text>
+                          ListEmptyComponent={() =>
+                              <View style={{}}>
+                                  <View style={{}}>
+                                      <Text style={{textAlign:"center", fontSize:20, fontStyle:"italic"}}>Your history list is empty</Text>
+                                  </View>
+                              </View>
                           }
                 />
         </View>
@@ -53,6 +58,12 @@ const styles = StyleSheet.create({
     scanItems: {
         width:200,
         height:200
+    },
+    emptyHistory: {
+        width:200,
+        height:200,
+        alignSelf:"flex-start",
+        resizeMode:'contain',
     }
 });
 
