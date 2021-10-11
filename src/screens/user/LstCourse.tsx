@@ -6,13 +6,16 @@ import Nutriment from "../../models/Nutriment";
 import {Product} from "../../models/Product";
 import Diet from "../../models/Diet";
 import {Divider} from "react-native-elements";
+import {useBlueColor} from "../../hooks/colorVariables";
+import {Ionicons} from "@expo/vector-icons";
 
-interface IDetailProduct {
+interface ILstCourse {
     route: RouteProp<{ LstCourse: [] },"LstCourse">
+    navigation: any
 }
 
-export default class LstCourse extends React.Component<IDetailProduct> {
-    constructor(props: IDetailProduct) {
+export default class LstCourse extends React.Component<ILstCourse> {
+    constructor(props: ILstCourse) {
         super(props);
     }
     async handleBarCodeScanned(barcode: any,props: any) {
@@ -199,6 +202,10 @@ export default class LstCourse extends React.Component<IDetailProduct> {
     return data
     }
 
+    close(){
+        this.props.navigation.replace('BottomTabScreen')
+    }
+
     render() {
         const json = this.props.route.params[1];
         const chartConfig = {
@@ -215,6 +222,8 @@ export default class LstCourse extends React.Component<IDetailProduct> {
         return (
             <SafeAreaView style={{flex:1, padding:50}}>
                 <Text style={{fontSize:25}}>Shopping's health score</Text>
+                <Ionicons name={"close-circle-outline"} color={useBlueColor} onPress={this.close.bind(this)} style={styles.closeButton} />
+
                 <FlatList
                     scrollEnabled={true}
                     data={json}
@@ -229,17 +238,21 @@ export default class LstCourse extends React.Component<IDetailProduct> {
                     ItemSeparatorComponent={() => <Divider style={{marginBottom:'5%'}}/>}
                 >
                 </FlatList>
-                <PieChart
-                    data={this.stat()}
-                    width={300} // modifier ici pour l'adapter à l'appareil
-                    height={300}
-                    chartConfig={chartConfig}
-                    accessor={"nbr"}
-                    backgroundColor={"transparent"}
-                    paddingLeft={"50"}
-                    center={[1,15]}
-                    absolute
-                />
+                <View>
+                    <Text style={{fontSize:20, alignSelf:"center"}}>Nutriscore</Text>
+                    <PieChart
+                        style={{}}
+                        data={this.stat()}
+                        width={250} // modifier ici pour l'adapter à l'appareil
+                        height={150}
+                        chartConfig={chartConfig}
+                        accessor={"nbr"}
+                        backgroundColor={"transparent"}
+                        paddingLeft={"50"}
+                        center={[1,15]}
+                        absolute
+                    />
+                </View>
             </SafeAreaView>
         )
     }
@@ -265,6 +278,12 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: 'cyan',
         margin:10
+    },
+    closeButton: {
+        fontSize:50,
+        position: "absolute",
+        right: 5,
+        top: 35
     }
 })
 
