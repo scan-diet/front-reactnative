@@ -106,7 +106,7 @@ class Shopping extends React.Component<IShopping>{
                     data={this.state.liste}
                     scrollEnabled={true}
                     renderItem={({item}) =>
-                        <TouchableOpacity style={{backgroundColor:useWhiteColor, borderRadius:50, alignItems:"center"}}  onPress={() => this.lstCourse(item.products,this.props)}>
+                        <TouchableOpacity style={{backgroundColor:useWhiteColor, borderRadius:50, alignItems:"center", marginBottom:10}}  onPress={() => this.lstCourse(item.products,this.props)}>
                             <Text style={{fontSize:20}} key={item.endDate}>Course du {this.getDate(item.endDate)}</Text>
                             <Text style={{fontSize:15}} key={item.endDate}>Fait à {this.getTime(item.endDate)}</Text>
                         </TouchableOpacity>
@@ -129,7 +129,8 @@ class Shopping extends React.Component<IShopping>{
 
 const styles = StyleSheet.create({
     main_container: {
-        padding: 50
+        padding: 50,
+        flex:1
     },
     emptyShopping: {
         flex:1,
