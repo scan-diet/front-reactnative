@@ -170,6 +170,10 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
         }
     }
 
+    componentDidMount() {
+        this.getProductGrade()
+    }
+
     render() {
         const json = this.props.route.params[0];
         let nutriscore = "u";
@@ -260,7 +264,7 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
                 </View>
                 <View style={{flexDirection:"row", justifyContent:"center"}}>
                     <BasicButton title={"Add to shopping list"} onPress={this.add.bind(this,json)}></BasicButton>
-                    <BasicButton title={"Don't add"} onPress={this.add.bind(this)}></BasicButton>
+                    <BasicButton title={"Don't add"} onPress={this.notAdd.bind(this)}></BasicButton>
                 </View>
                 <View style={{flex:1, alignItems:"center"}}>
                     <Text style={{fontSize:24, fontWeight:"bold"}}>Recommandations</Text>
