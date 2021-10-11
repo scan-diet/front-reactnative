@@ -8,7 +8,7 @@ import {BasicButton} from "../../components/Buttons/BasicButton";
 import {connect, ConnectedProps} from "react-redux";
 import {SetShopping} from "../../store/actions";
 import History from "../../models/History";
-import {Text as TRNE} from "react-native-elements";
+import {Text as TRNE, Tooltip} from "react-native-elements";
 import {AirbnbRating} from "react-native-ratings";
 import {Colors, ProgressBar} from "react-native-paper";
 import {useBlueColor} from "../../hooks/colorVariables";
@@ -16,7 +16,6 @@ import {useBlueColor} from "../../hooks/colorVariables";
 const mapStateToProps = (state : any) => {
     return {
         shopping: state.auth.shopping,
-
     }
 }
 
@@ -49,6 +48,7 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
     state: {
         defaultNote: number,
         yourNote: number,
+        buttonPressed: any
     }
     close(){
         this.props.navigation.replace('ScanShopping')
@@ -68,12 +68,12 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
         if ((diet.vegetarian && diet.vegan && diet.glutenFree && diet.lactoseFree)){
             return <View style={{flexDirection:"row"}}>
                 <AntDesign name="checkcircle" size={30} color="green" style={{paddingLeft:10, paddingTop:10}}/>
-                <Text style={{paddingLeft:3, paddingTop:15}}>This item respects your diet.</Text>
+                <Text style={{paddingLeft:3, paddingTop:15}}>Respects your diet.</Text>
             </View>
         } else {
             return <View style={{flexDirection:"row"}}>
                 <Entypo name="circle-with-cross" size={30} color="red" style={{paddingLeft:10, paddingTop:10}} />
-                <Text style={{paddingLeft:3, paddingTop:10}}>This item doesn't respect your diet.</Text>
+                <Text style={{paddingLeft:3, paddingTop:10}}>Doesn't respect your diet.</Text>
             </View>
         }
     }
@@ -146,14 +146,14 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
             console.error(e);
         }
     }
+
     isItemInfoComplete(isCompleted:boolean){
         if(isCompleted){
             return null
         } else {
-            return <View style={{flexDirection:"row"}}>
-                <AntDesign name="warning" size={24} color="red" />
-                <Text style={{paddingLeft:5, paddingTop:3, paddingBottom:30, fontWeight:"bold"}}>Item's info are not complete in our database.</Text>
-            </View>
+            return <Tooltip highlightColor={'black'} popover={<Text style={{color:'white'}}>Item's info not complete in database.</Text>}>
+                <AntDesign name="warning" size={24} color="red"/>
+            </Tooltip>
         }
     }
 
@@ -171,7 +171,6 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
                 return 'red'
         }
     }
-
 
     render() {
         const json = this.props.route.params[0];
@@ -197,11 +196,12 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
                             <Text style={[{backgroundColor:this.colorNutriscore(nutriscore),paddingHorizontal:10, fontSize:18, fontWeight:'bold'},styles.note]}>{nutriscore.toUpperCase()}</Text>
                         </View>
 
-                        {this.validDiet(json.respectsDiet)}
+                        <View style={{flexDirection:"row"}}>
+                            {this.isItemInfoComplete(json.isItemInfoComplete)}
+                            {this.validDiet(json.respectsDiet)}
+                        </View>
                     </View>
                 </View>
-
-                {this.isItemInfoComplete(json.isItemInfoComplete)}
 
                 <View style={{flexDirection:"row", alignSelf:"center"}}>
                     <View style={styles.getStartedContainer}>
@@ -261,9 +261,8 @@ class DetailProductShopping extends React.Component<IDetailProduct> {
                     </View>
                     <ProgressBar progress={json.nutriments[3].value/100} color={Colors.green800} style={{height:8}} />
                 </View>
-                <View style={{flexDirection:"row", justifyContent:"space-between"}}>
-                    <BasicButton title={"Ajouter"} onPress={this.add.bind(this,json)}></BasicButton>
-                    <BasicButton title={"Ne pas ajouter"} onPress={this.add.bind(this)}></BasicButton>
+                <View style={{flexDirection:"row", justifyContent:"center"}}>
+                    <BasicButton title={"Add to shopping list"} onPress={this.add.bind(this)}/>
                 </View>
                 <View style={{paddingTop:40, flex:1, alignItems:"center"}}>
                     <Text style={{fontSize:24, fontWeight:"bold"}}>Recommandations</Text>

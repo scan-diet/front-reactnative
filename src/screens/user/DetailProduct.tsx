@@ -1,13 +1,13 @@
 import React from "react";
 import {Image, StyleSheet, Text, View} from "react-native";
-import {Text as TRNE} from "react-native-elements";
+import {Text as TRNE, Tooltip} from "react-native-elements";
 import {RouteProp} from "@react-navigation/native"
 import {Colors, ProgressBar} from "react-native-paper";
 import List from "../../components/Flatlist/Product/List";
 import Diet from "../../models/Diet";
 import {AntDesign, Entypo, Ionicons} from '@expo/vector-icons';
 import {AirbnbRating} from "react-native-ratings";
-import {useBlueColor} from "../../hooks/colorVariables";
+import {useBlueColor, useGreyColor} from "../../hooks/colorVariables";
 
 interface IDetailProduct {
     route: RouteProp<{ DetailProduct: [] },"DetailProduct">
@@ -48,10 +48,9 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
         if(isCompleted){
             return null
         } else {
-            return <View style={{flexDirection:"row"}}>
-                <AntDesign name="warning" size={24} color="red" />
-                <Text style={{paddingLeft:5, paddingTop:3, paddingBottom:30, fontWeight:"bold"}}>Item's info are not complete in our database</Text>
-            </View>
+            return <Tooltip highlightColor={'black'} popover={<Text style={{color:'white'}}>Item's info not complete in database.</Text>}>
+                <AntDesign name="warning" size={24} color="red"/>
+            </Tooltip>
         }
     }
 
@@ -171,11 +170,12 @@ export default class DetailProduct extends React.Component<IDetailProduct> {
                             <Text style={[{backgroundColor:this.colorNutriscore(nutriscore),paddingHorizontal:10, fontSize:18, fontWeight:'bold'},styles.note]}>{nutriscore.toUpperCase()}</Text>
                         </View>
 
-                        {this.validDiet(json.respectsDiet)}
+                        <View style={{flexDirection:"row"}}>
+                            {this.isItemInfoComplete(json.isItemInfoComplete)}
+                            {this.validDiet(json.respectsDiet)}
+                        </View>
                     </View>
                 </View>
-
-                {this.isItemInfoComplete(json.isItemInfoComplete)}
 
                 <View style={{flexDirection:"row", alignSelf:"center"}}>
                     <View style={styles.getStartedContainer}>
