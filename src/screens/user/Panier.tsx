@@ -217,10 +217,10 @@ class Panier extends React.Component<IPanier>{
                             scrollEnabled={true}
                             data={this.props.shopping}
                             renderItem={({item}) =>
-                                <View style={{flexDirection:"row", paddingBottom:'5%'}}>
-                                    <TouchableOpacity  onPress={() => this.handleBarCodeScanned(item.barcode,this.props)}>
+                                <View style={{flexDirection:"column"}}>
+                                    <TouchableOpacity style={{marginBottom:20}}  onPress={() => this.handleBarCodeScanned(item.barcode,this.props)}>
                                         <Image source={{uri: item.image}} style={styles.image}/>
-                                        <Text style={{fontSize:20, marginRight:150, paddingLeft:5}}>{item.name}</Text>
+                                        <Text>{item.name}</Text>
                                     </TouchableOpacity>
                                 </View>
                             }
@@ -244,7 +244,8 @@ class Panier extends React.Component<IPanier>{
 
 const styles = StyleSheet.create({
     main_container: {
-        padding: 50
+        padding: 50,
+        flex:1,
     },
     image: {
         flexGrow:1,
