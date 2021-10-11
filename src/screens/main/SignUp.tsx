@@ -4,14 +4,17 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomButton from "../../components/Buttons/CustomButton";
-import {SetUserDetail, SetToken} from "../../store/actions";
+import {SetUserDetail, SetToken, SetHistory} from "../../store/actions";
 import {connect} from 'react-redux';
 import User from "../../models/User";
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import {Product} from "../../models/Product";
+import Diet from "../../models/Diet";
 
 interface ISignupProps {
     SetUserDetail: typeof SetUserDetail,
-    SetToken: typeof SetToken
+    SetToken: typeof SetToken,
+    SetHistory: typeof SetHistory
     navigation: any
 }
 
@@ -44,6 +47,54 @@ class Signup extends React.Component<ISignupProps> {
         lactose:boolean,
         gluten:boolean,
         error: string,
+    }
+    async getHistory(token: any){
+        try{
+            let response = await fetch(
+                'https://scandiet-nestjs-back.herokuapp.com/scans/history', {
+                    method: "get",
+                    headers:{
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        "jwt-token":token
+                    }
+                }
+            );
+            let json = await response.json();
+            let status = response.status;
+            let history:Product[] = []
+            for (let i=0; i<json.length; i++){
+                if(json[i]!=null){
+                    let product:Product = new Product(
+                        json[i].name,
+                        json[i].image.path,
+                        [],
+                        "",
+                        0,
+                        json[i].bar_code,
+                        0,
+                        new Diet(false,false,false,false),
+                        false
+                    )
+                    let inList = false
+                    for(let k=0;k>history.length;k++){
+                        if(json[i].name==history[k].name){
+                            inList = true
+                        }
+                    }
+                    if(inList == false){
+                        history.push(product)
+                    }
+                }
+            }
+            if (status === 200){
+                this.props.SetHistory(history);
+                this.props.navigation.navigate('BottomTabScreen')
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
     }
     async register() {
         try {
@@ -83,6 +134,7 @@ class Signup extends React.Component<ISignupProps> {
                 this.props.navigation.navigate('Loading')
                 const user = new User(email, name, json.token,height,weight, weightGoal, lactose, gluten, vegan, vege);
                 this.props.SetUserDetail(user);
+                await this.getHistory(json.token);
                 this.props.navigation.navigate('BottomTabScreen')
 
             } else {
@@ -201,6 +253,7 @@ const mapStateToProps = (state : any) => {
 const mapDispatchToProps = (dispatch: any )=> {
     return {
         SetUserDetail: (user: any) => dispatch(SetUserDetail(user)),
+        SetHistory: (history: any) => dispatch(SetHistory(history)),
     }
 }
 
