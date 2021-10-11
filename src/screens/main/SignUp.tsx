@@ -147,7 +147,7 @@ class Signup extends React.Component<ISignupProps> {
                             keyboardType={'number-pad'}
                             leftIcon={personHeight}
                             onChangeText={(text )=> {this.setState({height: text})}}
-
+                            maxLength={3}
                         />
 
                         <Input
@@ -155,6 +155,7 @@ class Signup extends React.Component<ISignupProps> {
                             keyboardType={"decimal-pad"}
                             leftIcon={personWeight}
                             onChangeText={(text )=> {this.setState({weight: text})}}
+                            maxLength={3}
                         />
 
                         <Text h4>Goal</Text>
@@ -163,6 +164,7 @@ class Signup extends React.Component<ISignupProps> {
                             placeholder='Weight goal in kg'
                             leftIcon={personWeight}
                             onChangeText={(text )=> {this.setState({weightGoal: text})}}
+                            maxLength={3}
                         />
                     </View>
 
