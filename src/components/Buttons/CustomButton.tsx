@@ -1,5 +1,6 @@
 import React, {FC, useState} from 'react';
-import {TouchableOpacity, Text, Image} from 'react-native';
+import {TouchableOpacity, Text} from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 interface CustomButtonProps {
     titre: string;
@@ -29,10 +30,8 @@ const CustomButton: FC<CustomButtonProps> = ({titre, onPress, hauteurBouton, lar
                 margin: 5,
 
             }}>
-            <Image style={{marginHorizontal:7}} source={require('../../assets/images/image_addition_symbol.png')} />
-            <Text style={{color:'#FFFFFF', marginRight:8}}>
-                {titre}
-            </Text>
+            <AntDesign style={{marginHorizontal:7}} name="pluscircleo" size={24} color="black" />
+            <Text style={{color:'#FFFFFF', marginRight:8}}>{titre}</Text>
         </TouchableOpacity>
     );
 };
