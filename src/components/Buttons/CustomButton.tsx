@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { Checkbox } from 'react-native-paper';
 
 interface CustomButtonProps {
     titre: string;
@@ -28,9 +28,13 @@ const CustomButton: FC<CustomButtonProps> = ({titre, onPress, hauteurBouton, lar
                 width: largeurBouton,
                 height: hauteurBouton,
                 margin: 5,
-
             }}>
-            <AntDesign style={{marginHorizontal:7}} name="pluscircleo" size={24} color="black" />
+
+            <Checkbox
+                color='white'
+                uncheckedColor={'white'}
+                status={pressed ? 'checked' : 'unchecked'}
+            />
             <Text style={{color:'#FFFFFF', marginRight:8}}>{titre}</Text>
         </TouchableOpacity>
     );
