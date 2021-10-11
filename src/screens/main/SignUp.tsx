@@ -3,20 +3,17 @@ import {Button, SafeAreaView, ScrollView, View} from "react-native";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomButton from "../../components/Buttons/CustomButton";
 import {SetUserDetail, SetToken} from "../../store/actions";
 import {connect} from 'react-redux';
 import User from "../../models/User";
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 interface ISignupProps {
     SetUserDetail: typeof SetUserDetail,
     SetToken: typeof SetToken
     navigation: any
 }
-
-const personWeight = <FontAwesome5 name={'weight'} />;
-const personHeight = <MaterialCommunityIcons name={'human-male-height'} />;
 
 class Signup extends React.Component<ISignupProps> {
     constructor(props: any) {
@@ -48,7 +45,6 @@ class Signup extends React.Component<ISignupProps> {
         gluten:boolean,
         error: string,
     }
-
     async register() {
         try {
             const {email, pwd, name, weight, height, weightGoal, gluten, lactose, vege, vegan} = this.state;
@@ -99,7 +95,7 @@ class Signup extends React.Component<ISignupProps> {
             <SafeAreaView style={{padding:50, flex:1}}>
                 <ScrollView>
                     <View style={{}}>
-                        <Text h4>General information</Text>
+                        <Text h4>General Information</Text>
 
                         <Input
                             placeholder='Firstname'
@@ -123,7 +119,7 @@ class Signup extends React.Component<ISignupProps> {
                                 keyboardType={"email-address"}
                                 returnKeyType={"next"}
                                 onChangeText={(text )=> {this.setState({email: text})}}
-                                leftIcon={<Icon name='envelope' size={24} color='black'/>}
+                                leftIcon={<MaterialIcons name="alternate-email" size={24} color="black" />}
                             />
                         </View>
 
@@ -135,6 +131,8 @@ class Signup extends React.Component<ISignupProps> {
                                 passwordRules={"required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8;"}
                                 secureTextEntry={true}
                                 leftIcon={<Icon name='lock' size={24} color='black'/>}
+                                returnKeyType={"next"}
+                                showSoftInputOnFocus={true}
                             />
                         </View>
                     </View>
@@ -145,24 +143,26 @@ class Signup extends React.Component<ISignupProps> {
                         <Input
                             placeholder='Height in cm'
                             keyboardType={'number-pad'}
-                            leftIcon={personHeight}
+                            leftIcon={<MaterialCommunityIcons name="human-male-height-variant" size={24} color="black" />}
                             onChangeText={(text )=> {this.setState({height: text})}}
                             maxLength={3}
+                            returnKeyType={"next"}
                         />
 
                         <Input
                             placeholder='Weight in kg'
                             keyboardType={"decimal-pad"}
-                            leftIcon={personWeight}
+                            leftIcon={<FontAwesome5 name="weight" size={24} color="black" />}
                             onChangeText={(text )=> {this.setState({weight: text})}}
                             maxLength={3}
+                            returnKeyType={"next"}
                         />
 
                         <Text h4>Goal</Text>
                         <Input
                             keyboardType={"decimal-pad"}
                             placeholder='Weight goal in kg'
-                            leftIcon={personWeight}
+                            leftIcon={<FontAwesome5 name="weight" size={24} color="black" />}
                             onChangeText={(text )=> {this.setState({weightGoal: text})}}
                             maxLength={3}
                         />
