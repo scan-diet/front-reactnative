@@ -104,27 +104,36 @@ export default function App(props:any) {
             vegan,
             vegetarian
         )
-        if(json.product.nutriments.length>0){
-            for (let i=0; i<json.product.nutriments.length; i++){
-                if (json.product.nutriments[i]){
-                    if(json.product.nutriments[i].raw_value){
-                        const nutri:Nutriment = new Nutriment(
-                            json.product.nutriments[i].name,
-                            json.product.nutriments[i].raw_value.value
-                        )
-                        nutriment.push(nutri)
+        if(json.product.nutriments){
+            if(json.product.nutriments.length>0){
+                for (let i=0; i<json.product.nutriments.length; i++){
+                    if (json.product.nutriments[i]){
+                        if(json.product.nutriments[i].raw_value){
+                            const nutri:Nutriment = new Nutriment(
+                                json.product.nutriments[i].name,
+                                json.product.nutriments[i].raw_value.value
+                            )
+                            nutriment.push(nutri)
+                        }
+                        else{
+                            const nutri:Nutriment = new Nutriment(
+                                json.product.nutriments[i].name,
+                                0
+                            )
+                            nutriment.push(nutri)
+                        }
+
+
+
                     }
-                    else{
-                        const nutri:Nutriment = new Nutriment(
-                            json.product.nutriments[i].name,
-                            0
-                        )
-                        nutriment.push(nutri)
-                    }
-
-
-
                 }
+            }
+            else{
+                const proteins:Nutriment=new Nutriment("proteins",0)
+                const fat:Nutriment=new Nutriment("fat",0)
+                const sugar:Nutriment=new Nutriment("sugar",0)
+                const salt:Nutriment=new Nutriment("salt",0)
+                nutriment.push(proteins,fat,sugar,salt)
             }
         }
         else{

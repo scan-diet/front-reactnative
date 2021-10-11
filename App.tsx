@@ -17,6 +17,9 @@ import Panier from "./src/screens/user/Panier";
 import DetailProductShopping from "./src/screens/user/DetailProductShopping";
 import Shopping from "./src/screens/user/Shopping";
 import LstCourse from "./src/screens/user/LstCourse";
+import DetailProductPanier from "./src/screens/user/DetailProductPanier";
+import DetailProductCourse from "./src/screens/user/DetailProductCourse";
+import Loading from "./src/screens/user/Loading";
 
 enableScreens();
 
@@ -30,7 +33,10 @@ export default class App extends React.Component {
                     <Stack.Navigator screenOptions={{headerShown:false}}>
                         <Stack.Screen name="Login" component={Login}/>
                         <Stack.Screen name="DetailProduct" component={DetailProduct}/>
+                        <Stack.Screen name="DetailProductPanier" component={DetailProductPanier}/>
+                        <Stack.Screen name="DetailProductCourse" component={DetailProductCourse}/>
                         <Stack.Screen name="DetailProductShopping" component={DetailProductShopping}/>
+                        <Stack.Screen name="Loading" component={Loading} />
                         <Stack.Screen name="Scan" component={Scan} />
                         <Stack.Screen name="ScanUser" component={ScanUser} />
                         <Stack.Screen name="Shopping" component={Shopping} />

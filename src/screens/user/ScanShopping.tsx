@@ -62,11 +62,23 @@ export default function App(props:any) {
         if(json.product.nutriments.length>0){
             for (let i=0; i<json.product.nutriments.length; i++){
                 if (json.product.nutriments[i]){
-                    const nutri:Nutriment = new Nutriment(
-                        json.product.nutriments[i].name,
-                        json.product.nutriments[i].raw_value.value
-                    )
-                    nutriment.push(nutri)
+                    if(json.product.nutriments[i].raw_value){
+                        const nutri:Nutriment = new Nutriment(
+                            json.product.nutriments[i].name,
+                            json.product.nutriments[i].raw_value.value
+                        )
+                        nutriment.push(nutri)
+                    }
+                    else{
+                        const nutri:Nutriment = new Nutriment(
+                            json.product.nutriments[i].name,
+                            0
+                        )
+                        nutriment.push(nutri)
+                    }
+
+
+
                 }
             }
         }
