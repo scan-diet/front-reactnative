@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
         width:450,
         height:200,
         alignSelf:"center",
-        color:"green",
         resizeMode:'contain'
     }
 })
