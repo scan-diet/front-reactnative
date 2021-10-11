@@ -133,7 +133,7 @@ const Item: FC<IProdItem> = ({item,props})=> {
             <View style={[styles.container, {width}]}>
                 <Image source={{uri: item.image}} style={[styles.image,{width, resizeMode: 'contain'}]}/>
                 <View style={{flex: 0.3}}>
-                    <Text>{item.name}</Text>
+                    <Text style={{fontSize:20}}>{item.name}</Text>
                 </View>
             </View>
         </TouchableOpacity>
